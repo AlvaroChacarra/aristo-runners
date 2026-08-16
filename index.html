@@ -181,7 +181,7 @@ function homeKpis(){
   return `
     <div class="kpi-grid">
       <article class="kpi primary"><span class="kpi-label">Kilómetros del club</span><div><div class="kpi-value">${fmt(summary.total_km)} <span class="kpi-unit">km</span></div><div class="kpi-note">de ${fmt(dashboard.challenge.objective_total_km,0)} km</div></div></article>
-      <article class="kpi"><span class="kpi-label">Progreso conjunto</span><div><div class="kpi-value">${fmt(summary.progress_pct)}%</div><div class="kpi-note">${summary.completed_runners} han completado 120 km</div></div></article>
+      <article class="kpi"><span class="kpi-label">Progreso conjunto</span><div><div class="kpi-value">${fmt(summary.progress_pct)}%</div><div class="kpi-note">${summary.completed_runners} han completado ${fmt(dashboard.challenge.objective_per_runner_km,0)} km</div></div></article>
       <article class="kpi"><span class="kpi-label">${dashboard.challenge.finished?'Resultado final':'Proyección final'}</span><div><div class="kpi-value">${fmt(projectionValue)} <span class="kpi-unit">km</span></div><div class="kpi-note ${gapClass}">${signed(gap)} km vs objetivo</div></div></article>
       <article class="kpi"><span class="kpi-label">Corredores en ritmo</span><div><div class="kpi-value">${summary.on_track_runners}<span class="kpi-unit"> / ${summary.participants}</span></div><div class="kpi-note">según proyección actual</div></div></article>
     </div>`;
@@ -215,13 +215,13 @@ function renderHome(){
     <section class="hero">
       <p class="eyebrow">Alcobendas, Madrid · ${challenge.finished?'clasificación final':`día ${challenge.current_day} de ${challenge.days}`}</p>
       <h1>Reto de verano<br><span class="accent">ARISTO runners</span></h1>
-      <p class="hero-copy">${challenge.finished?'Resultado definitivo del reto.':'120 km por corredor antes del 30 de agosto.'}</p>
+      <p class="hero-copy">${challenge.finished?'Resultado definitivo del reto.':`${fmt(challenge.objective_per_runner_km,0)} km por corredor antes del 30 de agosto.`}</p>
       ${homeKpis()}
       <div class="group-progress" role="progressbar" aria-label="Progreso conjunto" aria-valuenow="${dashboard.summary.progress_pct}" aria-valuemin="0" aria-valuemax="100"><span style="width:${targetWidth(dashboard.summary.progress_pct)}%"></span></div>
       ${dashboard.coverage.needs_current_baseline?'<div class="notice">La automatización está conectada, pero los totales recientes aún no se suman: falta incorporar una única fotografía actual de los 12 corredores.</div>':''}
       ${qualityStrip()}
     </section>
-    <section class="section"><div class="section-head"><h2 class="section-title">Evolución del club</h2></div><div class="chart-card"><div class="chart-wrap"><canvas id="groupChart" aria-label="Evolución de kilómetros del club"></canvas></div><p class="chart-note">Sólida = total consolidado · discontinua = proyección · gris = ritmo necesario para 1.440 km. Los tramos entre checkpoints sin detalle diario son interpolados.</p></div></section>
+    <section class="section"><div class="section-head"><h2 class="section-title">Evolución del club</h2></div><div class="chart-card"><div class="chart-wrap"><canvas id="groupChart" aria-label="Evolución de kilómetros del club"></canvas></div><p class="chart-note">Sólida = total consolidado · discontinua = proyección · gris = ritmo necesario para ${fmt(challenge.objective_total_km,0)} km. Los tramos entre checkpoints sin detalle diario son interpolados.</p></div></section>
     <section class="section"><div class="section-head"><h2 class="section-title">Clasificación</h2><span class="scope">TOCA PARA VER DETALLE</span></div><div class="board">${runnerRows()}</div>${dashboard.summary.elevation_total_complete?'':'<p class="chart-note">* Desnivel histórico incompleto para Antonio, Kike y Alonso según la golden source.</p>'}</section>
     <section class="section"><div class="section-head"><h2 class="section-title">Hitos y destacados</h2></div><div class="highlights">${highlightCards()}</div>${dashboard.quality.activity_metrics_available?'':'<p class="chart-note">Los destacados de eficiencia aparecerán automáticamente cuando comience el seguimiento detallado de nuevas salidas.</p>'}</section>`;
   renderGroupChart();
@@ -250,7 +250,7 @@ function renderRunnerChart(runner){
   charts.push(new Chart(canvas,{type:'line',data:{labels:dashboard.series.labels.map((_,index)=>`D${index+1}`),datasets:[
     {label:'Km acumulados',data:actual,borderColor:color,backgroundColor:color,borderWidth:3,pointRadius:context=>context.dataIndex===day-1?4:0,tension:.22,fill:false},
     {label:'Proyección',data:dashboard.challenge.finished?[]:projection,borderColor:color,borderWidth:2,borderDash:[6,5],pointRadius:0,tension:.2,fill:false},
-    {label:'Ritmo para 120 km',data:target,borderColor:'#5a5c58',borderWidth:1.5,borderDash:[2,4],pointRadius:0,fill:false}
+    {label:`Ritmo para ${fmt(dashboard.challenge.objective_per_runner_km,0)} km`,data:target,borderColor:'#5a5c58',borderWidth:1.5,borderDash:[2,4],pointRadius:0,fill:false}
   ]},options:chartBaseOptions()}));
 }
 
@@ -304,7 +304,7 @@ function qualityCard(runner){
 function renderRunner(runner){
   app.innerHTML=`
     <a class="back" href="./" data-route><span>‹</span>Volver al club</a>
-    <section class="runner-hero"><p class="eyebrow">Puesto ${runner.rank} · ${runner.on_track?'en ritmo de objetivo':'por debajo del ritmo'}</p><h1>${esc(runner.name)}</h1><div class="runner-total"><div class="runner-total-value">${fmt(runner.km)} <small>km</small></div><div class="runner-total-side">${fmt(runner.progress_pct)}% de 120 km<br>${fmt(runner.contribution_pct)}% del club<br>${runner.outings_total} salidas · ${fmt(runner.elevation_total_m,0)} m D+${runner.elevation_total_complete?'':'*'}</div></div><div class="group-progress" role="progressbar" aria-label="Progreso de ${esc(runner.name)}" aria-valuenow="${runner.progress_pct}" aria-valuemin="0" aria-valuemax="100"><span style="width:${targetWidth(runner.progress_pct)}%"></span></div>${detailStats(runner)}</section>
+    <section class="runner-hero"><p class="eyebrow">Puesto ${runner.rank} · ${runner.on_track?'en ritmo de objetivo':'por debajo del ritmo'}</p><h1>${esc(runner.name)}</h1><div class="runner-total"><div class="runner-total-value">${fmt(runner.km)} <small>km</small></div><div class="runner-total-side">${fmt(runner.progress_pct)}% de ${fmt(dashboard.challenge.objective_per_runner_km,0)} km<br>${fmt(runner.contribution_pct)}% del club<br>${runner.outings_total} salidas · ${fmt(runner.elevation_total_m,0)} m D+${runner.elevation_total_complete?'':'*'}</div></div><div class="group-progress" role="progressbar" aria-label="Progreso de ${esc(runner.name)}" aria-valuenow="${runner.progress_pct}" aria-valuemin="0" aria-valuemax="100"><span style="width:${targetWidth(runner.progress_pct)}%"></span></div>${detailStats(runner)}</section>
     <section class="section"><div class="section-head"><h2 class="section-title">Evolución individual</h2></div><div class="chart-card"><div class="chart-wrap"><canvas id="runnerChart" aria-label="Evolución de ${esc(runner.name)}"></canvas></div><p class="chart-note">La proyección usa el último total consolidado. Los intervalos sin desglose diario aparecen interpolados.</p></div></section>
     <section class="section"><div class="section-head"><h2 class="section-title">Eficiencia de las salidas</h2><span class="scope">SOLO PERIODO OBSERVABLE</span></div>${efficiency(runner)}</section>
     <section class="section"><div class="section-head"><h2 class="section-title">Hitos del reto</h2></div><div class="milestones">${milestoneCards(runner)}</div></section>

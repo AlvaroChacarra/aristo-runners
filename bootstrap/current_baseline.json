@@ -3,7 +3,7 @@
   "checkpoint_date": "2026-08-16",
   "captured_at": "2026-08-16",
   "source": "ARISTO runners — Día 22 HTML (golden source proporcionada por el organizador)",
-  "notes": "Los agregados 10–16/08 de la golden source sustituyen a la estimación obtenida de las capturas de Strava. Se unen al checkpoint acumulado del 10/08 descontando el solape conocido de ese día: 10,14 km de Pablo Meijide y 9,01 km de Francisco Javier Moreno Muñoz. El objetivo de 125 km del HTML es obsoleto; challenge.json mantiene el requisito vigente de 120 km.",
+  "notes": "Los agregados 10–16/08 de la golden source sustituyen a la estimación obtenida de las capturas de Strava. Se unen al checkpoint acumulado del 10/08 descontando el solape conocido de ese día: 10,14 km de Pablo Meijide y 9,01 km de Francisco Javier Moreno Muñoz. El objetivo vigente es el configurado en challenge.json.",
   "weekly_snapshot": {
     "period_start": "2026-08-10",
     "period_end": "2026-08-16",

@@ -32,6 +32,9 @@ class UpdateSafetyTests(unittest.TestCase):
             root = Path(directory)
             for folder in ("config", "bootstrap", "state"):
                 shutil.copytree(ROOT / folder, root / folder)
+            # The repository may contain live encrypted state after a real update.
+            # This test exercises bootstrap rotation with its own synthetic secret.
+            (root / "state/refresh_token.enc").unlink(missing_ok=True)
             original = '{"known":"good"}\n'
             (root / "data.json").write_text(original, encoding="utf-8")
             challenge_path = root / "config/challenge.json"

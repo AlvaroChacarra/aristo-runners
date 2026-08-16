@@ -12,6 +12,13 @@ class FrontendTests(unittest.TestCase):
         self.assertIn("fetch('./data.json'", self.html)
         self.assertNotIn("const runners =", self.html)
 
+    def test_v2_has_home_and_runner_routes(self):
+        self.assertIn("DASHBOARD V2", self.html)
+        self.assertIn("new URLSearchParams(location.search).get('runner')", self.html)
+        self.assertIn("Eficiencia de las salidas", self.html)
+        self.assertIn("Hitos del reto", self.html)
+        self.assertIn("schema_version!==2", self.html)
+
     def test_old_125_km_objective_is_removed(self):
         self.assertNotIn("125 km", self.html)
         self.assertNotIn("OBJ_PER_RUNNER", self.html)

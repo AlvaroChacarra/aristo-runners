@@ -23,10 +23,16 @@ class BuildDataTests(unittest.TestCase):
 
     def test_ranking_and_120_km_objective(self):
         data = self.build()
+        self.assertEqual(data["schema_version"], 2)
         self.assertEqual(data["challenge"]["objective_per_runner_km"], 120)
         self.assertEqual(data["challenge"]["objective_total_km"], 1440)
         self.assertEqual([runner["name"] for runner in data["runners"][:3]], ["Pablo Meijide", "Antonio Meijide", "Kike Rasilla"])
         self.assertAlmostEqual(data["summary"]["total_km"], 403.9)
+        self.assertAlmostEqual(data["summary"]["projection_km"], round(403.9 / 16 * 36, 1))
+        self.assertAlmostEqual(data["summary"]["projection_gap_km"], round(403.9 / 16 * 36 - 1440, 1))
+        self.assertEqual(data["summary"]["on_track_runners"], 2)
+        self.assertEqual(data["runners"][0]["slug"], "pablo-meijide")
+        self.assertAlmostEqual(sum(runner["contribution_pct"] for runner in data["runners"]), 100, delta=0.2)
 
     def test_projection_uses_data_coverage_day(self):
         data = self.build(now=datetime(2026, 8, 16, 12, tzinfo=MADRID))
@@ -58,6 +64,64 @@ class BuildDataTests(unittest.TestCase):
         current.update({"complete": True, "checkpoint_date": "2026-08-16"})
         with self.assertRaisesRegex(ValueError, "one numeric total"):
             self.build(current=current)
+
+    def test_efficiency_metrics_are_post_checkpoint_only(self):
+        ledger = deepcopy(self.values["ledger"])
+        ledger.update({"strategy": "historical_exact", "bootstrap_complete": True})
+        ledger["records"] = [
+            {
+                "fingerprint": "a" * 64, "participant": "Pablo Meijide", "activity_date": "2026-08-11",
+                "date_accuracy": "exact", "detected_at": "2026-08-11T09:00:00+02:00",
+                "distance_km": 5, "moving_time_s": 1800, "elevation_m": 40, "sport_type": "Run",
+            },
+            {
+                "fingerprint": "b" * 64, "participant": "Pablo Meijide", "activity_date": "2026-08-12",
+                "date_accuracy": "exact", "detected_at": "2026-08-12T10:00:00+02:00",
+                "distance_km": 8, "moving_time_s": 3000, "elevation_m": 110, "sport_type": "TrailRun",
+            },
+        ]
+        data = self.build(ledger=ledger, now=datetime(2026, 8, 12, 12, tzinfo=MADRID))
+        pablo = next(runner for runner in data["runners"] if runner["name"] == "Pablo Meijide")
+        tracking = pablo["tracking"]
+        self.assertEqual(tracking["outings"], 2)
+        self.assertEqual(tracking["distance_km"], 13)
+        self.assertEqual(tracking["km_per_outing"], 6.5)
+        self.assertEqual(tracking["longest_outing_km"], 8)
+        self.assertEqual(tracking["weighted_pace_min_per_km"], round(4800 / 60 / 13, 2))
+        self.assertEqual(tracking["elevation_m_per_km"], round(150 / 13, 1))
+        self.assertEqual(tracking["distribution"]["medium_5_to_10k"], 2)
+        self.assertNotIn("fingerprint", tracking["activities"][0])
+
+    def test_milestones_distinguish_checkpoint_and_detected_dates(self):
+        ledger = deepcopy(self.values["ledger"])
+        ledger.update({"strategy": "historical_exact", "bootstrap_complete": True})
+        ledger["records"] = [{
+            "fingerprint": "c" * 64, "participant": "Kike Rasilla", "activity_date": "2026-08-11",
+            "date_accuracy": "exact", "detected_at": "2026-08-11T08:00:00+02:00",
+            "distance_km": 8, "moving_time_s": 2600, "elevation_m": 20, "sport_type": "Run",
+        }]
+        data = self.build(ledger=ledger, now=datetime(2026, 8, 11, 12, tzinfo=MADRID))
+        kike = next(runner for runner in data["runners"] if runner["name"] == "Kike Rasilla")
+        self.assertEqual(kike["milestones"][0]["status"], "before_tracking")
+        self.assertEqual(kike["milestones"][1]["status"], "exact")
+        self.assertEqual(kike["milestones"][1]["reached_on"], "2026-08-11")
+        self.assertEqual(kike["milestones"][2]["status"], "pending")
+
+    def test_quality_separates_feed_check_from_complete_observation(self):
+        current = deepcopy(self.values["current"])
+        current.update({"complete": True, "checkpoint_date": "2026-08-16", "captured_at": "2026-08-16T19:00:00+02:00"})
+        current["totals_km"] = {name: item["total"] for name, item in self.values["baseline"]["runners"].items()}
+        ledger = deepcopy(self.values["ledger"])
+        ledger.update({
+            "strategy": "incremental_fingerprint", "bootstrap_complete": True,
+            "incremental_checkpoint_date": "2026-08-16", "last_successful_update": "2026-08-16T20:00:00+02:00",
+        })
+        data = self.build(ledger=ledger, current=current, now=datetime(2026, 8, 16, 20, tzinfo=MADRID))
+        self.assertEqual(data["data_through"], "2026-08-16")
+        self.assertEqual(data["quality"]["last_feed_check"], "2026-08-16T20:00:00+02:00")
+        self.assertEqual(data["quality"]["last_complete_observation"], "2026-08-16T20:00:00+02:00")
+        self.assertTrue(data["quality"]["tracking_active"])
+        self.assertFalse(data["quality"]["activity_metrics_available"])
 
 
 if __name__ == "__main__":

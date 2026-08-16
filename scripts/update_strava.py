@@ -119,8 +119,10 @@ def process_feed(
     participants: list[dict[str, Any]],
     current_baseline: dict[str, Any],
     baseline_checkpoint: str,
-    observed_on: date,
+    observed_at: date | datetime,
 ) -> dict[str, Any]:
+    observed_on = observed_at.date() if isinstance(observed_at, datetime) else observed_at
+    detected_at = observed_at.isoformat(timespec="seconds") if isinstance(observed_at, datetime) else observed_at.isoformat()
     updated = deepcopy(ledger)
     allowed = set(challenge["allowed_sport_types"])
     eligible = [item for item in activities if (item.get("sport_type") or item.get("type")) in allowed]
@@ -183,6 +185,7 @@ def process_feed(
                 "participant": participant,
                 "activity_date": record_date.isoformat(),
                 "date_accuracy": accuracy,
+                "detected_at": detected_at,
                 "distance_km": round(float(item.get("distance", 0)) / 1000, 3),
                 "moving_time_s": int(item.get("moving_time", 0)),
                 "elapsed_time_s": int(item.get("elapsed_time", 0)),
@@ -238,7 +241,7 @@ def run_update(
     override = challenge.get("club_id")
     club_id = int(override or ledger.get("club_id") or client.discover_club(challenge["club_name"]))
     activities = client.list_club_activities(club_id)
-    updated = process_feed(ledger, activities, challenge, participants, current, baseline["checkpoint_date"], now.date())
+    updated = process_feed(ledger, activities, challenge, participants, current, baseline["checkpoint_date"], now)
     updated["club_id"] = club_id
     updated["last_successful_update"] = now.isoformat(timespec="seconds")
     dashboard = build_dashboard(challenge, participants, baseline, current, updated, now)

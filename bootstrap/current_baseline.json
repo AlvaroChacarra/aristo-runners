@@ -1,0 +1,20 @@
+{
+  "complete": false,
+  "checkpoint_date": null,
+  "captured_at": null,
+  "notes": "Solo se usa si el spike real confirma que ClubActivity no trae ID y fecha fiables. Rellena los 12 totales y cambia complete a true.",
+  "totals_km": {
+    "Pablo Meijide": null,
+    "Antonio Meijide": null,
+    "Kike Rasilla": null,
+    "Francisco Javier Moreno Muñoz": null,
+    "Pablo De Heras": null,
+    "Borja Glez- Palenzuela Gracia": null,
+    "Alonso Alamo": null,
+    "Kept ES": null,
+    "Pablo González Betere": null,
+    "Sergio Sanchez": null,
+    "Alvaro López-Chacarra": null,
+    "Jaime Casanueva": null
+  }
+}

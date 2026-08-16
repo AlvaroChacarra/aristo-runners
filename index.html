@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17181a">
+<title>ARISTO runners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{
+    --asphalt:#17181a; --surface:#212327; --surface-2:#292b30;
+    --chalk:#f4f1e8; --muted:#9a9c93; --brick:#c1452b; --gold:#d6a23c;
+    --turf:#4c8563; --lane:#35373a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--asphalt);color:var(--chalk);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px 70px;}
+  .hero{padding:40px 0 30px;border-bottom:1px solid var(--lane);position:relative;overflow:hidden;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brick);margin:0 0 14px;display:flex;align-items:center;gap:8px;}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--brick);display:inline-block;}
+  h1{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;font-size:38px;line-height:.95;letter-spacing:.01em;margin:0 0 18px;}
+  h1 span{color:var(--brick);}
+  .hero-stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:24px;}
+  .stat-big .num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:46px;line-height:1;}
+  .stat-big .num small{font-size:20px;color:var(--muted);font-weight:500;}
+  .stat-big .lbl{margin-top:6px;font-size:13px;color:var(--muted);}
+  .stat-mini{padding-left:20px;border-left:1px solid var(--lane);}
+  .stat-mini .num{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;}
+  .stat-mini .lbl{font-size:12px;color:var(--muted);margin-top:4px;}
+  .progress-outer{margin-top:22px;height:10px;border-radius:5px;background:var(--lane);overflow:hidden;}
+  .progress-inner{height:100%;background:linear-gradient(90deg,var(--brick),var(--gold));border-radius:5px;transition:width .5s ease;}
+  .section-label{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:38px 0 16px;display:flex;align-items:center;gap:10px;}
+  .section-label::after{content:"";flex:1;height:1px;background:var(--lane);}
+  .section-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin:-10px 0 16px;line-height:1.5;}
+  .status{display:none;background:#2a2416;border:1px solid var(--gold);border-radius:10px;padding:12px 14px;color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.5;margin-top:18px;}
+  .chart-card{background:var(--surface);border-radius:12px;padding:18px 14px 10px;}
+  .chart-wrap{position:relative;width:100%;height:340px;}
+  .legend{margin-top:8px;}
+  .board{display:flex;flex-direction:column;gap:8px;}
+  .row{background:var(--surface);border-radius:10px;padding:14px 16px;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:14px;border:1px solid transparent;}
+  .row.rank-1{border-color:var(--gold);background:linear-gradient(90deg,#2a2416,var(--surface) 40%);}
+  .row.zero{opacity:.45;}
+  .bib{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:var(--muted);text-align:center;}
+  .row.rank-1 .bib{color:var(--gold);}
+  .name{font-family:'Oswald',sans-serif;font-size:15.5px;text-transform:uppercase;letter-spacing:.01em;}
+  .meta{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);margin-top:4px;}
+  .proj{font-family:'JetBrains Mono',monospace;font-size:10.5px;margin-top:3px;}
+  .proj.ok{color:var(--turf);}.proj.warn{color:var(--gold);}.proj.bad{color:var(--brick);}
+  .metrics{display:flex;align-items:center;gap:16px;}
+  .km{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:19px;text-align:right;min-width:74px;}
+  .km small{font-size:12px;color:var(--muted);font-weight:500;}
+  .track{position:relative;width:60px;height:24px;flex-shrink:0;}
+  .track svg{width:100%;height:100%;overflow:visible;}
+  .track-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--muted);}
+  .cats{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .cat-card{background:var(--surface);border-radius:10px;padding:16px;}
+  .cat-tag{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--brick);margin-bottom:8px;}
+  .cat-name{font-family:'Oswald',sans-serif;font-size:18px;text-transform:uppercase;}
+  .cat-val{font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:13px;margin-top:2px;}
+  .footnote{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px;line-height:1.6;}
+  footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--lane);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  footer .obj{font-size:13px;color:var(--muted);}footer .obj b{color:var(--chalk);}
+  .next{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);}
+  @media (max-width:600px){
+    .wrap{padding:0 14px 50px}.hero{padding-top:28px}h1{font-size:28px}.stat-big .num{font-size:32px}.hero-stats{gap:18px}.stat-mini{padding-left:14px}.cats{grid-template-columns:1fr}.row{grid-template-columns:28px 1fr;padding:13px 12px;gap:10px}.metrics{grid-column:2;justify-content:space-between}.name{font-size:14px}.chart-wrap{height:310px}.cat-card[style]{grid-column:auto!important;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <p class="eyebrow">Aristo runners · Alcobendas, Madrid</p>
+    <h1>Reto de verano<br><span id="challengeDay">Cargando…</span></h1>
+    <div class="hero-stats">
+      <div class="stat-big"><div class="num" id="totalKm">—<small> km</small></div><div class="lbl">acumulados por todo el grupo</div></div>
+      <div class="stat-mini"><div class="num" id="pctObj">—</div><div class="lbl">del objetivo conjunto</div></div>
+      <div class="stat-mini"><div class="num" id="activeRunners">—</div><div class="lbl">ya han salido</div></div>
+    </div>
+    <div class="progress-outer"><div class="progress-inner" id="progBar" style="width:0%"></div></div>
+    <div class="status" id="status"></div>
+  </div>
+
+  <p class="section-label">Evolución real + proyección a ritmo actual</p>
+  <p class="section-note" id="chartNote">Cargando cobertura de datos…</p>
+  <div class="chart-card"><div class="chart-wrap"><canvas id="evoChart"></canvas></div><div class="legend" id="legend"></div></div>
+
+  <p class="section-label" id="rankingLabel">Clasificación con proyección a día final</p>
+  <div class="board" id="board"></div>
+  <p class="footnote" id="coverageNote"></p>
+
+  <p class="section-label">Lo más destacado hasta hoy</p>
+  <div class="cats" id="highlights"></div>
+
+  <footer>
+    <div class="obj">Objetivo: <b id="objRunner">—</b> por persona · <b id="objTotal">—</b> entre los <span id="nRunners">—</span> del club.</div>
+    <div class="next" id="updatedAt">Última actualización · —</div>
+  </footer>
+</div>
+
+<script>
+const COLORS = ['#d6a23c','#c1452b','#4c8563','#4d7ea8','#a85f8a','#6b5fa8','#3f9a8f','#8a5b7a','#94a84e','#b5772f','#8a8175','#607d8b'];
+const fmt = (value, digits=1) => Number(value).toLocaleString('es-ES',{minimumFractionDigits:digits,maximumFractionDigits:digits});
+const esc = (value) => String(value).replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+
+function showStatus(message){
+  const status = document.getElementById('status');
+  status.textContent = message;
+  status.style.display = 'block';
+}
+
+function renderBoard(data){
+  const board = document.getElementById('board');
+  const finished = data.challenge.finished;
+  board.replaceChildren();
+  data.runners.forEach((runner,index) => {
+    const row = document.createElement('div');
+    row.className = `row${runner.rank===1?' rank-1':''}${runner.km===0?' zero':''}`;
+    const pct = Math.min(100,Math.round(runner.progress_pct));
+    let projectionClass = 'bad';
+    let projectionText = '— sin actividad todavía';
+    if (finished) {
+      projectionClass = runner.km >= data.challenge.objective_per_runner_km ? 'ok' : 'bad';
+      projectionText = runner.km >= data.challenge.objective_per_runner_km ? '✅ objetivo completado' : `resultado final: ${fmt(runner.km)} km`;
+    } else if (runner.km > 0) {
+      if (runner.on_track) {
+        projectionClass = 'ok';
+        projectionText = `✅ proyección: ${fmt(runner.projection_km)} km al final`;
+      } else {
+        projectionText = `❌ proyección: ${fmt(runner.projection_km)} km · necesita ${fmt(runner.pace_required_km_per_day,2)} km/día`;
+      }
+    }
+    const tracking = runner.outings_tracked > 0
+      ? `${runner.outings_tracked} salidas · ${Math.round(runner.elevation_tracked_m)} m D+ registrados`
+      : 'salidas y desnivel históricos no disponibles';
+    row.innerHTML = `
+      <div class="bib">${runner.rank}</div>
+      <div class="who">
+        <div class="name">${esc(runner.name)}</div>
+        <div class="meta">${tracking} · ${fmt(runner.progress_pct)}% objetivo</div>
+        <div class="proj ${projectionClass}">${projectionText}</div>
+      </div>
+      <div class="metrics">
+        <div class="track">
+          <svg viewBox="0 0 64 26" aria-hidden="true">
+            <rect x="2" y="9" width="60" height="8" rx="4" fill="none" stroke="var(--lane)" stroke-width="8"/>
+            <rect x="2" y="9" width="60" height="8" rx="4" fill="none" stroke="${runner.rank===1?'var(--gold)':COLORS[index%COLORS.length]}" stroke-width="8" pathLength="100" stroke-dasharray="${pct} 100" stroke-linecap="round"/>
+          </svg>
+          <div class="track-pct">${pct}%</div>
+        </div>
+        <div class="km">${fmt(runner.km)}<small> km</small></div>
+      </div>`;
+    board.appendChild(row);
+  });
+}
+
+function renderChart(data){
+  const labels = data.series.labels.map((_,index)=>`D${index+1}`);
+  const dataDay = Math.max(1,Math.min(data.challenge.days,Math.round((new Date(`${data.data_through}T12:00:00`) - new Date(`${data.challenge.start}T12:00:00`))/86400000)+1));
+  const runnerByName = new Map(data.runners.map(runner=>[runner.name,runner]));
+  const datasets = data.series.datasets
+    .filter(dataset => runnerByName.get(dataset.name)?.km > 0)
+    .map((dataset,index) => {
+      const runner = runnerByName.get(dataset.name);
+      const real = dataset.cumulative_km.slice();
+      const anchor = real[dataDay-1] || 0;
+      for(let day=dataDay+1;day<=data.challenge.days;day++) real[day-1] = data.challenge.finished ? anchor : Math.round((anchor/dataDay)*day*10)/10;
+      return {
+        label:dataset.name,data:real,borderColor:COLORS[index%COLORS.length],backgroundColor:COLORS[index%COLORS.length],
+        pointRadius:context=>context.dataIndex<dataDay?2:0,borderWidth:2,tension:.25,fill:false,
+        segment:{borderDash:context=>context.p0DataIndex>=dataDay-1?[5,4]:undefined}
+      };
+    });
+  datasets.push({label:`Objetivo (${fmt(data.challenge.objective_per_runner_km,0)} km)`,data:new Array(data.challenge.days).fill(data.challenge.objective_per_runner_km),borderColor:'#5a5c58',borderDash:[2,3],borderWidth:1.5,pointRadius:0,fill:false});
+  new Chart(document.getElementById('evoChart'),{
+    type:'line',data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'nearest',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:context=>`${context.dataset.label}: ${fmt(context.parsed.y)} km`}}},
+      scales:{x:{grid:{color:'#35373a'},ticks:{color:'#9a9c93',font:{family:"'JetBrains Mono', monospace",size:9},maxTicksLimit:12}},y:{grid:{color:'#35373a'},ticks:{color:'#9a9c93',font:{family:"'JetBrains Mono', monospace",size:10},callback:value=>`${value} km`}}}}
+  });
+  const legend = document.getElementById('legend');
+  datasets.slice(0,-1).forEach(dataset=>{
+    const item=document.createElement('span');
+    item.style.cssText='display:inline-flex;align-items:center;gap:5px;margin:3px 8px 3px 0;';
+    item.innerHTML=`<span style="width:9px;height:9px;border-radius:2px;background:${dataset.borderColor};display:inline-block"></span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#9a9c93">${esc(dataset.label)}</span>`;
+    legend.appendChild(item);
+  });
+}
+
+function addHighlight(container,tag,name,value,wide=false){
+  const card=document.createElement('div');
+  card.className='cat-card';
+  if(wide) card.style.gridColumn='1/-1';
+  card.innerHTML=`<div class="cat-tag">${tag}</div><div class="cat-name">${esc(name)}</div><div class="cat-val">${value}</div>`;
+  container.appendChild(card);
+}
+
+function renderHighlights(data){
+  const box=document.getElementById('highlights');
+  const leader=data.runners[0];
+  const closest=[...data.runners].sort((a,b)=>b.progress_pct-a.progress_pct)[0];
+  const bestProjection=[...data.runners].filter(r=>r.projection_km!==null).sort((a,b)=>b.projection_km-a.projection_km)[0];
+  addHighlight(box,'🏆 Líder actual',leader.name,`${fmt(leader.km)} km · ${fmt(leader.progress_pct)}% del objetivo`);
+  addHighlight(box,'🎯 Más cerca del objetivo',closest.name,`le faltan ${fmt(Math.max(0,data.challenge.objective_per_runner_km-closest.km))} km`);
+  if(bestProjection) addHighlight(box,'🚀 Mejor proyección',bestProjection.name,`${fmt(bestProjection.projection_km)} km al finalizar`);
+  addHighlight(box,'👟 Participación',`${data.summary.active_runners} de ${data.summary.participants}`,`${data.summary.participants-data.summary.active_runners} corredores aún sin kilómetros`,true);
+  addHighlight(box,'✅ En ritmo de objetivo',`${data.highlights.on_track} corredores`,`${data.highlights.completed_objective} ya han completado los ${fmt(data.challenge.objective_per_runner_km,0)} km`,true);
+}
+
+function render(data){
+  const {challenge,summary,coverage}=data;
+  document.getElementById('challengeDay').textContent=challenge.finished?'Clasificación final':`Día ${challenge.current_day} de ${challenge.days}`;
+  document.getElementById('totalKm').innerHTML=`${fmt(summary.total_km)}<small> km</small>`;
+  document.getElementById('pctObj').textContent=`${fmt(summary.progress_pct)}%`;
+  document.getElementById('activeRunners').textContent=`${summary.active_runners} / ${summary.participants}`;
+  document.getElementById('progBar').style.width=`${Math.min(100,summary.progress_pct)}%`;
+  document.getElementById('objRunner').textContent=`${fmt(challenge.objective_per_runner_km,0)} km`;
+  document.getElementById('objTotal').textContent=`${fmt(challenge.objective_total_km,0)} km`;
+  document.getElementById('nRunners').textContent=summary.participants;
+  document.getElementById('rankingLabel').textContent=challenge.finished?'Clasificación final':`Clasificación real, con proyección a día ${challenge.days}`;
+  document.getElementById('updatedAt').textContent=`Datos hasta ${new Date(`${data.data_through}T12:00:00`).toLocaleDateString('es-ES')}`;
+  const approximate=coverage.approximate_chart_days.length>0;
+  document.getElementById('chartNote').textContent=`Sólida = km acumulados · discontinua = proyección lineal hasta el día ${challenge.days} · gris = objetivo (${fmt(challenge.objective_per_runner_km,0)} km).${approximate?' Los intervalos sin detalle diario se muestran interpolados y son aproximados; los checkpoints sí son reales.':''}`;
+  document.getElementById('coverageNote').textContent='* El fixture histórico solo contiene kilómetros. Salidas y desnivel muestran únicamente lo registrado desde que comenzó la automatización.';
+  if(coverage.needs_current_baseline) showStatus('Automatización preparada. Falta alinear una única vez los totales actuales porque Strava no ofrece ID y fecha fiables en el feed del club.');
+  renderBoard(data);renderChart(data);renderHighlights(data);
+}
+
+fetch('./data.json',{cache:'no-store'})
+  .then(response=>{if(!response.ok) throw new Error(`HTTP ${response.status}`);return response.json();})
+  .then(render)
+  .catch(error=>{console.error(error);showStatus('No se pudieron cargar los datos. Se mantiene publicada la última versión válida; inténtalo de nuevo en unos minutos.');});
+</script>
+</body>
+</html>

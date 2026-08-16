@@ -1,0 +1,108 @@
+name: Update Strava and deploy Pages
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "data.json"
+      - "bootstrap/**"
+      - "config/**"
+      - "scripts/**"
+      - "state/**"
+      - "tests/**"
+      - "requirements.txt"
+      - ".github/workflows/update-and-deploy.yml"
+
+concurrency:
+  group: aristo-runners-update-pages
+  cancel-in-progress: false
+
+jobs:
+  update-and-build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install dependency
+        run: python -m pip install --requirement requirements.txt
+
+      - name: Update from Strava
+        id: strava
+        if: github.event_name != 'push'
+        continue-on-error: true
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+        run: python -m scripts.update_strava
+
+      - name: Rebuild deterministic dashboard data on push
+        if: github.event_name == 'push'
+        run: python -m scripts.build_data
+
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Check public artifact for secret leakage
+        env:
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+        run: python -m scripts.security_check
+
+      - name: Persist incremental state and rotated token
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json state/activity_ledger.json
+          if [ -f state/refresh_token.enc ]; then git add state/refresh_token.enc; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "Update ARISTO runners data"
+            git push
+          fi
+
+      - name: Fail after safely persisting a rejected update
+        if: github.event_name != 'push' && steps.strava.outcome == 'failure'
+        run: exit 1
+
+      - name: Build explicit public artifact
+        run: |
+          mkdir -p dist
+          cp index.html data.json dist/
+          touch dist/.nojekyll
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    needs: update-and-build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

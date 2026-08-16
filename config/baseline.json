@@ -1,0 +1,20 @@
+{
+  "checkpoint_date": "2026-08-10",
+  "challenge_day": 16,
+  "source": "ARISTO runners — Día 16",
+  "notes": "Los días 9–15 solo están disponibles como incremento agregado; la gráfica los interpola y los marca como aproximados.",
+  "runners": {
+    "Pablo Meijide": {"d8": [10.05, 15.20, 15.20, 15.20, 15.20, 15.20, 25.37, 37.15], "d15total": 15.80, "d16add": 10.14, "total": 63.09},
+    "Antonio Meijide": {"d8": [10.06, 15.21, 23.40, 23.40, 23.40, 23.40, 23.40, 35.21], "d15total": 25.60, "d16add": 0, "total": 60.81},
+    "Kike Rasilla": {"d8": [10.00, 14.06, 14.06, 14.06, 27.07, 27.07, 27.07, 27.07], "d15total": 25.70, "d16add": 0, "total": 52.77},
+    "Francisco Javier Moreno Muñoz": {"d8": [0, 6.95, 14.86, 21.99, 21.99, 21.99, 21.99, 21.99], "d15total": 21.50, "d16add": 9.01, "total": 52.50},
+    "Pablo De Heras": {"d8": [0, 0, 0, 0, 0, 0, 0, 12.64], "d15total": 34.80, "d16add": 0, "total": 47.44},
+    "Borja Glez- Palenzuela Gracia": {"d8": [0, 0, 0, 0, 9.47, 22.47, 22.47, 22.47], "d15total": 21.90, "d16add": 0, "total": 44.37},
+    "Alonso Alamo": {"d8": [3.80, 3.80, 3.80, 3.80, 3.80, 3.80, 10.51, 14.43], "d15total": 24.80, "d16add": 0, "total": 39.23},
+    "Kept ES": {"d8": [0, 0, 0, 12.92, 12.92, 24.32, 27.46, 27.46], "d15total": 0, "d16add": 0, "total": 27.46},
+    "Pablo González Betere": {"d8": [0, 4.01, 13.38, 13.38, 13.38, 13.38, 13.38, 13.38], "d15total": 0, "d16add": 0, "total": 13.38},
+    "Sergio Sanchez": {"d8": [0, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85], "d15total": 0, "d16add": 0, "total": 2.85},
+    "Alvaro López-Chacarra": {"d8": [0, 0, 0, 0, 0, 0, 0, 0], "d15total": 0, "d16add": 0, "total": 0},
+    "Jaime Casanueva": {"d8": [0, 0, 0, 0, 0, 0, 0, 0], "d15total": 0, "d16add": 0, "total": 0}
+  }
+}

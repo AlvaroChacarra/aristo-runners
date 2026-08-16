@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "club_id": null,
+  "strategy": null,
+  "bootstrap_complete": false,
+  "needs_current_baseline": false,
+  "ignored_fingerprints": [],
+  "records": [],
+  "field_probe": null,
+  "last_successful_update": null,
+  "last_feed_size": 0,
+  "unmatched_activities": 0
+}

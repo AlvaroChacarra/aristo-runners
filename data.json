@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-16T23:14:41+02:00",
+  "generated_at": "2026-08-16T23:22:04+02:00",
   "data_through": "2026-08-16",
   "challenge": {
     "club_name": "ARISTO runners",
@@ -9,15 +9,15 @@
     "days": 36,
     "current_day": 22,
     "finished": false,
-    "objective_per_runner_km": 120.0,
-    "objective_total_km": 1440.0,
+    "objective_per_runner_km": 125.0,
+    "objective_total_km": 1500.0,
     "timezone": "Europe/Madrid"
   },
   "summary": {
     "total_km": 674.65,
-    "progress_pct": 46.9,
+    "progress_pct": 45.0,
     "projection_km": 1104.0,
-    "projection_gap_km": -336.0,
+    "projection_gap_km": -396.0,
     "active_runners": 11,
     "participants": 12,
     "completed_runners": 0,
@@ -33,17 +33,17 @@
       "slug": "borja-glez-palenzuela-gracia",
       "name": "Borja Glez- Palenzuela Gracia",
       "km": 101.97,
-      "progress_pct": 85.0,
-      "remaining_km": 18.03,
+      "progress_pct": 81.6,
+      "remaining_km": 23.03,
       "outings_tracked": 0,
       "elevation_tracked_m": 0,
       "outings_total": 9,
       "elevation_total_m": 779,
       "elevation_total_complete": true,
       "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 1.29,
+      "pace_required_km_per_day": 1.65,
       "projection_km": 166.9,
-      "projection_gap_km": 46.9,
+      "projection_gap_km": 41.9,
       "on_track": true,
       "completed": false,
       "tracking": {
@@ -66,28 +66,28 @@
       "milestones": [
         {
           "pct": 25,
-          "target_km": 30.0,
+          "target_km": 31.25,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 50,
-          "target_km": 60.0,
+          "target_km": 62.5,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 75,
-          "target_km": 90.0,
+          "target_km": 93.75,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 100,
-          "target_km": 120.0,
+          "target_km": 125.0,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
@@ -100,17 +100,17 @@
       "slug": "pablo-meijide",
       "name": "Pablo Meijide",
       "km": 92.95,
-      "progress_pct": 77.5,
-      "remaining_km": 27.05,
+      "progress_pct": 74.4,
+      "remaining_km": 32.05,
       "outings_tracked": 0,
       "elevation_tracked_m": 0,
       "outings_total": 10,
       "elevation_total_m": 789,
       "elevation_total_complete": true,
       "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 1.93,
+      "pace_required_km_per_day": 2.29,
       "projection_km": 152.1,
-      "projection_gap_km": 32.1,
+      "projection_gap_km": 27.1,
       "on_track": true,
       "completed": false,
       "tracking": {
@@ -133,28 +133,28 @@
       "milestones": [
         {
           "pct": 25,
-          "target_km": 30.0,
+          "target_km": 31.25,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 50,
-          "target_km": 60.0,
+          "target_km": 62.5,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 75,
-          "target_km": 90.0,
-          "status": "before_tracking",
+          "target_km": 93.75,
+          "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 100,
-          "target_km": 120.0,
+          "target_km": 125.0,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
@@ -167,17 +167,17 @@
       "slug": "antonio-meijide",
       "name": "Antonio Meijide",
       "km": 90.61,
-      "progress_pct": 75.5,
-      "remaining_km": 29.39,
+      "progress_pct": 72.5,
+      "remaining_km": 34.39,
       "outings_tracked": 0,
       "elevation_tracked_m": 0,
       "outings_total": 9,
       "elevation_total_m": 774,
       "elevation_total_complete": false,
       "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 2.1,
+      "pace_required_km_per_day": 2.46,
       "projection_km": 148.3,
-      "projection_gap_km": 28.3,
+      "projection_gap_km": 23.3,
       "on_track": true,
       "completed": false,
       "tracking": {
@@ -200,28 +200,28 @@
       "milestones": [
         {
           "pct": 25,
-          "target_km": 30.0,
+          "target_km": 31.25,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 50,
-          "target_km": 60.0,
+          "target_km": 62.5,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 75,
-          "target_km": 90.0,
-          "status": "before_tracking",
+          "target_km": 93.75,
+          "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 100,
-          "target_km": 120.0,
+          "target_km": 125.0,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
@@ -234,17 +234,17 @@
       "slug": "francisco-javier-moreno-munoz",
       "name": "Francisco Javier Moreno Muñoz",
       "km": 83.89,
-      "progress_pct": 69.9,
-      "remaining_km": 36.11,
+      "progress_pct": 67.1,
+      "remaining_km": 41.11,
       "outings_tracked": 0,
       "elevation_tracked_m": 0,
       "outings_total": 12,
       "elevation_total_m": 482,
       "elevation_total_complete": true,
       "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 2.58,
+      "pace_required_km_per_day": 2.94,
       "projection_km": 137.3,
-      "projection_gap_km": 17.3,
+      "projection_gap_km": 12.3,
       "on_track": true,
       "completed": false,
       "tracking": {
@@ -267,28 +267,28 @@
       "milestones": [
         {
           "pct": 25,
-          "target_km": 30.0,
+          "target_km": 31.25,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 50,
-          "target_km": 60.0,
+          "target_km": 62.5,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 75,
-          "target_km": 90.0,
+          "target_km": 93.75,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 100,
-          "target_km": 120.0,
+          "target_km": 125.0,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
@@ -301,17 +301,17 @@
       "slug": "kike-rasilla",
       "name": "Kike Rasilla",
       "km": 71.97,
-      "progress_pct": 60.0,
-      "remaining_km": 48.03,
+      "progress_pct": 57.6,
+      "remaining_km": 53.03,
       "outings_tracked": 0,
       "elevation_tracked_m": 0,
       "outings_total": 9,
       "elevation_total_m": 865,
       "elevation_total_complete": false,
       "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 3.43,
+      "pace_required_km_per_day": 3.79,
       "projection_km": 117.8,
-      "projection_gap_km": -2.2,
+      "projection_gap_km": -7.2,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -334,28 +334,28 @@
       "milestones": [
         {
           "pct": 25,
-          "target_km": 30.0,
+          "target_km": 31.25,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 50,
-          "target_km": 60.0,
+          "target_km": 62.5,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 75,
-          "target_km": 90.0,
+          "target_km": 93.75,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 100,
-          "target_km": 120.0,
+          "target_km": 125.0,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
@@ -368,17 +368,17 @@
       "slug": "pablo-de-heras",
       "name": "Pablo De Heras",
       "km": 71.04,
-      "progress_pct": 59.2,
-      "remaining_km": 48.96,
+      "progress_pct": 56.8,
+      "remaining_km": 53.96,
       "outings_tracked": 0,
       "elevation_tracked_m": 0,
       "outings_total": 7,
       "elevation_total_m": 200,
       "elevation_total_complete": true,
       "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 3.5,
+      "pace_required_km_per_day": 3.85,
       "projection_km": 116.2,
-      "projection_gap_km": -3.8,
+      "projection_gap_km": -8.8,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -401,28 +401,28 @@
       "milestones": [
         {
           "pct": 25,
-          "target_km": 30.0,
+          "target_km": 31.25,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 50,
-          "target_km": 60.0,
+          "target_km": 62.5,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 75,
-          "target_km": 90.0,
+          "target_km": 93.75,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 100,
-          "target_km": 120.0,
+          "target_km": 125.0,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
@@ -435,17 +435,17 @@
       "slug": "kept-es",
       "name": "Kept ES",
       "km": 68.16,
-      "progress_pct": 56.8,
-      "remaining_km": 51.84,
+      "progress_pct": 54.5,
+      "remaining_km": 56.84,
       "outings_tracked": 0,
       "elevation_tracked_m": 0,
       "outings_total": 7,
       "elevation_total_m": 1356,
       "elevation_total_complete": true,
       "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 3.7,
+      "pace_required_km_per_day": 4.06,
       "projection_km": 111.5,
-      "projection_gap_km": -8.5,
+      "projection_gap_km": -13.5,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -468,28 +468,28 @@
       "milestones": [
         {
           "pct": 25,
-          "target_km": 30.0,
+          "target_km": 31.25,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 50,
-          "target_km": 60.0,
+          "target_km": 62.5,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 75,
-          "target_km": 90.0,
+          "target_km": 93.75,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 100,
-          "target_km": 120.0,
+          "target_km": 125.0,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
@@ -502,17 +502,17 @@
       "slug": "alonso-alamo",
       "name": "Alonso Alamo",
       "km": 63.83,
-      "progress_pct": 53.2,
-      "remaining_km": 56.17,
+      "progress_pct": 51.1,
+      "remaining_km": 61.17,
       "outings_tracked": 0,
       "elevation_tracked_m": 0,
       "outings_total": 11,
       "elevation_total_m": 220,
       "elevation_total_complete": false,
       "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 4.01,
+      "pace_required_km_per_day": 4.37,
       "projection_km": 104.4,
-      "projection_gap_km": -15.6,
+      "projection_gap_km": -20.6,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -535,28 +535,28 @@
       "milestones": [
         {
           "pct": 25,
-          "target_km": 30.0,
+          "target_km": 31.25,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 50,
-          "target_km": 60.0,
+          "target_km": 62.5,
           "status": "before_tracking",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 75,
-          "target_km": 90.0,
+          "target_km": 93.75,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 100,
-          "target_km": 120.0,
+          "target_km": 125.0,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
@@ -569,17 +569,17 @@
       "slug": "alvaro-lopez-chacarra",
       "name": "Alvaro López-Chacarra",
       "km": 14.0,
-      "progress_pct": 11.7,
-      "remaining_km": 106.0,
+      "progress_pct": 11.2,
+      "remaining_km": 111.0,
       "outings_tracked": 0,
       "elevation_tracked_m": 0,
       "outings_total": 2,
       "elevation_total_m": 60,
       "elevation_total_complete": true,
       "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 7.57,
+      "pace_required_km_per_day": 7.93,
       "projection_km": 22.9,
-      "projection_gap_km": -97.1,
+      "projection_gap_km": -102.1,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -602,28 +602,28 @@
       "milestones": [
         {
           "pct": 25,
-          "target_km": 30.0,
+          "target_km": 31.25,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 50,
-          "target_km": 60.0,
+          "target_km": 62.5,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 75,
-          "target_km": 90.0,
+          "target_km": 93.75,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 100,
-          "target_km": 120.0,
+          "target_km": 125.0,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
@@ -636,17 +636,17 @@
       "slug": "pablo-gonzalez-betere",
       "name": "Pablo González Betere",
       "km": 13.38,
-      "progress_pct": 11.2,
-      "remaining_km": 106.62,
+      "progress_pct": 10.7,
+      "remaining_km": 111.62,
       "outings_tracked": 0,
       "elevation_tracked_m": 0,
       "outings_total": 2,
       "elevation_total_m": 264,
       "elevation_total_complete": true,
       "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 7.62,
+      "pace_required_km_per_day": 7.97,
       "projection_km": 21.9,
-      "projection_gap_km": -98.1,
+      "projection_gap_km": -103.1,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -669,28 +669,28 @@
       "milestones": [
         {
           "pct": 25,
-          "target_km": 30.0,
+          "target_km": 31.25,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 50,
-          "target_km": 60.0,
+          "target_km": 62.5,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 75,
-          "target_km": 90.0,
+          "target_km": 93.75,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 100,
-          "target_km": 120.0,
+          "target_km": 125.0,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
@@ -703,17 +703,17 @@
       "slug": "sergio-sanchez",
       "name": "Sergio Sanchez",
       "km": 2.85,
-      "progress_pct": 2.4,
-      "remaining_km": 117.15,
+      "progress_pct": 2.3,
+      "remaining_km": 122.15,
       "outings_tracked": 0,
       "elevation_tracked_m": 0,
       "outings_total": 2,
       "elevation_total_m": 50,
       "elevation_total_complete": true,
       "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 8.37,
+      "pace_required_km_per_day": 8.72,
       "projection_km": 4.7,
-      "projection_gap_km": -115.3,
+      "projection_gap_km": -120.3,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -736,28 +736,28 @@
       "milestones": [
         {
           "pct": 25,
-          "target_km": 30.0,
+          "target_km": 31.25,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 50,
-          "target_km": 60.0,
+          "target_km": 62.5,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 75,
-          "target_km": 90.0,
+          "target_km": 93.75,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 100,
-          "target_km": 120.0,
+          "target_km": 125.0,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
@@ -771,16 +771,16 @@
       "name": "Jaime Casanueva",
       "km": 0.0,
       "progress_pct": 0.0,
-      "remaining_km": 120.0,
+      "remaining_km": 125.0,
       "outings_tracked": 0,
       "elevation_tracked_m": 0,
       "outings_total": 0,
       "elevation_total_m": 0,
       "elevation_total_complete": true,
       "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 8.57,
+      "pace_required_km_per_day": 8.93,
       "projection_km": 0.0,
-      "projection_gap_km": -120.0,
+      "projection_gap_km": -125.0,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -803,28 +803,28 @@
       "milestones": [
         {
           "pct": 25,
-          "target_km": 30.0,
+          "target_km": 31.25,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 50,
-          "target_km": 60.0,
+          "target_km": 62.5,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 75,
-          "target_km": 90.0,
+          "target_km": 93.75,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
         },
         {
           "pct": 100,
-          "target_km": 120.0,
+          "target_km": 125.0,
           "status": "pending",
           "reached_on": null,
           "checkpoint_date": "2026-08-16"
@@ -1398,30 +1398,30 @@
       },
       {
         "kind": "closest",
-        "label": "Más cerca de 120 km",
+        "label": "Más cerca de 125 km",
         "name": "Borja Glez- Palenzuela Gracia",
         "runner_slug": "borja-glez-palenzuela-gracia",
-        "value": "le faltan 18.0 km",
+        "value": "le faltan 23.0 km",
         "scope": "total"
       }
     ]
   },
   "quality": {
-    "last_feed_check": "2026-08-16T22:41:11+02:00",
-    "last_complete_observation": "2026-08-16T22:41:11+02:00",
+    "last_feed_check": null,
+    "last_complete_observation": "2026-08-16",
     "latest_activity_detected_at": null,
     "baseline_checkpoint": "2026-08-10",
-    "tracking_checkpoint": "2026-08-16",
-    "totals_basis": "checkpoint_plus_incremental",
+    "tracking_checkpoint": null,
+    "totals_basis": "historical_checkpoint",
     "activity_metrics_basis": "post_tracking_checkpoint",
     "cumulative_activity_stats_basis": "golden_checkpoint_plus_incremental",
-    "tracking_active": true,
+    "tracking_active": false,
     "activity_metrics_available": false
   },
   "coverage": {
     "baseline_checkpoint": "2026-08-10",
-    "strategy": "incremental_fingerprint",
-    "bootstrap_complete": true,
+    "strategy": null,
+    "bootstrap_complete": false,
     "needs_current_baseline": false,
     "approximate_chart_days": [
       9,

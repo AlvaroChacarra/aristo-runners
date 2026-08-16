@@ -190,9 +190,10 @@ function homeKpis(){
 function runnerRows(){
   return dashboard.runners.map(runner=>{
     const pace=runner.pace_required_km_per_day===null?'reto finalizado':`necesita ${fmt(runner.pace_required_km_per_day,2)} km/día`;
+    const elevation=`${fmt(runner.elevation_total_m,0)} m D+${runner.elevation_total_complete?'':'*'}`;
     return `<a class="runner-row${runner.rank===1?' leader':''}" href="${routeHref(runner.slug)}" data-route aria-label="Ver estadísticas de ${esc(runner.name)}">
       <div class="rank">${runner.rank}</div>
-      <div><div class="runner-name">${esc(runner.name)} <span class="status-chip${runner.on_track?'':' off'}">${runner.on_track?'en ritmo':'por debajo'}</span></div><div class="runner-meta">${fmt(runner.progress_pct)}% · faltan ${fmt(runner.remaining_km)} km · ${pace}</div><div class="mini-track" role="progressbar" aria-valuenow="${runner.progress_pct}" aria-valuemin="0" aria-valuemax="100"><span style="width:${targetWidth(runner.progress_pct)}%"></span></div></div>
+      <div><div class="runner-name">${esc(runner.name)} <span class="status-chip${runner.on_track?'':' off'}">${runner.on_track?'en ritmo':'por debajo'}</span></div><div class="runner-meta">${runner.outings_total} salidas · ${elevation} · ${fmt(runner.progress_pct)}%</div><div class="runner-meta">faltan ${fmt(runner.remaining_km)} km · ${pace}</div><div class="mini-track" role="progressbar" aria-valuenow="${runner.progress_pct}" aria-valuemin="0" aria-valuemax="100"><span style="width:${targetWidth(runner.progress_pct)}%"></span></div></div>
       <div class="runner-km">${fmt(runner.km)} <small>km</small><span class="chevron">›</span></div>
     </a>`;
   }).join('');
@@ -221,7 +222,7 @@ function renderHome(){
       ${qualityStrip()}
     </section>
     <section class="section"><div class="section-head"><h2 class="section-title">Evolución del club</h2></div><div class="chart-card"><div class="chart-wrap"><canvas id="groupChart" aria-label="Evolución de kilómetros del club"></canvas></div><p class="chart-note">Sólida = total consolidado · discontinua = proyección · gris = ritmo necesario para 1.440 km. Los tramos entre checkpoints sin detalle diario son interpolados.</p></div></section>
-    <section class="section"><div class="section-head"><h2 class="section-title">Clasificación</h2><span class="scope">TOCA PARA VER DETALLE</span></div><div class="board">${runnerRows()}</div></section>
+    <section class="section"><div class="section-head"><h2 class="section-title">Clasificación</h2><span class="scope">TOCA PARA VER DETALLE</span></div><div class="board">${runnerRows()}</div>${dashboard.summary.elevation_total_complete?'':'<p class="chart-note">* Desnivel histórico incompleto para Antonio, Kike y Alonso según la golden source.</p>'}</section>
     <section class="section"><div class="section-head"><h2 class="section-title">Hitos y destacados</h2></div><div class="highlights">${highlightCards()}</div>${dashboard.quality.activity_metrics_available?'':'<p class="chart-note">Los destacados de eficiencia aparecerán automáticamente cuando comience el seguimiento detallado de nuevas salidas.</p>'}</section>`;
   renderGroupChart();
 }
@@ -303,7 +304,7 @@ function qualityCard(runner){
 function renderRunner(runner){
   app.innerHTML=`
     <a class="back" href="./" data-route><span>‹</span>Volver al club</a>
-    <section class="runner-hero"><p class="eyebrow">Puesto ${runner.rank} · ${runner.on_track?'en ritmo de objetivo':'por debajo del ritmo'}</p><h1>${esc(runner.name)}</h1><div class="runner-total"><div class="runner-total-value">${fmt(runner.km)} <small>km</small></div><div class="runner-total-side">${fmt(runner.progress_pct)}% de 120 km<br>${fmt(runner.contribution_pct)}% del club</div></div><div class="group-progress" role="progressbar" aria-label="Progreso de ${esc(runner.name)}" aria-valuenow="${runner.progress_pct}" aria-valuemin="0" aria-valuemax="100"><span style="width:${targetWidth(runner.progress_pct)}%"></span></div>${detailStats(runner)}</section>
+    <section class="runner-hero"><p class="eyebrow">Puesto ${runner.rank} · ${runner.on_track?'en ritmo de objetivo':'por debajo del ritmo'}</p><h1>${esc(runner.name)}</h1><div class="runner-total"><div class="runner-total-value">${fmt(runner.km)} <small>km</small></div><div class="runner-total-side">${fmt(runner.progress_pct)}% de 120 km<br>${fmt(runner.contribution_pct)}% del club<br>${runner.outings_total} salidas · ${fmt(runner.elevation_total_m,0)} m D+${runner.elevation_total_complete?'':'*'}</div></div><div class="group-progress" role="progressbar" aria-label="Progreso de ${esc(runner.name)}" aria-valuenow="${runner.progress_pct}" aria-valuemin="0" aria-valuemax="100"><span style="width:${targetWidth(runner.progress_pct)}%"></span></div>${detailStats(runner)}</section>
     <section class="section"><div class="section-head"><h2 class="section-title">Evolución individual</h2></div><div class="chart-card"><div class="chart-wrap"><canvas id="runnerChart" aria-label="Evolución de ${esc(runner.name)}"></canvas></div><p class="chart-note">La proyección usa el último total consolidado. Los intervalos sin desglose diario aparecen interpolados.</p></div></section>
     <section class="section"><div class="section-head"><h2 class="section-title">Eficiencia de las salidas</h2><span class="scope">SOLO PERIODO OBSERVABLE</span></div>${efficiency(runner)}</section>
     <section class="section"><div class="section-head"><h2 class="section-title">Hitos del reto</h2></div><div class="milestones">${milestoneCards(runner)}</div></section>

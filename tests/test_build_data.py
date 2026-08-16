@@ -130,9 +130,14 @@ class BuildDataTests(unittest.TestCase):
         current = load_json(ROOT / "bootstrap/current_baseline.json")
         data = self.build(current=current, now=datetime(2026, 8, 16, 21, 52, tzinfo=MADRID))
         self.assertEqual(data["data_through"], "2026-08-16")
-        self.assertAlmostEqual(data["summary"]["total_km"], 675.11)
+        self.assertAlmostEqual(data["summary"]["total_km"], 674.65)
         self.assertEqual(data["runners"][0]["name"], "Borja Glez- Palenzuela Gracia")
-        self.assertAlmostEqual(data["runners"][0]["km"], 101.99)
+        self.assertAlmostEqual(data["runners"][0]["km"], 101.97)
+        self.assertEqual(data["summary"]["outings_total"], 80)
+        self.assertEqual(data["summary"]["elevation_total_m"], 5839)
+        self.assertFalse(data["summary"]["elevation_total_complete"])
+        self.assertEqual(data["runners"][0]["outings_total"], 9)
+        self.assertEqual(data["runners"][0]["elevation_total_m"], 779)
         self.assertAlmostEqual(
             sum(current["totals_km"].values()) - 403.9,
             current["weekly_snapshot"]["net_challenge_increment_km"],

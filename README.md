@@ -57,7 +57,7 @@ En **Actions → Update Strava and deploy Pages → Run workflow**. Revisa en `s
 - `strategy=historical_exact`: ID y fecha fiables; se suman solo actividades posteriores al checkpoint del 10/08;
 - `strategy=incremental_fingerprint`: falta ID o fecha. La primera ejecución observa hashes sin sumarlos y activa `needs_current_baseline`.
 
-El segundo checkpoint está fijado al **16/08/2026** mediante la clasificación semanal de Strava. `bootstrap/current_baseline.json` conserva la captura, exclusiones y ajuste del solape del 10/08 de forma auditable. La gráfica interpola el intervalo 11–16/08 y lo marca como aproximado.
+El segundo checkpoint está fijado al **16/08/2026** mediante el HTML **ARISTO runners — Día 22**, establecido como golden source por el organizador. `bootstrap/current_baseline.json` conserva kilómetros, salidas, desnivel y ajuste del solape del 10/08 de forma auditable. La gráfica interpola el intervalo 11–16/08 y lo marca como aproximado.
 
 Si aparecen `unmatched_activities`, consulta `unmatched_athletes` y ajusta los aliases en `config/participants.json`; nunca se asigna una actividad ambigua. Si el feed real solo expone IDs, rellena `athlete_id` tras identificar cada corredor una sola vez.
 

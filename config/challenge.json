@@ -4,7 +4,7 @@
   "challenge_start": "2026-07-26",
   "challenge_end": "2026-08-30",
   "challenge_days": 36,
-  "objective_per_runner_km": 120,
+  "objective_per_runner_km": 125,
   "timezone": "Europe/Madrid",
   "allowed_sport_types": ["Run", "TrailRun"],
   "club_endpoint_retirement": "2026-09-01"

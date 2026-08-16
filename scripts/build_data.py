@@ -76,6 +76,33 @@ def _validated_current_baseline(
     return checkpoint, parsed
 
 
+def _validated_cumulative_stats(current: dict[str, Any], names: list[str]) -> dict[str, dict[str, Any]]:
+    empty = {name: {"outings": 0, "elevation_m": 0.0, "elevation_complete": True} for name in names}
+    raw = current.get("cumulative_stats")
+    if not raw:
+        return empty
+    if set(raw) != set(names):
+        raise ValueError("current baseline cumulative_stats must contain every participant")
+    parsed: dict[str, dict[str, Any]] = {}
+    for name in names:
+        item = raw[name]
+        outings = item.get("outings")
+        elevation = item.get("elevation_m")
+        complete = item.get("elevation_complete")
+        if not isinstance(outings, int) or outings < 0:
+            raise ValueError(f"invalid cumulative outings for {name}")
+        if not isinstance(elevation, (int, float)) or elevation < 0:
+            raise ValueError(f"invalid cumulative elevation for {name}")
+        if not isinstance(complete, bool):
+            raise ValueError(f"invalid elevation completeness for {name}")
+        parsed[name] = {
+            "outings": outings,
+            "elevation_m": float(elevation),
+            "elevation_complete": complete,
+        }
+    return parsed
+
+
 def _tracking_stats(records: list[dict[str, Any]]) -> dict[str, Any]:
     outings = len(records)
     distance = round(sum(float(record.get("distance_km", 0)) for record in records), 3)
@@ -187,6 +214,7 @@ def build_dashboard(
         baseline_totals[name] = float(baseline["runners"][name]["total"])
 
     current_validated = _validated_current_baseline(current, names, baseline_totals, start, days)
+    cumulative_stats = _validated_cumulative_stats(current, names) if current_validated else _validated_cumulative_stats({}, names)
     anchor_date = current_validated[0] if current_validated else date.fromisoformat(baseline["checkpoint_date"])
     anchor_totals = current_validated[1] if current_validated else baseline_totals
     data_through = anchor_date
@@ -248,6 +276,9 @@ def build_dashboard(
         pace_required = None if finished or remaining_calendar_days == 0 else round(remaining / remaining_calendar_days, 2)
         projection = None if finished else round((km / max(data_day, 1)) * days, 1)
         tracked = _tracking_stats(records_by_runner[name])
+        cumulative = cumulative_stats[name]
+        outings_total = cumulative["outings"] + tracked["outings"]
+        elevation_total = round(cumulative["elevation_m"] + tracked["elevation_m"])
         runner_milestones = _milestones(anchor_totals[name], anchor_date, records_by_runner[name], objective)
         runners.append({
             "slug": slugify(name),
@@ -257,6 +288,9 @@ def build_dashboard(
             "remaining_km": remaining,
             "outings_tracked": tracked["outings"],
             "elevation_tracked_m": round(tracked["elevation_m"]),
+            "outings_total": outings_total,
+            "elevation_total_m": elevation_total,
+            "elevation_total_complete": cumulative["elevation_complete"],
             "moving_time_tracked_s": tracked["moving_time_s"],
             "pace_required_km_per_day": pace_required,
             "projection_km": projection,
@@ -352,6 +386,9 @@ def build_dashboard(
             "on_track_runners": sum(runner["on_track"] for runner in runners),
             "outings_tracked": sum(runner["tracking"]["outings"] for runner in runners),
             "elevation_tracked_m": round(sum(runner["tracking"]["elevation_m"] for runner in runners)),
+            "outings_total": sum(runner["outings_total"] for runner in runners),
+            "elevation_total_m": round(sum(runner["elevation_total_m"] for runner in runners)),
+            "elevation_total_complete": all(runner["elevation_total_complete"] for runner in runners),
         },
         "runners": runners,
         "series": {
@@ -375,6 +412,7 @@ def build_dashboard(
             "tracking_checkpoint": ledger.get("incremental_checkpoint_date") if tracking_active else None,
             "totals_basis": "checkpoint_plus_incremental" if tracking_active else "historical_checkpoint",
             "activity_metrics_basis": "post_tracking_checkpoint",
+            "cumulative_activity_stats_basis": "golden_checkpoint_plus_incremental" if current.get("cumulative_stats") else "post_tracking_only",
             "tracking_active": tracking_active,
             "activity_metrics_available": bool(all_tracked),
         },

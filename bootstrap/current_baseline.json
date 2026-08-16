@@ -1,39 +1,46 @@
 {
   "complete": true,
   "checkpoint_date": "2026-08-16",
-  "captured_at": "2026-08-16T21:52:00+02:00",
-  "source": "Capturas de la clasificación semanal de ARISTO runners en Strava, tomadas el 16/08/2026 a las 21:52 Europe/Madrid.",
-  "notes": "La clasificación cubre 10–16/08. Se suma al checkpoint acumulado del 10/08 descontando el solape conocido de ese día: 10,14 km de Pablo Meijide y 9,01 km de Francisco Javier Moreno Muñoz. Irene Carreto, Juan Carreto y Diana Tejerina no forman parte del reto y se excluyen. Los participantes del reto ausentes en la clasificación semanal se consideran sin actividad visible esa semana.",
+  "captured_at": "2026-08-16",
+  "source": "ARISTO runners — Día 22 HTML (golden source proporcionada por el organizador)",
+  "notes": "Los agregados 10–16/08 de la golden source sustituyen a la estimación obtenida de las capturas de Strava. Se unen al checkpoint acumulado del 10/08 descontando el solape conocido de ese día: 10,14 km de Pablo Meijide y 9,01 km de Francisco Javier Moreno Muñoz. El objetivo de 125 km del HTML es obsoleto; challenge.json mantiene el requisito vigente de 120 km.",
   "weekly_snapshot": {
     "period_start": "2026-08-10",
     "period_end": "2026-08-16",
-    "displayed_club_total_km": 343,
-    "sum_of_displayed_athletes_km": 343.93,
-    "challenge_participants_weekly_km": 290.36,
+    "challenge_participants_weekly_km": 289.9,
     "overlap_already_in_historical_checkpoint_km": 19.15,
-    "net_challenge_increment_km": 271.21,
-    "excluded_non_participants": {
-      "Irene Carreto": 36.88,
-      "Juan Carreto": 8.69,
-      "Diana Tejerina": 8.0
-    },
+    "net_challenge_increment_km": 270.75,
     "overlap_adjustments": {
       "Pablo Meijide": 10.14,
       "Francisco Javier Moreno Muñoz": 9.01
     }
   },
   "totals_km": {
-    "Pablo Meijide": 93.01,
-    "Antonio Meijide": 90.69,
+    "Pablo Meijide": 92.95,
+    "Antonio Meijide": 90.61,
     "Kike Rasilla": 71.97,
-    "Francisco Javier Moreno Muñoz": 83.94,
-    "Pablo De Heras": 71.11,
-    "Borja Glez- Palenzuela Gracia": 101.99,
-    "Alonso Alamo": 63.9,
-    "Kept ES": 68.19,
+    "Francisco Javier Moreno Muñoz": 83.89,
+    "Pablo De Heras": 71.04,
+    "Borja Glez- Palenzuela Gracia": 101.97,
+    "Alonso Alamo": 63.83,
+    "Kept ES": 68.16,
     "Pablo González Betere": 13.38,
     "Sergio Sanchez": 2.85,
-    "Alvaro López-Chacarra": 14.08,
+    "Alvaro López-Chacarra": 14.0,
     "Jaime Casanueva": 0.0
+  },
+  "cumulative_stats": {
+    "Pablo Meijide": {"outings": 10, "elevation_m": 789, "elevation_complete": true},
+    "Antonio Meijide": {"outings": 9, "elevation_m": 774, "elevation_complete": false},
+    "Kike Rasilla": {"outings": 9, "elevation_m": 865, "elevation_complete": false},
+    "Francisco Javier Moreno Muñoz": {"outings": 12, "elevation_m": 482, "elevation_complete": true},
+    "Pablo De Heras": {"outings": 7, "elevation_m": 200, "elevation_complete": true},
+    "Borja Glez- Palenzuela Gracia": {"outings": 9, "elevation_m": 779, "elevation_complete": true},
+    "Alonso Alamo": {"outings": 11, "elevation_m": 220, "elevation_complete": false},
+    "Kept ES": {"outings": 7, "elevation_m": 1356, "elevation_complete": true},
+    "Pablo González Betere": {"outings": 2, "elevation_m": 264, "elevation_complete": true},
+    "Sergio Sanchez": {"outings": 2, "elevation_m": 50, "elevation_complete": true},
+    "Alvaro López-Chacarra": {"outings": 2, "elevation_m": 60, "elevation_complete": true},
+    "Jaime Casanueva": {"outings": 0, "elevation_m": 0, "elevation_complete": true}
   }
 }

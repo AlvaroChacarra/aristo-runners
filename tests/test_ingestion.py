@@ -64,6 +64,14 @@ class IngestionTests(unittest.TestCase):
         self.assertIsNone(result["strategy"])
         self.assertEqual(result["records"], [])
 
+    def test_spike_records_sanitized_real_field_names(self):
+        feed = [activity("Pablo M.", activity_id=7, start_date="2026-08-11T08:00:00Z")]
+        result = self.process(self.values["ledger"], feed, self.values["current"], date(2026, 8, 16))
+        probe = result["field_probe"]
+        self.assertIn("id", probe["observed_top_level_fields"])
+        self.assertIn("firstname", probe["observed_athlete_fields"])
+        self.assertEqual(probe["id_present"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

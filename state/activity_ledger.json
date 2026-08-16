@@ -9,5 +9,6 @@
   "field_probe": null,
   "last_successful_update": null,
   "last_feed_size": 0,
-  "unmatched_activities": 0
+  "unmatched_activities": 0,
+  "unmatched_athletes": []
 }

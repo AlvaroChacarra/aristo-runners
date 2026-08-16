@@ -48,7 +48,7 @@ En **Actions → Update Strava and deploy Pages → Run workflow**. Revisa en `s
 
 Si pide baseline actual, edita `bootstrap/current_baseline.json`: fija `complete=true`, fecha de captura y los 12 totales actuales. Ejecuta de nuevo inmediatamente. La gráfica interpola el intervalo y lo marca como aproximado.
 
-Si aparecen `unmatched_activities`, añade el `athlete_id` observado a la persona correspondiente en `config/participants.json` o ajusta sus aliases; nunca se asigna una actividad ambigua.
+Si aparecen `unmatched_activities`, consulta `unmatched_athletes` y ajusta los aliases en `config/participants.json`; nunca se asigna una actividad ambigua. Si el feed real solo expone IDs, rellena `athlete_id` tras identificar cada corredor una sola vez.
 
 ### 4. Activar Pages
 

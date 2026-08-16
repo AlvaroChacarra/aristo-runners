@@ -92,8 +92,12 @@ def inspect_fields(activities: list[dict[str, Any]]) -> dict[str, Any]:
     present = lambda key: sum(item.get(key) is not None for item in activities)
     athlete_ids = sum((item.get("athlete") or {}).get("id") is not None for item in activities)
     date_count = sum(bool(item.get("start_date") or item.get("start_date_local")) for item in activities)
+    top_level_fields = sorted({key for item in activities for key in item})
+    athlete_fields = sorted({key for item in activities for key in (item.get("athlete") or {})})
     return {
         "sample_size": count,
+        "observed_top_level_fields": top_level_fields,
+        "observed_athlete_fields": athlete_fields,
         "id_present": present("id"),
         "start_date_present": present("start_date"),
         "start_date_local_present": present("start_date_local"),
@@ -120,7 +124,9 @@ def process_feed(
     updated = deepcopy(ledger)
     allowed = set(challenge["allowed_sport_types"])
     eligible = [item for item in activities if (item.get("sport_type") or item.get("type")) in allowed]
-    updated["field_probe"] = inspect_fields(eligible)
+    updated["field_probe"] = inspect_fields(activities)
+    updated["field_probe"]["eligible_sample_size"] = len(eligible)
+    updated["field_probe"]["eligible_historical_capable"] = inspect_fields(eligible)["historical_capable"]
     updated["last_feed_size"] = len(activities)
     strategy = updated.get("strategy")
     if strategy is None:
@@ -147,6 +153,7 @@ def process_feed(
         return updated
 
     unmatched = 0
+    unmatched_athletes: set[str] = set()
     for item in eligible:
         fp = fingerprint(item)
         if fp in existing or fp in ignored:
@@ -167,6 +174,8 @@ def process_feed(
         participant = resolve_participant(item, participants)
         if participant is None:
             unmatched += 1
+            _, display = athlete_parts(item)
+            unmatched_athletes.add(normalize(display) or "athlete_id_only")
             continue
         updated.setdefault("records", []).append(
             {
@@ -183,6 +192,7 @@ def process_feed(
         )
         existing.add(fp)
     updated["unmatched_activities"] = unmatched
+    updated["unmatched_athletes"] = sorted(unmatched_athletes)
     updated["records"].sort(key=lambda record: (record["activity_date"], record["participant"], record["fingerprint"]))
     return updated
 

@@ -128,8 +128,10 @@ function renderBoard(data){
       if (runner.on_track) {
         projectionClass = 'ok';
         projectionText = `✅ proyección: ${fmt(runner.projection_km)} km al final`;
-      } else {
+      } else if (runner.pace_required_km_per_day !== null) {
         projectionText = `❌ proyección: ${fmt(runner.projection_km)} km · necesita ${fmt(runner.pace_required_km_per_day,2)} km/día`;
+      } else {
+        projectionText = `❌ último día · ${fmt(runner.km)} km acumulados`;
       }
     }
     const tracking = runner.outings_tracked > 0

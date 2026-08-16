@@ -1,20 +1,39 @@
 {
-  "complete": false,
-  "checkpoint_date": null,
-  "captured_at": null,
-  "notes": "Solo se usa si el spike real confirma que ClubActivity no trae ID y fecha fiables. Rellena los 12 totales y cambia complete a true.",
+  "complete": true,
+  "checkpoint_date": "2026-08-16",
+  "captured_at": "2026-08-16T21:52:00+02:00",
+  "source": "Capturas de la clasificación semanal de ARISTO runners en Strava, tomadas el 16/08/2026 a las 21:52 Europe/Madrid.",
+  "notes": "La clasificación cubre 10–16/08. Se suma al checkpoint acumulado del 10/08 descontando el solape conocido de ese día: 10,14 km de Pablo Meijide y 9,01 km de Francisco Javier Moreno Muñoz. Irene Carreto, Juan Carreto y Diana Tejerina no forman parte del reto y se excluyen. Los participantes del reto ausentes en la clasificación semanal se consideran sin actividad visible esa semana.",
+  "weekly_snapshot": {
+    "period_start": "2026-08-10",
+    "period_end": "2026-08-16",
+    "displayed_club_total_km": 343,
+    "sum_of_displayed_athletes_km": 343.93,
+    "challenge_participants_weekly_km": 290.36,
+    "overlap_already_in_historical_checkpoint_km": 19.15,
+    "net_challenge_increment_km": 271.21,
+    "excluded_non_participants": {
+      "Irene Carreto": 36.88,
+      "Juan Carreto": 8.69,
+      "Diana Tejerina": 8.0
+    },
+    "overlap_adjustments": {
+      "Pablo Meijide": 10.14,
+      "Francisco Javier Moreno Muñoz": 9.01
+    }
+  },
   "totals_km": {
-    "Pablo Meijide": null,
-    "Antonio Meijide": null,
-    "Kike Rasilla": null,
-    "Francisco Javier Moreno Muñoz": null,
-    "Pablo De Heras": null,
-    "Borja Glez- Palenzuela Gracia": null,
-    "Alonso Alamo": null,
-    "Kept ES": null,
-    "Pablo González Betere": null,
-    "Sergio Sanchez": null,
-    "Alvaro López-Chacarra": null,
-    "Jaime Casanueva": null
+    "Pablo Meijide": 93.01,
+    "Antonio Meijide": 90.69,
+    "Kike Rasilla": 71.97,
+    "Francisco Javier Moreno Muñoz": 83.94,
+    "Pablo De Heras": 71.11,
+    "Borja Glez- Palenzuela Gracia": 101.99,
+    "Alonso Alamo": 63.9,
+    "Kept ES": 68.19,
+    "Pablo González Betere": 13.38,
+    "Sergio Sanchez": 2.85,
+    "Alvaro López-Chacarra": 14.08,
+    "Jaime Casanueva": 0.0
   }
 }

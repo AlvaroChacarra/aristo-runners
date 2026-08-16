@@ -2,8 +2,8 @@
   "version": 1,
   "club_id": 1275865,
   "strategy": "incremental_fingerprint",
-  "bootstrap_complete": false,
-  "needs_current_baseline": true,
+  "bootstrap_complete": true,
+  "needs_current_baseline": false,
   "ignored_fingerprints": [
     "00f51e4b968ce0f2bc33224d3abf145e843a4d3e0748ee5cfe6649eb72aa13cc",
     "02df3b54962ac9b2c1e662bffbdbf984c530cfc25b023fd9df5c0e15bac3d47f",
@@ -122,8 +122,9 @@
     "eligible_sample_size": 87,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-16T21:37:07+02:00",
+  "last_successful_update": "2026-08-16T22:02:08+02:00",
   "last_feed_size": 87,
   "unmatched_activities": 0,
-  "unmatched_athletes": []
+  "unmatched_athletes": [],
+  "incremental_checkpoint_date": "2026-08-16"
 }

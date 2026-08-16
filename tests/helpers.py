@@ -26,11 +26,14 @@ def empty_ledger():
 
 
 def configs():
+    current = load_json(ROOT / "bootstrap/current_baseline.json")
+    current.update({"complete": False, "checkpoint_date": None, "captured_at": None})
+    current["totals_km"] = {name: None for name in current["totals_km"]}
     values = {
         "challenge": load_json(ROOT / "config/challenge.json"),
         "participants": load_json(ROOT / "config/participants.json"),
         "baseline": load_json(ROOT / "config/baseline.json"),
-        "current": load_json(ROOT / "bootstrap/current_baseline.json"),
+        "current": current,
         "ledger": empty_ledger(),
     }
     return deepcopy(values)

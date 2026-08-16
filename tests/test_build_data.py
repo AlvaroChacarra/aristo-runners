@@ -1,13 +1,16 @@
 import unittest
 from copy import deepcopy
 from datetime import datetime
+from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from scripts.build_data import build_dashboard
+from scripts.state import load_json
 from tests.helpers import configs
 
 
 MADRID = ZoneInfo("Europe/Madrid")
+ROOT = Path(__file__).resolve().parents[1]
 
 
 class BuildDataTests(unittest.TestCase):
@@ -122,6 +125,18 @@ class BuildDataTests(unittest.TestCase):
         self.assertEqual(data["quality"]["last_complete_observation"], "2026-08-16T20:00:00+02:00")
         self.assertTrue(data["quality"]["tracking_active"])
         self.assertFalse(data["quality"]["activity_metrics_available"])
+
+    def test_real_august_16_checkpoint_joins_weekly_snapshot_without_day_10_overlap(self):
+        current = load_json(ROOT / "bootstrap/current_baseline.json")
+        data = self.build(current=current, now=datetime(2026, 8, 16, 21, 52, tzinfo=MADRID))
+        self.assertEqual(data["data_through"], "2026-08-16")
+        self.assertAlmostEqual(data["summary"]["total_km"], 675.11)
+        self.assertEqual(data["runners"][0]["name"], "Borja Glez- Palenzuela Gracia")
+        self.assertAlmostEqual(data["runners"][0]["km"], 101.99)
+        self.assertAlmostEqual(
+            sum(current["totals_km"].values()) - 403.9,
+            current["weekly_snapshot"]["net_challenge_increment_km"],
+        )
 
 
 if __name__ == "__main__":

@@ -64,7 +64,7 @@ jobs:
         run: python -m scripts.security_check
 
       - name: Persist incremental state and rotated token
-        if: github.event_name != 'push'
+        if: always() && github.event_name != 'push' && steps.strava.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

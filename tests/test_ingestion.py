@@ -47,6 +47,7 @@ class IngestionTests(unittest.TestCase):
         second = self.process(first, new_feed, current, date(2026, 8, 17))
         self.assertEqual(len(second["records"]), 1)
         self.assertEqual(second["records"][0]["participant"], "Antonio Meijide")
+        self.assertEqual(second["records"][0]["detected_at"], "2026-08-17")
         third = self.process(second, new_feed, current, date(2026, 8, 17))
         self.assertEqual(third["records"], second["records"])
 

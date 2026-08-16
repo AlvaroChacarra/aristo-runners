@@ -2,6 +2,17 @@
 
 Dashboard estático del reto (26/07/2026–30/08/2026): Strava → GitHub Actions → `data.json` → GitHub Pages. El navegador nunca llama a Strava y el artefacto Pages contiene únicamente `index.html`, `data.json` y `.nojekyll`.
 
+## Dashboard V2
+
+La V2 mantiene una única SPA estática:
+
+- `/`: KPIs del club, evolución conjunta, ranking e hitos dinámicos;
+- `/?runner=nombre-apellidos`: progreso, proyección, contribución, eficiencia observable e hitos individuales.
+
+`data.json` usa `schema_version=2`. Los totales combinan checkpoints e incrementos; km/salida, ritmo, desnivel/km, distribución y salidas máximas se calculan exclusivamente con actividades posteriores al checkpoint de seguimiento. La interfaz distingue `last_feed_check`, `last_complete_observation` y `latest_activity_detected_at` para no presentar como actual un total todavía no alineado.
+
+La rama `v1-stable` conserva la versión anterior completa como rollback.
+
 ## Puesta en marcha
 
 ### 1. Crear y autorizar la app Strava

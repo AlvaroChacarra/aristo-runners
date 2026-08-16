@@ -19,8 +19,11 @@ class FrontendTests(unittest.TestCase):
         self.assertIn("Hitos del reto", self.html)
         self.assertIn("schema_version!==2", self.html)
 
-    def test_old_125_km_objective_is_removed(self):
+    def test_objective_copy_is_loaded_from_data(self):
+        self.assertNotIn("120 km", self.html)
         self.assertNotIn("125 km", self.html)
+        self.assertIn("challenge.objective_per_runner_km", self.html)
+        self.assertIn("challenge.objective_total_km", self.html)
         self.assertNotIn("OBJ_PER_RUNNER", self.html)
 
     def test_no_strava_call_or_secret_reference(self):

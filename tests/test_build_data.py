@@ -24,15 +24,15 @@ class BuildDataTests(unittest.TestCase):
             now or datetime(2026, 8, 10, 12, tzinfo=MADRID),
         )
 
-    def test_ranking_and_120_km_objective(self):
+    def test_ranking_and_125_km_objective(self):
         data = self.build()
         self.assertEqual(data["schema_version"], 2)
-        self.assertEqual(data["challenge"]["objective_per_runner_km"], 120)
-        self.assertEqual(data["challenge"]["objective_total_km"], 1440)
+        self.assertEqual(data["challenge"]["objective_per_runner_km"], 125)
+        self.assertEqual(data["challenge"]["objective_total_km"], 1500)
         self.assertEqual([runner["name"] for runner in data["runners"][:3]], ["Pablo Meijide", "Antonio Meijide", "Kike Rasilla"])
         self.assertAlmostEqual(data["summary"]["total_km"], 403.9)
         self.assertAlmostEqual(data["summary"]["projection_km"], round(403.9 / 16 * 36, 1))
-        self.assertAlmostEqual(data["summary"]["projection_gap_km"], round(403.9 / 16 * 36 - 1440, 1))
+        self.assertAlmostEqual(data["summary"]["projection_gap_km"], round(403.9 / 16 * 36 - 1500, 1))
         self.assertEqual(data["summary"]["on_track_runners"], 2)
         self.assertEqual(data["runners"][0]["slug"], "pablo-meijide")
         self.assertAlmostEqual(sum(runner["contribution_pct"] for runner in data["runners"]), 100, delta=0.2)
@@ -41,7 +41,7 @@ class BuildDataTests(unittest.TestCase):
         data = self.build(now=datetime(2026, 8, 16, 12, tzinfo=MADRID))
         pablo = next(runner for runner in data["runners"] if runner["name"] == "Pablo Meijide")
         self.assertAlmostEqual(pablo["projection_km"], round(63.09 / 16 * 36, 1))
-        self.assertAlmostEqual(pablo["pace_required_km_per_day"], round((120 - 63.09) / 14, 2))
+        self.assertAlmostEqual(pablo["pace_required_km_per_day"], round((125 - 63.09) / 14, 2))
 
     def test_baseline_plus_new_activity(self):
         ledger = deepcopy(self.values["ledger"])
@@ -101,7 +101,7 @@ class BuildDataTests(unittest.TestCase):
         ledger["records"] = [{
             "fingerprint": "c" * 64, "participant": "Kike Rasilla", "activity_date": "2026-08-11",
             "date_accuracy": "exact", "detected_at": "2026-08-11T08:00:00+02:00",
-            "distance_km": 8, "moving_time_s": 2600, "elevation_m": 20, "sport_type": "Run",
+            "distance_km": 10, "moving_time_s": 3200, "elevation_m": 20, "sport_type": "Run",
         }]
         data = self.build(ledger=ledger, now=datetime(2026, 8, 11, 12, tzinfo=MADRID))
         kike = next(runner for runner in data["runners"] if runner["name"] == "Kike Rasilla")

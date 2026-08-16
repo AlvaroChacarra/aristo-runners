@@ -323,7 +323,7 @@ def build_dashboard(
     incomplete = [runner for runner in runners if not runner["completed"]]
     closest = min(incomplete, key=lambda runner: runner["remaining_km"], default=leader)
     cards.append({
-        "kind": "closest", "label": "Más cerca de 120 km", "name": closest["name"],
+        "kind": "closest", "label": f"Más cerca de {objective:g} km", "name": closest["name"],
         "runner_slug": closest["slug"], "value": f"le faltan {closest['remaining_km']:.1f} km", "scope": "total",
     })
     if all_tracked:

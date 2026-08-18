@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-18T09:07:13+02:00",
+  "generated_at": "2026-08-18T09:56:21+02:00",
   "data_through": "2026-08-18",
   "challenge": {
     "club_name": "ARISTO runners",
@@ -14,18 +14,18 @@
     "timezone": "Europe/Madrid"
   },
   "summary": {
-    "total_km": 700.36,
-    "progress_pct": 46.7,
-    "projection_km": 1050.5,
-    "projection_gap_km": -449.5,
+    "total_km": 707.65,
+    "progress_pct": 47.2,
+    "projection_km": 1061.5,
+    "projection_gap_km": -438.5,
     "active_runners": 11,
     "participants": 12,
     "completed_runners": 0,
     "on_track_runners": 4,
-    "outings_tracked": 3,
-    "elevation_tracked_m": 218,
-    "outings_total": 83,
-    "elevation_total_m": 6057,
+    "outings_tracked": 4,
+    "elevation_tracked_m": 278,
+    "outings_total": 84,
+    "elevation_total_m": 6117,
     "elevation_total_complete": false
   },
   "runners": [
@@ -94,7 +94,7 @@
         }
       ],
       "rank": 1,
-      "contribution_pct": 14.6
+      "contribution_pct": 14.4
     },
     {
       "slug": "pablo-meijide",
@@ -171,7 +171,7 @@
         }
       ],
       "rank": 2,
-      "contribution_pct": 14.5
+      "contribution_pct": 14.4
     },
     {
       "slug": "antonio-meijide",
@@ -248,41 +248,51 @@
         }
       ],
       "rank": 3,
-      "contribution_pct": 14.5
+      "contribution_pct": 14.4
     },
     {
       "slug": "francisco-javier-moreno-munoz",
       "name": "Francisco Javier Moreno Muñoz",
-      "km": 83.89,
-      "progress_pct": 67.1,
-      "remaining_km": 41.11,
-      "outings_tracked": 0,
-      "elevation_tracked_m": 0,
-      "outings_total": 12,
-      "elevation_total_m": 482,
+      "km": 91.18,
+      "progress_pct": 72.9,
+      "remaining_km": 33.82,
+      "outings_tracked": 1,
+      "elevation_tracked_m": 60,
+      "outings_total": 13,
+      "elevation_total_m": 542,
       "elevation_total_complete": true,
-      "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 3.43,
-      "projection_km": 125.8,
-      "projection_gap_km": 0.8,
+      "moving_time_tracked_s": 2523,
+      "pace_required_km_per_day": 2.82,
+      "projection_km": 136.8,
+      "projection_gap_km": 11.8,
       "on_track": true,
       "completed": false,
       "tracking": {
-        "available": false,
-        "outings": 0,
-        "distance_km": 0,
-        "km_per_outing": null,
-        "longest_outing_km": null,
-        "weighted_pace_min_per_km": null,
-        "elevation_m": 0,
-        "elevation_m_per_km": null,
-        "moving_time_s": 0,
+        "available": true,
+        "outings": 1,
+        "distance_km": 7.289,
+        "km_per_outing": 7.29,
+        "longest_outing_km": 7.29,
+        "weighted_pace_min_per_km": 5.77,
+        "elevation_m": 60.0,
+        "elevation_m_per_km": 8.2,
+        "moving_time_s": 2523,
         "distribution": {
           "short_under_5k": 0,
-          "medium_5_to_10k": 0,
+          "medium_5_to_10k": 1,
           "long_10k_plus": 0
         },
-        "activities": []
+        "activities": [
+          {
+            "date": "2026-08-18",
+            "date_basis": "detected",
+            "detected_at": "2026-08-18T09:56:21+02:00",
+            "distance_km": 7.289,
+            "moving_time_s": 2523,
+            "elevation_m": 60.0,
+            "sport_type": "Run"
+          }
+        ]
       },
       "milestones": [
         {
@@ -315,7 +325,7 @@
         }
       ],
       "rank": 4,
-      "contribution_pct": 12.0
+      "contribution_pct": 12.9
     },
     {
       "slug": "kike-rasilla",
@@ -382,7 +392,7 @@
         }
       ],
       "rank": 5,
-      "contribution_pct": 10.3
+      "contribution_pct": 10.2
     },
     {
       "slug": "pablo-de-heras",
@@ -449,7 +459,7 @@
         }
       ],
       "rank": 6,
-      "contribution_pct": 10.1
+      "contribution_pct": 10.0
     },
     {
       "slug": "kept-es",
@@ -516,7 +526,7 @@
         }
       ],
       "rank": 7,
-      "contribution_pct": 9.7
+      "contribution_pct": 9.6
     },
     {
       "slug": "alonso-alamo",
@@ -583,7 +593,7 @@
         }
       ],
       "rank": 8,
-      "contribution_pct": 9.1
+      "contribution_pct": 9.0
     },
     {
       "slug": "alvaro-lopez-chacarra",
@@ -1057,19 +1067,19 @@
           78.66,
           83.89,
           83.89,
-          83.89,
-          83.89,
-          83.89,
-          83.89,
-          83.89,
-          83.89,
-          83.89,
-          83.89,
-          83.89,
-          83.89,
-          83.89,
-          83.89,
-          83.89
+          91.18,
+          91.18,
+          91.18,
+          91.18,
+          91.18,
+          91.18,
+          91.18,
+          91.18,
+          91.18,
+          91.18,
+          91.18,
+          91.18,
+          91.18
         ]
       },
       {
@@ -1461,9 +1471,9 @@
     ]
   },
   "quality": {
-    "last_feed_check": "2026-08-18T09:07:13+02:00",
-    "last_complete_observation": "2026-08-18T09:07:13+02:00",
-    "latest_activity_detected_at": "2026-08-18T09:07:13+02:00",
+    "last_feed_check": "2026-08-18T09:56:21+02:00",
+    "last_complete_observation": "2026-08-18T09:56:21+02:00",
+    "latest_activity_detected_at": "2026-08-18T09:56:21+02:00",
     "baseline_checkpoint": "2026-08-10",
     "tracking_checkpoint": "2026-08-16",
     "totals_basis": "checkpoint_plus_incremental",

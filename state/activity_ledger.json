@@ -180,7 +180,7 @@
     }
   ],
   "field_probe": {
-    "sample_size": 87,
+    "sample_size": 84,
     "observed_top_level_fields": [
       "athlete",
       "device_name",
@@ -204,11 +204,11 @@
     "start_date_local_present": 0,
     "athlete_id_present": 0,
     "historical_capable": false,
-    "eligible_sample_size": 87,
+    "eligible_sample_size": 84,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-19T09:08:32+02:00",
-  "last_feed_size": 87,
+  "last_successful_update": "2026-08-19T09:56:13+02:00",
+  "last_feed_size": 84,
   "unmatched_activities": 0,
   "unmatched_athletes": [],
   "incremental_checkpoint_date": "2026-08-16"

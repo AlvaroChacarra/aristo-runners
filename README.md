@@ -9,7 +9,7 @@ La V2 mantiene una única SPA estática:
 - `/`: KPIs del club, evolución conjunta, ranking e hitos dinámicos;
 - `/?runner=nombre-apellidos`: progreso, proyección, contribución, eficiencia observable e hitos individuales.
 
-`data.json` usa `schema_version=2`. Los totales combinan checkpoints e incrementos; km/salida, ritmo, desnivel/km, distribución y salidas máximas se calculan exclusivamente con actividades posteriores al checkpoint de seguimiento. La interfaz distingue `last_feed_check`, `last_complete_observation` y `latest_activity_detected_at` para no presentar como actual un total todavía no alineado.
+`data.json` usa `schema_version=2`. Los totales combinan checkpoints, incrementos y reconciliaciones auditables del leaderboard cuando una actividad no aparece en el feed de clubes; km/salida, ritmo, desnivel/km, distribución y salidas máximas se calculan exclusivamente con actividades posteriores al checkpoint de seguimiento. La interfaz distingue `last_feed_check`, `last_complete_observation` y `latest_activity_detected_at` para no presentar como actual un total todavía no alineado.
 
 La rama `v1-stable` conserva la versión anterior completa como rollback.
 
@@ -81,6 +81,7 @@ Configuración:
 - participantes, aliases o IDs: `config/participants.json`;
 - checkpoint histórico inmutable: `config/baseline.json`;
 - segundo checkpoint condicional: `bootstrap/current_baseline.json`.
+- ajustes agregados contrastados con la clasificación de Strava: `state/leaderboard_adjustments.json` (no inventar ritmo, desnivel ni detalle de actividad).
 
 Auditoría: consulta el último run en **Actions**, `generated_at`/`data_through` en `data.json` y `last_successful_update`/`field_probe` en el ledger. Salidas y desnivel se etiquetan como parciales porque el fixture histórico solo contiene kilómetros.
 

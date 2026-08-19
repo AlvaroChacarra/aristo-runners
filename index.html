@@ -294,8 +294,12 @@ function milestoneCards(runner){
 
 function qualityCard(runner){
   const tracking=dashboard.quality.tracking_checkpoint?fmtDate(dashboard.quality.tracking_checkpoint):'pendiente';
+  const reconciliation=runner.leaderboard_adjustment
+    ? `<div class="quality-item"><strong>Reconciliación leaderboard</strong><span>+${fmt(runner.leaderboard_adjustment.distance_km)} km · ${runner.leaderboard_adjustment.outings} salidas según la clasificación de Strava. No se inventan ritmo ni desnivel.</span></div>`
+    : '';
   return `<div class="quality-card">
     <div class="quality-item"><strong>Totales acumulados</strong><span>Checkpoint histórico más incrementos observados. Consolidados hasta ${qualityDate()}.</span></div>
+    ${reconciliation}
     <div class="quality-item"><strong>Eficiencia y actividades</strong><span>Solo desde el seguimiento detallado (${tracking}); nunca se extrapolan hacia atrás.</span></div>
     <div class="quality-item"><strong>Fechas</strong><span>${dashboard.coverage.estimated_activity_dates?'La API no entrega fecha: se muestra cuándo se detectó la actividad.':'No hay nuevas actividades con fecha estimada.'}</span></div>
   </div>`;

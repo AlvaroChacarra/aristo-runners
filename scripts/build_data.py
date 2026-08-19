@@ -103,6 +103,44 @@ def _validated_cumulative_stats(current: dict[str, Any], names: list[str]) -> di
     return parsed
 
 
+def _validated_leaderboard_adjustments(
+    raw: dict[str, Any] | None, names: list[str], start: date, end: date
+) -> list[dict[str, Any]]:
+    if not raw:
+        return []
+    if raw.get("version") != 1 or not isinstance(raw.get("adjustments"), list):
+        raise ValueError("invalid leaderboard adjustments document")
+    seen: set[str] = set()
+    parsed: list[dict[str, Any]] = []
+    for item in raw["adjustments"]:
+        adjustment_id = item.get("id")
+        participant = item.get("participant")
+        try:
+            observed_on = date.fromisoformat(item.get("observed_on", ""))
+        except (TypeError, ValueError) as exc:
+            raise ValueError("invalid leaderboard adjustment date") from exc
+        if not isinstance(adjustment_id, str) or not adjustment_id or adjustment_id in seen:
+            raise ValueError("leaderboard adjustment ids must be unique")
+        if participant not in names:
+            raise ValueError(f"leaderboard adjustment references unknown participant {participant}")
+        if not start <= observed_on <= end:
+            raise ValueError("leaderboard adjustment is outside the challenge")
+        distance = item.get("distance_km")
+        outings = item.get("outings")
+        elevation = item.get("elevation_m")
+        if not isinstance(distance, (int, float)) or distance <= 0:
+            raise ValueError("leaderboard adjustment distance must be positive")
+        if not isinstance(outings, int) or outings <= 0:
+            raise ValueError("leaderboard adjustment outings must be positive")
+        if elevation is not None and (not isinstance(elevation, (int, float)) or elevation < 0):
+            raise ValueError("invalid leaderboard adjustment elevation")
+        if not isinstance(item.get("source"), str) or not item["source"]:
+            raise ValueError("leaderboard adjustment requires a source")
+        seen.add(adjustment_id)
+        parsed.append({**item, "observed_on_date": observed_on})
+    return parsed
+
+
 def _tracking_stats(records: list[dict[str, Any]]) -> dict[str, Any]:
     outings = len(records)
     distance = round(sum(float(record.get("distance_km", 0)) for record in records), 3)
@@ -191,6 +229,7 @@ def build_dashboard(
     current: dict[str, Any],
     ledger: dict[str, Any],
     now: datetime | None = None,
+    leaderboard_adjustments: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     timezone = ZoneInfo(challenge["timezone"])
     now = now or datetime.now(timezone)
@@ -205,6 +244,10 @@ def build_dashboard(
         raise ValueError("participant slugs must be unique")
     if set(names) != set(baseline["runners"]):
         raise ValueError("baseline participants do not match participants.json")
+    adjustments = _validated_leaderboard_adjustments(leaderboard_adjustments, names, start, end)
+    adjustments_by_runner: dict[str, list[dict[str, Any]]] = {name: [] for name in names}
+    for adjustment in adjustments:
+        adjustments_by_runner[adjustment["participant"]].append(adjustment)
 
     series: dict[str, list[float]] = {}
     approximate_days: set[int] = set(range(9, 16))
@@ -246,6 +289,12 @@ def build_dashboard(
         records_by_runner[name].append(record)
         estimated_activity_dates |= record.get("date_accuracy") != "exact"
 
+    for adjustment in adjustments:
+        name = adjustment["participant"]
+        day = challenge_day(adjustment["observed_on_date"], start, days)
+        records_by_day[(name, day)] = records_by_day.get((name, day), 0.0) + float(adjustment["distance_km"])
+        data_through = max(data_through, adjustment["observed_on_date"])
+
     tracking_active = bool(ledger.get("bootstrap_complete")) or ledger.get("strategy") == "historical_exact"
     last_feed_check_dt = _parse_datetime(ledger.get("last_successful_update"), timezone)
     if tracking_active and last_feed_check_dt:
@@ -277,9 +326,20 @@ def build_dashboard(
         projection = None if finished else round((km / max(data_day, 1)) * days, 1)
         tracked = _tracking_stats(records_by_runner[name])
         cumulative = cumulative_stats[name]
-        outings_total = cumulative["outings"] + tracked["outings"]
-        elevation_total = round(cumulative["elevation_m"] + tracked["elevation_m"])
-        runner_milestones = _milestones(anchor_totals[name], anchor_date, records_by_runner[name], objective)
+        reconciled = adjustments_by_runner[name]
+        reconciled_km = round(sum(float(item["distance_km"]) for item in reconciled), 2)
+        reconciled_outings = sum(item["outings"] for item in reconciled)
+        reconciled_elevation = sum(float(item["elevation_m"] or 0) for item in reconciled)
+        outings_total = cumulative["outings"] + tracked["outings"] + reconciled_outings
+        elevation_total = round(cumulative["elevation_m"] + tracked["elevation_m"] + reconciled_elevation)
+        milestone_records = records_by_runner[name] + [
+            {
+                "activity_date": item["observed_on"], "date_accuracy": "detected",
+                "detected_at": item["captured_at"], "distance_km": item["distance_km"],
+            }
+            for item in reconciled
+        ]
+        runner_milestones = _milestones(anchor_totals[name], anchor_date, milestone_records, objective)
         runners.append({
             "slug": slugify(name),
             "name": name,
@@ -290,7 +350,9 @@ def build_dashboard(
             "elevation_tracked_m": round(tracked["elevation_m"]),
             "outings_total": outings_total,
             "elevation_total_m": elevation_total,
-            "elevation_total_complete": cumulative["elevation_complete"],
+            "elevation_total_complete": cumulative["elevation_complete"] and all(
+                item["elevation_m"] is not None for item in reconciled
+            ),
             "moving_time_tracked_s": tracked["moving_time_s"],
             "pace_required_km_per_day": pace_required,
             "projection_km": projection,
@@ -298,6 +360,13 @@ def build_dashboard(
             "on_track": km >= objective or (projection is not None and projection >= objective),
             "completed": km >= objective,
             "tracking": tracked,
+            "leaderboard_adjustment": ({
+                "distance_km": reconciled_km,
+                "outings": reconciled_outings,
+                "observed_through": max(item["observed_on"] for item in reconciled),
+                "source": "Strava club leaderboard",
+                "activity_details_available": False,
+            } if reconciled else None),
             "milestones": runner_milestones,
             "_order": order,
         })
@@ -364,6 +433,14 @@ def build_dashboard(
         last_complete_observation = current.get("captured_at") or anchor_date.isoformat()
     else:
         last_complete_observation = anchor_date.isoformat()
+    reconciliation_datetimes = [
+        parsed for item in adjustments
+        if (parsed := _parse_datetime(item.get("captured_at"), timezone)) is not None
+    ]
+    last_reconciliation_dt = max(reconciliation_datetimes, default=None)
+    current_observation_dt = _parse_datetime(last_complete_observation, timezone)
+    if last_reconciliation_dt and (current_observation_dt is None or last_reconciliation_dt > current_observation_dt):
+        last_complete_observation = last_reconciliation_dt.isoformat(timespec="seconds")
 
     return {
         "schema_version": 2,
@@ -415,6 +492,11 @@ def build_dashboard(
             "cumulative_activity_stats_basis": "golden_checkpoint_plus_incremental" if current.get("cumulative_stats") else "post_tracking_only",
             "tracking_active": tracking_active,
             "activity_metrics_available": bool(all_tracked),
+            "leaderboard_reconciliation_count": len(adjustments),
+            "leaderboard_reconciliation_km": round(sum(float(item["distance_km"]) for item in adjustments), 2),
+            "last_leaderboard_reconciliation": (
+                last_reconciliation_dt.isoformat(timespec="seconds") if last_reconciliation_dt else None
+            ),
         },
         "coverage": {
             "baseline_checkpoint": baseline["checkpoint_date"],
@@ -424,6 +506,7 @@ def build_dashboard(
             "approximate_chart_days": sorted(approximate_days),
             "estimated_activity_dates": estimated_activity_dates,
             "outings_and_elevation_are_post_checkpoint_only": True,
+            "leaderboard_adjustments": len(adjustments),
         },
     }
 
@@ -433,6 +516,7 @@ def build_from_files(root: Path = ROOT, now: datetime | None = None) -> dict[str
         load_json(root / "config/challenge.json"), load_json(root / "config/participants.json"),
         load_json(root / "config/baseline.json"), load_json(root / "bootstrap/current_baseline.json"),
         load_json(root / "state/activity_ledger.json"), now,
+        load_json(root / "state/leaderboard_adjustments.json"),
     )
     atomic_write_json(root / "data.json", dashboard)
     return dashboard

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "adjustments": [
+    {
+      "id": "2026-08-19-kept-es-current-week",
+      "participant": "Kept ES",
+      "observed_on": "2026-08-19",
+      "captured_at": "2026-08-19T09:27:00+02:00",
+      "distance_km": 21.87,
+      "outings": 2,
+      "elevation_m": null,
+      "source": "Strava club leaderboard screenshot"
+    },
+    {
+      "id": "2026-08-19-borja-current-week",
+      "participant": "Borja Glez- Palenzuela Gracia",
+      "observed_on": "2026-08-19",
+      "captured_at": "2026-08-19T09:27:00+02:00",
+      "distance_km": 8.74,
+      "outings": 1,
+      "elevation_m": null,
+      "source": "Strava club leaderboard screenshot"
+    }
+  ]
+}

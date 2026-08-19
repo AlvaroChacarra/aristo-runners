@@ -35,5 +35,6 @@ def configs():
         "baseline": load_json(ROOT / "config/baseline.json"),
         "current": current,
         "ledger": empty_ledger(),
+        "leaderboard_adjustments": {"version": 1, "adjustments": []},
     }
     return deepcopy(values)

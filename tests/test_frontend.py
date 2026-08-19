@@ -18,6 +18,7 @@ class FrontendTests(unittest.TestCase):
         self.assertIn("Eficiencia de las salidas", self.html)
         self.assertIn("Hitos del reto", self.html)
         self.assertIn("schema_version!==2", self.html)
+        self.assertIn("Reconciliación leaderboard", self.html)
 
     def test_objective_copy_is_loaded_from_data(self):
         self.assertNotIn("120 km", self.html)

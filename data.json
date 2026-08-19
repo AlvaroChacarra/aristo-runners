@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-19T09:08:32+02:00",
+  "generated_at": "2026-08-19T09:52:43+02:00",
   "data_through": "2026-08-19",
   "challenge": {
     "club_name": "ARISTO runners",
@@ -14,17 +14,17 @@
     "timezone": "Europe/Madrid"
   },
   "summary": {
-    "total_km": 735.31,
-    "progress_pct": 49.0,
-    "projection_km": 1058.8,
-    "projection_gap_km": -441.2,
+    "total_km": 765.92,
+    "progress_pct": 51.1,
+    "projection_km": 1102.9,
+    "projection_gap_km": -397.1,
     "active_runners": 11,
     "participants": 12,
     "completed_runners": 0,
-    "on_track_runners": 4,
+    "on_track_runners": 5,
     "outings_tracked": 7,
     "elevation_tracked_m": 588,
-    "outings_total": 87,
+    "outings_total": 90,
     "elevation_total_m": 6426,
     "elevation_total_complete": false
   },
@@ -82,6 +82,7 @@
           }
         ]
       },
+      "leaderboard_adjustment": null,
       "milestones": [
         {
           "pct": 25,
@@ -113,23 +114,23 @@
         }
       ],
       "rank": 1,
-      "contribution_pct": 15.3
+      "contribution_pct": 14.7
     },
     {
       "slug": "borja-glez-palenzuela-gracia",
       "name": "Borja Glez- Palenzuela Gracia",
-      "km": 101.97,
-      "progress_pct": 81.6,
-      "remaining_km": 23.03,
+      "km": 110.71,
+      "progress_pct": 88.6,
+      "remaining_km": 14.29,
       "outings_tracked": 0,
       "elevation_tracked_m": 0,
-      "outings_total": 9,
+      "outings_total": 10,
       "elevation_total_m": 779,
-      "elevation_total_complete": true,
+      "elevation_total_complete": false,
       "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 2.09,
-      "projection_km": 146.8,
-      "projection_gap_km": 21.8,
+      "pace_required_km_per_day": 1.3,
+      "projection_km": 159.4,
+      "projection_gap_km": 34.4,
       "on_track": true,
       "completed": false,
       "tracking": {
@@ -148,6 +149,13 @@
           "long_10k_plus": 0
         },
         "activities": []
+      },
+      "leaderboard_adjustment": {
+        "distance_km": 8.74,
+        "outings": 1,
+        "observed_through": "2026-08-19",
+        "source": "Strava club leaderboard",
+        "activity_details_available": false
       },
       "milestones": [
         {
@@ -180,7 +188,7 @@
         }
       ],
       "rank": 2,
-      "contribution_pct": 13.9
+      "contribution_pct": 14.5
     },
     {
       "slug": "antonio-meijide",
@@ -226,6 +234,7 @@
           }
         ]
       },
+      "leaderboard_adjustment": null,
       "milestones": [
         {
           "pct": 25,
@@ -257,7 +266,7 @@
         }
       ],
       "rank": 3,
-      "contribution_pct": 13.8
+      "contribution_pct": 13.3
     },
     {
       "slug": "francisco-javier-moreno-munoz",
@@ -303,6 +312,7 @@
           }
         ]
       },
+      "leaderboard_adjustment": null,
       "milestones": [
         {
           "pct": 25,
@@ -334,7 +344,81 @@
         }
       ],
       "rank": 4,
-      "contribution_pct": 12.4
+      "contribution_pct": 11.9
+    },
+    {
+      "slug": "kept-es",
+      "name": "Kept ES",
+      "km": 90.03,
+      "progress_pct": 72.0,
+      "remaining_km": 34.97,
+      "outings_tracked": 0,
+      "elevation_tracked_m": 0,
+      "outings_total": 9,
+      "elevation_total_m": 1356,
+      "elevation_total_complete": false,
+      "moving_time_tracked_s": 0,
+      "pace_required_km_per_day": 3.18,
+      "projection_km": 129.6,
+      "projection_gap_km": 4.6,
+      "on_track": true,
+      "completed": false,
+      "tracking": {
+        "available": false,
+        "outings": 0,
+        "distance_km": 0,
+        "km_per_outing": null,
+        "longest_outing_km": null,
+        "weighted_pace_min_per_km": null,
+        "elevation_m": 0,
+        "elevation_m_per_km": null,
+        "moving_time_s": 0,
+        "distribution": {
+          "short_under_5k": 0,
+          "medium_5_to_10k": 0,
+          "long_10k_plus": 0
+        },
+        "activities": []
+      },
+      "leaderboard_adjustment": {
+        "distance_km": 21.87,
+        "outings": 2,
+        "observed_through": "2026-08-19",
+        "source": "Strava club leaderboard",
+        "activity_details_available": false
+      },
+      "milestones": [
+        {
+          "pct": 25,
+          "target_km": 31.25,
+          "status": "before_tracking",
+          "reached_on": null,
+          "checkpoint_date": "2026-08-16"
+        },
+        {
+          "pct": 50,
+          "target_km": 62.5,
+          "status": "before_tracking",
+          "reached_on": null,
+          "checkpoint_date": "2026-08-16"
+        },
+        {
+          "pct": 75,
+          "target_km": 93.75,
+          "status": "pending",
+          "reached_on": null,
+          "checkpoint_date": "2026-08-16"
+        },
+        {
+          "pct": 100,
+          "target_km": 125.0,
+          "status": "pending",
+          "reached_on": null,
+          "checkpoint_date": "2026-08-16"
+        }
+      ],
+      "rank": 5,
+      "contribution_pct": 11.8
     },
     {
       "slug": "pablo-de-heras",
@@ -380,6 +464,7 @@
           }
         ]
       },
+      "leaderboard_adjustment": null,
       "milestones": [
         {
           "pct": 25,
@@ -410,8 +495,8 @@
           "checkpoint_date": "2026-08-16"
         }
       ],
-      "rank": 5,
-      "contribution_pct": 10.9
+      "rank": 6,
+      "contribution_pct": 10.5
     },
     {
       "slug": "kike-rasilla",
@@ -457,73 +542,7 @@
           }
         ]
       },
-      "milestones": [
-        {
-          "pct": 25,
-          "target_km": 31.25,
-          "status": "before_tracking",
-          "reached_on": null,
-          "checkpoint_date": "2026-08-16"
-        },
-        {
-          "pct": 50,
-          "target_km": 62.5,
-          "status": "before_tracking",
-          "reached_on": null,
-          "checkpoint_date": "2026-08-16"
-        },
-        {
-          "pct": 75,
-          "target_km": 93.75,
-          "status": "pending",
-          "reached_on": null,
-          "checkpoint_date": "2026-08-16"
-        },
-        {
-          "pct": 100,
-          "target_km": 125.0,
-          "status": "pending",
-          "reached_on": null,
-          "checkpoint_date": "2026-08-16"
-        }
-      ],
-      "rank": 6,
-      "contribution_pct": 10.9
-    },
-    {
-      "slug": "kept-es",
-      "name": "Kept ES",
-      "km": 68.16,
-      "progress_pct": 54.5,
-      "remaining_km": 56.84,
-      "outings_tracked": 0,
-      "elevation_tracked_m": 0,
-      "outings_total": 7,
-      "elevation_total_m": 1356,
-      "elevation_total_complete": true,
-      "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 5.17,
-      "projection_km": 98.2,
-      "projection_gap_km": -26.8,
-      "on_track": false,
-      "completed": false,
-      "tracking": {
-        "available": false,
-        "outings": 0,
-        "distance_km": 0,
-        "km_per_outing": null,
-        "longest_outing_km": null,
-        "weighted_pace_min_per_km": null,
-        "elevation_m": 0,
-        "elevation_m_per_km": null,
-        "moving_time_s": 0,
-        "distribution": {
-          "short_under_5k": 0,
-          "medium_5_to_10k": 0,
-          "long_10k_plus": 0
-        },
-        "activities": []
-      },
+      "leaderboard_adjustment": null,
       "milestones": [
         {
           "pct": 25,
@@ -555,7 +574,7 @@
         }
       ],
       "rank": 7,
-      "contribution_pct": 9.3
+      "contribution_pct": 10.4
     },
     {
       "slug": "alonso-alamo",
@@ -591,6 +610,7 @@
         },
         "activities": []
       },
+      "leaderboard_adjustment": null,
       "milestones": [
         {
           "pct": 25,
@@ -622,7 +642,7 @@
         }
       ],
       "rank": 8,
-      "contribution_pct": 8.7
+      "contribution_pct": 8.3
     },
     {
       "slug": "alvaro-lopez-chacarra",
@@ -658,6 +678,7 @@
         },
         "activities": []
       },
+      "leaderboard_adjustment": null,
       "milestones": [
         {
           "pct": 25,
@@ -689,7 +710,7 @@
         }
       ],
       "rank": 9,
-      "contribution_pct": 1.9
+      "contribution_pct": 1.8
     },
     {
       "slug": "pablo-gonzalez-betere",
@@ -725,6 +746,7 @@
         },
         "activities": []
       },
+      "leaderboard_adjustment": null,
       "milestones": [
         {
           "pct": 25,
@@ -756,7 +778,7 @@
         }
       ],
       "rank": 10,
-      "contribution_pct": 1.8
+      "contribution_pct": 1.7
     },
     {
       "slug": "sergio-sanchez",
@@ -802,6 +824,7 @@
           }
         ]
       },
+      "leaderboard_adjustment": null,
       "milestones": [
         {
           "pct": 25,
@@ -869,6 +892,7 @@
         },
         "activities": []
       },
+      "leaderboard_adjustment": null,
       "milestones": [
         {
           "pct": 25,
@@ -1181,18 +1205,18 @@
           101.97,
           101.97,
           101.97,
-          101.97,
-          101.97,
-          101.97,
-          101.97,
-          101.97,
-          101.97,
-          101.97,
-          101.97,
-          101.97,
-          101.97,
-          101.97,
-          101.97
+          110.71,
+          110.71,
+          110.71,
+          110.71,
+          110.71,
+          110.71,
+          110.71,
+          110.71,
+          110.71,
+          110.71,
+          110.71,
+          110.71
         ]
       },
       {
@@ -1265,18 +1289,18 @@
           68.16,
           68.16,
           68.16,
-          68.16,
-          68.16,
-          68.16,
-          68.16,
-          68.16,
-          68.16,
-          68.16,
-          68.16,
-          68.16,
-          68.16,
-          68.16,
-          68.16
+          90.03,
+          90.03,
+          90.03,
+          90.03,
+          90.03,
+          90.03,
+          90.03,
+          90.03,
+          90.03,
+          90.03,
+          90.03,
+          90.03
         ]
       },
       {
@@ -1455,7 +1479,7 @@
       "km": 112.25
     },
     "completed_objective": 0,
-    "on_track": 4,
+    "on_track": 5,
     "cards": [
       {
         "kind": "leader",
@@ -1501,7 +1525,7 @@
   },
   "quality": {
     "last_feed_check": "2026-08-19T09:08:32+02:00",
-    "last_complete_observation": "2026-08-19T09:08:32+02:00",
+    "last_complete_observation": "2026-08-19T09:27:00+02:00",
     "latest_activity_detected_at": "2026-08-19T09:08:32+02:00",
     "baseline_checkpoint": "2026-08-10",
     "tracking_checkpoint": "2026-08-16",
@@ -1509,7 +1533,10 @@
     "activity_metrics_basis": "post_tracking_checkpoint",
     "cumulative_activity_stats_basis": "golden_checkpoint_plus_incremental",
     "tracking_active": true,
-    "activity_metrics_available": true
+    "activity_metrics_available": true,
+    "leaderboard_reconciliation_count": 2,
+    "leaderboard_reconciliation_km": 30.61,
+    "last_leaderboard_reconciliation": "2026-08-19T09:27:00+02:00"
   },
   "coverage": {
     "baseline_checkpoint": "2026-08-10",
@@ -1532,6 +1559,7 @@
       22
     ],
     "estimated_activity_dates": true,
-    "outings_and_elevation_are_post_checkpoint_only": true
+    "outings_and_elevation_are_post_checkpoint_only": true,
+    "leaderboard_adjustments": 2
   }
 }

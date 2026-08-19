@@ -238,13 +238,14 @@ def run_update(
     baseline = load_json(root / "config/baseline.json")
     current = load_json(root / "bootstrap/current_baseline.json")
     ledger = load_json(root / "state/activity_ledger.json")
+    leaderboard_adjustments = load_json(root / "state/leaderboard_adjustments.json")
     override = challenge.get("club_id")
     club_id = int(override or ledger.get("club_id") or client.discover_club(challenge["club_name"]))
     activities = client.list_club_activities(club_id)
     updated = process_feed(ledger, activities, challenge, participants, current, baseline["checkpoint_date"], now)
     updated["club_id"] = club_id
     updated["last_successful_update"] = now.isoformat(timespec="seconds")
-    dashboard = build_dashboard(challenge, participants, baseline, current, updated, now)
+    dashboard = build_dashboard(challenge, participants, baseline, current, updated, now, leaderboard_adjustments)
     atomic_write_json(root / "state/activity_ledger.json", updated)
     atomic_write_json(root / "data.json", dashboard)
     probe = updated.get("field_probe") or {}

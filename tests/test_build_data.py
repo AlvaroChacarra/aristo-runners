@@ -17,11 +17,12 @@ class BuildDataTests(unittest.TestCase):
     def setUp(self):
         self.values = configs()
 
-    def build(self, ledger=None, current=None, now=None):
+    def build(self, ledger=None, current=None, now=None, leaderboard_adjustments=None):
         return build_dashboard(
             self.values["challenge"], self.values["participants"], self.values["baseline"],
             current or self.values["current"], ledger or self.values["ledger"],
             now or datetime(2026, 8, 10, 12, tzinfo=MADRID),
+            leaderboard_adjustments or self.values["leaderboard_adjustments"],
         )
 
     def test_ranking_and_125_km_objective(self):
@@ -142,6 +143,25 @@ class BuildDataTests(unittest.TestCase):
             sum(current["totals_km"].values()) - 403.9,
             current["weekly_snapshot"]["net_challenge_increment_km"],
         )
+
+    def test_leaderboard_reconciles_hidden_kept_and_borja_activities(self):
+        current = load_json(ROOT / "bootstrap/current_baseline.json")
+        adjustments = load_json(ROOT / "state/leaderboard_adjustments.json")
+        data = self.build(
+            current=current,
+            leaderboard_adjustments=adjustments,
+            now=datetime(2026, 8, 19, 9, 30, tzinfo=MADRID),
+        )
+        kept = next(runner for runner in data["runners"] if runner["name"] == "Kept ES")
+        borja = next(runner for runner in data["runners"] if runner["name"].startswith("Borja"))
+        self.assertEqual((kept["km"], kept["outings_total"]), (90.03, 9))
+        self.assertEqual((borja["km"], borja["outings_total"]), (110.71, 10))
+        self.assertEqual(kept["tracking"]["outings"], 0)
+        self.assertEqual(borja["tracking"]["outings"], 0)
+        self.assertFalse(kept["elevation_total_complete"])
+        self.assertFalse(borja["elevation_total_complete"])
+        self.assertEqual(data["quality"]["leaderboard_reconciliation_km"], 30.61)
+        self.assertEqual(data["coverage"]["leaderboard_adjustments"], 2)
 
 
 if __name__ == "__main__":

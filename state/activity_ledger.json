@@ -177,10 +177,22 @@
       "elapsed_time_s": 3524,
       "elevation_m": 117.0,
       "sport_type": "Run"
+    },
+    {
+      "fingerprint": "94df03d6d0972ade2ef0b29582bb983f94f7f881664c0c8a8162f19313b04ee2",
+      "participant": "Kike Rasilla",
+      "activity_date": "2026-08-20",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-20T10:58:18+02:00",
+      "distance_km": 6.006,
+      "moving_time_s": 2026,
+      "elapsed_time_s": 2054,
+      "elevation_m": 28.0,
+      "sport_type": "Run"
     }
   ],
   "field_probe": {
-    "sample_size": 83,
+    "sample_size": 84,
     "observed_top_level_fields": [
       "athlete",
       "device_name",
@@ -204,11 +216,11 @@
     "start_date_local_present": 0,
     "athlete_id_present": 0,
     "historical_capable": false,
-    "eligible_sample_size": 83,
+    "eligible_sample_size": 84,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-20T09:59:10+02:00",
-  "last_feed_size": 83,
+  "last_successful_update": "2026-08-20T10:58:18+02:00",
+  "last_feed_size": 84,
   "unmatched_activities": 0,
   "unmatched_athletes": [],
   "incremental_checkpoint_date": "2026-08-16"

@@ -189,6 +189,18 @@
       "elapsed_time_s": 2054,
       "elevation_m": 28.0,
       "sport_type": "Run"
+    },
+    {
+      "fingerprint": "ae592b8233345914da1843ec518f71178002544289fe867ced2ed59c244c235c",
+      "participant": "Francisco Javier Moreno Muñoz",
+      "activity_date": "2026-08-21",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-21T09:59:48+02:00",
+      "distance_km": 7.277,
+      "moving_time_s": 2652,
+      "elapsed_time_s": 2847,
+      "elevation_m": 75.0,
+      "sport_type": "Run"
     }
   ],
   "field_probe": {
@@ -219,7 +231,7 @@
     "eligible_sample_size": 81,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-21T09:10:14+02:00",
+  "last_successful_update": "2026-08-21T09:59:48+02:00",
   "last_feed_size": 81,
   "unmatched_activities": 0,
   "unmatched_athletes": [],

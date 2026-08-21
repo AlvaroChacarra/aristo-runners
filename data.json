@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-21T09:10:14+02:00",
+  "generated_at": "2026-08-21T09:59:48+02:00",
   "data_through": "2026-08-21",
   "challenge": {
     "club_name": "ARISTO runners",
@@ -14,18 +14,18 @@
     "timezone": "Europe/Madrid"
   },
   "summary": {
-    "total_km": 771.92,
-    "progress_pct": 51.5,
-    "projection_km": 1029.2,
-    "projection_gap_km": -470.8,
+    "total_km": 779.2,
+    "progress_pct": 51.9,
+    "projection_km": 1038.9,
+    "projection_gap_km": -461.1,
     "active_runners": 11,
     "participants": 12,
     "completed_runners": 0,
-    "on_track_runners": 3,
-    "outings_tracked": 8,
-    "elevation_tracked_m": 616,
-    "outings_total": 91,
-    "elevation_total_m": 6454,
+    "on_track_runners": 4,
+    "outings_tracked": 9,
+    "elevation_tracked_m": 690,
+    "outings_total": 92,
+    "elevation_total_m": 6529,
     "elevation_total_complete": false
   },
   "runners": [
@@ -114,7 +114,7 @@
         }
       ],
       "rank": 1,
-      "contribution_pct": 14.5
+      "contribution_pct": 14.4
     },
     {
       "slug": "borja-glez-palenzuela-gracia",
@@ -188,7 +188,7 @@
         }
       ],
       "rank": 2,
-      "contribution_pct": 14.3
+      "contribution_pct": 14.2
     },
     {
       "slug": "antonio-meijide",
@@ -266,41 +266,50 @@
         }
       ],
       "rank": 3,
-      "contribution_pct": 13.2
+      "contribution_pct": 13.0
     },
     {
       "slug": "francisco-javier-moreno-munoz",
       "name": "Francisco Javier Moreno Muñoz",
-      "km": 91.18,
-      "progress_pct": 72.9,
-      "remaining_km": 33.82,
-      "outings_tracked": 1,
-      "elevation_tracked_m": 60,
-      "outings_total": 13,
-      "elevation_total_m": 542,
+      "km": 98.46,
+      "progress_pct": 78.8,
+      "remaining_km": 26.54,
+      "outings_tracked": 2,
+      "elevation_tracked_m": 135,
+      "outings_total": 14,
+      "elevation_total_m": 617,
       "elevation_total_complete": true,
-      "moving_time_tracked_s": 2523,
-      "pace_required_km_per_day": 3.76,
-      "projection_km": 121.6,
-      "projection_gap_km": -3.4,
-      "on_track": false,
+      "moving_time_tracked_s": 5175,
+      "pace_required_km_per_day": 2.95,
+      "projection_km": 131.3,
+      "projection_gap_km": 6.3,
+      "on_track": true,
       "completed": false,
       "tracking": {
         "available": true,
-        "outings": 1,
-        "distance_km": 7.289,
-        "km_per_outing": 7.29,
+        "outings": 2,
+        "distance_km": 14.566,
+        "km_per_outing": 7.28,
         "longest_outing_km": 7.29,
-        "weighted_pace_min_per_km": 5.77,
-        "elevation_m": 60.0,
-        "elevation_m_per_km": 8.2,
-        "moving_time_s": 2523,
+        "weighted_pace_min_per_km": 5.92,
+        "elevation_m": 135.0,
+        "elevation_m_per_km": 9.3,
+        "moving_time_s": 5175,
         "distribution": {
           "short_under_5k": 0,
-          "medium_5_to_10k": 1,
+          "medium_5_to_10k": 2,
           "long_10k_plus": 0
         },
         "activities": [
+          {
+            "date": "2026-08-21",
+            "date_basis": "detected",
+            "detected_at": "2026-08-21T09:59:48+02:00",
+            "distance_km": 7.277,
+            "moving_time_s": 2652,
+            "elevation_m": 75.0,
+            "sport_type": "Run"
+          },
           {
             "date": "2026-08-18",
             "date_basis": "detected",
@@ -331,8 +340,8 @@
         {
           "pct": 75,
           "target_km": 93.75,
-          "status": "pending",
-          "reached_on": null,
+          "status": "detected",
+          "reached_on": "2026-08-21",
           "checkpoint_date": "2026-08-16"
         },
         {
@@ -344,7 +353,7 @@
         }
       ],
       "rank": 4,
-      "contribution_pct": 11.8
+      "contribution_pct": 12.6
     },
     {
       "slug": "kept-es",
@@ -418,7 +427,7 @@
         }
       ],
       "rank": 5,
-      "contribution_pct": 11.7
+      "contribution_pct": 11.6
     },
     {
       "slug": "kike-rasilla",
@@ -505,7 +514,7 @@
         }
       ],
       "rank": 6,
-      "contribution_pct": 11.1
+      "contribution_pct": 11.0
     },
     {
       "slug": "pablo-de-heras",
@@ -583,7 +592,7 @@
         }
       ],
       "rank": 7,
-      "contribution_pct": 10.4
+      "contribution_pct": 10.3
     },
     {
       "slug": "alonso-alamo",
@@ -651,7 +660,7 @@
         }
       ],
       "rank": 8,
-      "contribution_pct": 8.3
+      "contribution_pct": 8.2
     },
     {
       "slug": "alvaro-lopez-chacarra",
@@ -1132,16 +1141,16 @@
           91.18,
           91.18,
           91.18,
-          91.18,
-          91.18,
-          91.18,
-          91.18,
-          91.18,
-          91.18,
-          91.18,
-          91.18,
-          91.18,
-          91.18
+          98.46,
+          98.46,
+          98.46,
+          98.46,
+          98.46,
+          98.46,
+          98.46,
+          98.46,
+          98.46,
+          98.46
         ]
       },
       {
@@ -1488,7 +1497,7 @@
       "km": 112.25
     },
     "completed_objective": 0,
-    "on_track": 3,
+    "on_track": 4,
     "cards": [
       {
         "kind": "leader",
@@ -1525,17 +1534,17 @@
       {
         "kind": "latest_milestone",
         "label": "Último hito alcanzado",
-        "name": "Pablo Meijide",
-        "runner_slug": "pablo-meijide",
+        "name": "Francisco Javier Moreno Muñoz",
+        "runner_slug": "francisco-javier-moreno-munoz",
         "value": "75% del objetivo",
         "scope": "post_tracking_checkpoint"
       }
     ]
   },
   "quality": {
-    "last_feed_check": "2026-08-21T09:10:14+02:00",
-    "last_complete_observation": "2026-08-21T09:10:14+02:00",
-    "latest_activity_detected_at": "2026-08-20T10:58:18+02:00",
+    "last_feed_check": "2026-08-21T09:59:48+02:00",
+    "last_complete_observation": "2026-08-21T09:59:48+02:00",
+    "latest_activity_detected_at": "2026-08-21T09:59:48+02:00",
     "baseline_checkpoint": "2026-08-10",
     "tracking_checkpoint": "2026-08-16",
     "totals_basis": "checkpoint_plus_incremental",

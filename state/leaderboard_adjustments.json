@@ -20,6 +20,26 @@
       "outings": 1,
       "elevation_m": null,
       "source": "Strava club leaderboard screenshot"
+    },
+    {
+      "id": "2026-08-21-kept-es-current-week-delta",
+      "participant": "Kept ES",
+      "observed_on": "2026-08-21",
+      "captured_at": "2026-08-21T14:05:00+02:00",
+      "distance_km": 20.69,
+      "outings": 2,
+      "elevation_m": null,
+      "source": "Strava club leaderboard screenshot"
+    },
+    {
+      "id": "2026-08-21-borja-current-week-delta",
+      "participant": "Borja Glez- Palenzuela Gracia",
+      "observed_on": "2026-08-21",
+      "captured_at": "2026-08-21T14:05:00+02:00",
+      "distance_km": 10.61,
+      "outings": 1,
+      "elevation_m": null,
+      "source": "Strava club leaderboard screenshot"
     }
   ]
 }

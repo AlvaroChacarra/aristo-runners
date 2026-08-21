@@ -144,24 +144,24 @@ class BuildDataTests(unittest.TestCase):
             current["weekly_snapshot"]["net_challenge_increment_km"],
         )
 
-    def test_leaderboard_reconciles_hidden_kept_and_borja_activities(self):
+    def test_leaderboard_reconciles_hidden_kept_and_borja_activities_through_august_21(self):
         current = load_json(ROOT / "bootstrap/current_baseline.json")
         adjustments = load_json(ROOT / "state/leaderboard_adjustments.json")
         data = self.build(
             current=current,
             leaderboard_adjustments=adjustments,
-            now=datetime(2026, 8, 19, 9, 30, tzinfo=MADRID),
+            now=datetime(2026, 8, 21, 14, 6, tzinfo=MADRID),
         )
         kept = next(runner for runner in data["runners"] if runner["name"] == "Kept ES")
         borja = next(runner for runner in data["runners"] if runner["name"].startswith("Borja"))
-        self.assertEqual((kept["km"], kept["outings_total"]), (90.03, 9))
-        self.assertEqual((borja["km"], borja["outings_total"]), (110.71, 10))
+        self.assertEqual((kept["km"], kept["outings_total"]), (110.72, 11))
+        self.assertEqual((borja["km"], borja["outings_total"]), (121.32, 11))
         self.assertEqual(kept["tracking"]["outings"], 0)
         self.assertEqual(borja["tracking"]["outings"], 0)
         self.assertFalse(kept["elevation_total_complete"])
         self.assertFalse(borja["elevation_total_complete"])
-        self.assertEqual(data["quality"]["leaderboard_reconciliation_km"], 30.61)
-        self.assertEqual(data["coverage"]["leaderboard_adjustments"], 2)
+        self.assertEqual(data["quality"]["leaderboard_reconciliation_km"], 61.91)
+        self.assertEqual(data["coverage"]["leaderboard_adjustments"], 4)
 
 
 if __name__ == "__main__":

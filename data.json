@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-21T14:08:32+02:00",
+  "generated_at": "2026-08-21T15:13:31+02:00",
   "data_through": "2026-08-21",
   "challenge": {
     "club_name": "ARISTO runners",
@@ -14,18 +14,18 @@
     "timezone": "Europe/Madrid"
   },
   "summary": {
-    "total_km": 810.5,
-    "progress_pct": 54.0,
-    "projection_km": 1080.7,
-    "projection_gap_km": -419.3,
+    "total_km": 816.11,
+    "progress_pct": 54.4,
+    "projection_km": 1088.1,
+    "projection_gap_km": -411.9,
     "active_runners": 11,
     "participants": 12,
     "completed_runners": 0,
     "on_track_runners": 5,
-    "outings_tracked": 9,
-    "elevation_tracked_m": 690,
-    "outings_total": 95,
-    "elevation_total_m": 6529,
+    "outings_tracked": 10,
+    "elevation_tracked_m": 720,
+    "outings_total": 96,
+    "elevation_total_m": 6559,
     "elevation_total_complete": false
   },
   "runners": [
@@ -101,7 +101,7 @@
         }
       ],
       "rank": 1,
-      "contribution_pct": 15.0
+      "contribution_pct": 14.9
     },
     {
       "slug": "pablo-meijide",
@@ -262,7 +262,7 @@
         }
       ],
       "rank": 3,
-      "contribution_pct": 13.7
+      "contribution_pct": 13.6
     },
     {
       "slug": "antonio-meijide",
@@ -432,36 +432,45 @@
     {
       "slug": "kike-rasilla",
       "name": "Kike Rasilla",
-      "km": 85.98,
-      "progress_pct": 68.8,
-      "remaining_km": 39.02,
-      "outings_tracked": 2,
-      "elevation_tracked_m": 135,
-      "outings_total": 11,
-      "elevation_total_m": 1000,
+      "km": 91.59,
+      "progress_pct": 73.3,
+      "remaining_km": 33.41,
+      "outings_tracked": 3,
+      "elevation_tracked_m": 165,
+      "outings_total": 12,
+      "elevation_total_m": 1030,
       "elevation_total_complete": false,
-      "moving_time_tracked_s": 4779,
-      "pace_required_km_per_day": 4.34,
-      "projection_km": 114.6,
-      "projection_gap_km": -10.4,
+      "moving_time_tracked_s": 6857,
+      "pace_required_km_per_day": 3.71,
+      "projection_km": 122.1,
+      "projection_gap_km": -2.9,
       "on_track": false,
       "completed": false,
       "tracking": {
         "available": true,
-        "outings": 2,
-        "distance_km": 14.015,
-        "km_per_outing": 7.01,
+        "outings": 3,
+        "distance_km": 19.618,
+        "km_per_outing": 6.54,
         "longest_outing_km": 8.01,
-        "weighted_pace_min_per_km": 5.68,
-        "elevation_m": 135.0,
-        "elevation_m_per_km": 9.6,
-        "moving_time_s": 4779,
+        "weighted_pace_min_per_km": 5.83,
+        "elevation_m": 165.0,
+        "elevation_m_per_km": 8.4,
+        "moving_time_s": 6857,
         "distribution": {
           "short_under_5k": 0,
-          "medium_5_to_10k": 2,
+          "medium_5_to_10k": 3,
           "long_10k_plus": 0
         },
         "activities": [
+          {
+            "date": "2026-08-21",
+            "date_basis": "detected",
+            "detected_at": "2026-08-21T15:13:31+02:00",
+            "distance_km": 5.603,
+            "moving_time_s": 2078,
+            "elevation_m": 30.0,
+            "sport_type": "Run"
+          },
           {
             "date": "2026-08-20",
             "date_basis": "detected",
@@ -514,7 +523,7 @@
         }
       ],
       "rank": 6,
-      "contribution_pct": 10.6
+      "contribution_pct": 11.2
     },
     {
       "slug": "pablo-de-heras",
@@ -592,7 +601,7 @@
         }
       ],
       "rank": 7,
-      "contribution_pct": 9.9
+      "contribution_pct": 9.8
     },
     {
       "slug": "alonso-alamo",
@@ -660,7 +669,7 @@
         }
       ],
       "rank": 8,
-      "contribution_pct": 7.9
+      "contribution_pct": 7.8
     },
     {
       "slug": "alvaro-lopez-chacarra",
@@ -796,7 +805,7 @@
         }
       ],
       "rank": 10,
-      "contribution_pct": 1.7
+      "contribution_pct": 1.6
     },
     {
       "slug": "sergio-sanchez",
@@ -1099,16 +1108,16 @@
           79.98,
           79.98,
           85.98,
-          85.98,
-          85.98,
-          85.98,
-          85.98,
-          85.98,
-          85.98,
-          85.98,
-          85.98,
-          85.98,
-          85.98
+          91.59,
+          91.59,
+          91.59,
+          91.59,
+          91.59,
+          91.59,
+          91.59,
+          91.59,
+          91.59,
+          91.59
         ]
       },
       {
@@ -1542,9 +1551,9 @@
     ]
   },
   "quality": {
-    "last_feed_check": "2026-08-21T13:45:22+02:00",
-    "last_complete_observation": "2026-08-21T14:05:00+02:00",
-    "latest_activity_detected_at": "2026-08-21T09:59:48+02:00",
+    "last_feed_check": "2026-08-21T15:13:31+02:00",
+    "last_complete_observation": "2026-08-21T15:13:31+02:00",
+    "latest_activity_detected_at": "2026-08-21T15:13:31+02:00",
     "baseline_checkpoint": "2026-08-10",
     "tracking_checkpoint": "2026-08-16",
     "totals_basis": "checkpoint_plus_incremental",

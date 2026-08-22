@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-22T09:47:54+02:00",
+  "generated_at": "2026-08-22T10:50:22+02:00",
   "data_through": "2026-08-22",
   "challenge": {
     "club_name": "ARISTO runners",
@@ -14,21 +14,117 @@
     "timezone": "Europe/Madrid"
   },
   "summary": {
-    "total_km": 816.11,
-    "progress_pct": 54.4,
-    "projection_km": 1049.3,
-    "projection_gap_km": -450.7,
+    "total_km": 828.42,
+    "progress_pct": 55.2,
+    "projection_km": 1065.1,
+    "projection_gap_km": -434.9,
     "active_runners": 11,
     "participants": 12,
     "completed_runners": 0,
     "on_track_runners": 5,
-    "outings_tracked": 10,
-    "elevation_tracked_m": 720,
-    "outings_total": 96,
-    "elevation_total_m": 6559,
+    "outings_tracked": 11,
+    "elevation_tracked_m": 862,
+    "outings_total": 97,
+    "elevation_total_m": 6700,
     "elevation_total_complete": false
   },
   "runners": [
+    {
+      "slug": "pablo-meijide",
+      "name": "Pablo Meijide",
+      "km": 124.56,
+      "progress_pct": 99.6,
+      "remaining_km": 0.44,
+      "outings_tracked": 3,
+      "elevation_tracked_m": 327,
+      "outings_total": 13,
+      "elevation_total_m": 1116,
+      "elevation_total_complete": true,
+      "moving_time_tracked_s": 9779,
+      "pace_required_km_per_day": 0.06,
+      "projection_km": 160.1,
+      "projection_gap_km": 35.1,
+      "on_track": true,
+      "completed": false,
+      "tracking": {
+        "available": true,
+        "outings": 3,
+        "distance_km": 31.61,
+        "km_per_outing": 10.54,
+        "longest_outing_km": 12.31,
+        "weighted_pace_min_per_km": 5.16,
+        "elevation_m": 327.0,
+        "elevation_m_per_km": 10.3,
+        "moving_time_s": 9779,
+        "distribution": {
+          "short_under_5k": 0,
+          "medium_5_to_10k": 1,
+          "long_10k_plus": 2
+        },
+        "activities": [
+          {
+            "date": "2026-08-22",
+            "date_basis": "detected",
+            "detected_at": "2026-08-22T10:50:22+02:00",
+            "distance_km": 12.313,
+            "moving_time_s": 3700,
+            "elevation_m": 141.0,
+            "sport_type": "Run"
+          },
+          {
+            "date": "2026-08-19",
+            "date_basis": "detected",
+            "detected_at": "2026-08-19T09:08:32+02:00",
+            "distance_km": 10.599,
+            "moving_time_s": 3501,
+            "elevation_m": 117.0,
+            "sport_type": "Run"
+          },
+          {
+            "date": "2026-08-18",
+            "date_basis": "detected",
+            "detected_at": "2026-08-18T09:07:13+02:00",
+            "distance_km": 8.698,
+            "moving_time_s": 2578,
+            "elevation_m": 69.0,
+            "sport_type": "Run"
+          }
+        ]
+      },
+      "leaderboard_adjustment": null,
+      "milestones": [
+        {
+          "pct": 25,
+          "target_km": 31.25,
+          "status": "before_tracking",
+          "reached_on": null,
+          "checkpoint_date": "2026-08-16"
+        },
+        {
+          "pct": 50,
+          "target_km": 62.5,
+          "status": "before_tracking",
+          "reached_on": null,
+          "checkpoint_date": "2026-08-16"
+        },
+        {
+          "pct": 75,
+          "target_km": 93.75,
+          "status": "detected",
+          "reached_on": "2026-08-18",
+          "checkpoint_date": "2026-08-16"
+        },
+        {
+          "pct": 100,
+          "target_km": 125.0,
+          "status": "pending",
+          "reached_on": null,
+          "checkpoint_date": "2026-08-16"
+        }
+      ],
+      "rank": 1,
+      "contribution_pct": 15.0
+    },
     {
       "slug": "borja-glez-palenzuela-gracia",
       "name": "Borja Glez- Palenzuela Gracia",
@@ -100,95 +196,8 @@
           "checkpoint_date": "2026-08-16"
         }
       ],
-      "rank": 1,
-      "contribution_pct": 14.9
-    },
-    {
-      "slug": "pablo-meijide",
-      "name": "Pablo Meijide",
-      "km": 112.25,
-      "progress_pct": 89.8,
-      "remaining_km": 12.75,
-      "outings_tracked": 2,
-      "elevation_tracked_m": 186,
-      "outings_total": 12,
-      "elevation_total_m": 975,
-      "elevation_total_complete": true,
-      "moving_time_tracked_s": 6079,
-      "pace_required_km_per_day": 1.59,
-      "projection_km": 144.3,
-      "projection_gap_km": 19.3,
-      "on_track": true,
-      "completed": false,
-      "tracking": {
-        "available": true,
-        "outings": 2,
-        "distance_km": 19.297,
-        "km_per_outing": 9.65,
-        "longest_outing_km": 10.6,
-        "weighted_pace_min_per_km": 5.25,
-        "elevation_m": 186.0,
-        "elevation_m_per_km": 9.6,
-        "moving_time_s": 6079,
-        "distribution": {
-          "short_under_5k": 0,
-          "medium_5_to_10k": 1,
-          "long_10k_plus": 1
-        },
-        "activities": [
-          {
-            "date": "2026-08-19",
-            "date_basis": "detected",
-            "detected_at": "2026-08-19T09:08:32+02:00",
-            "distance_km": 10.599,
-            "moving_time_s": 3501,
-            "elevation_m": 117.0,
-            "sport_type": "Run"
-          },
-          {
-            "date": "2026-08-18",
-            "date_basis": "detected",
-            "detected_at": "2026-08-18T09:07:13+02:00",
-            "distance_km": 8.698,
-            "moving_time_s": 2578,
-            "elevation_m": 69.0,
-            "sport_type": "Run"
-          }
-        ]
-      },
-      "leaderboard_adjustment": null,
-      "milestones": [
-        {
-          "pct": 25,
-          "target_km": 31.25,
-          "status": "before_tracking",
-          "reached_on": null,
-          "checkpoint_date": "2026-08-16"
-        },
-        {
-          "pct": 50,
-          "target_km": 62.5,
-          "status": "before_tracking",
-          "reached_on": null,
-          "checkpoint_date": "2026-08-16"
-        },
-        {
-          "pct": 75,
-          "target_km": 93.75,
-          "status": "detected",
-          "reached_on": "2026-08-18",
-          "checkpoint_date": "2026-08-16"
-        },
-        {
-          "pct": 100,
-          "target_km": 125.0,
-          "status": "pending",
-          "reached_on": null,
-          "checkpoint_date": "2026-08-16"
-        }
-      ],
       "rank": 2,
-      "contribution_pct": 13.8
+      "contribution_pct": 14.6
     },
     {
       "slug": "kept-es",
@@ -262,7 +271,7 @@
         }
       ],
       "rank": 3,
-      "contribution_pct": 13.6
+      "contribution_pct": 13.4
     },
     {
       "slug": "antonio-meijide",
@@ -340,7 +349,7 @@
         }
       ],
       "rank": 4,
-      "contribution_pct": 12.5
+      "contribution_pct": 12.3
     },
     {
       "slug": "francisco-javier-moreno-munoz",
@@ -427,7 +436,7 @@
         }
       ],
       "rank": 5,
-      "contribution_pct": 12.1
+      "contribution_pct": 11.9
     },
     {
       "slug": "kike-rasilla",
@@ -523,7 +532,7 @@
         }
       ],
       "rank": 6,
-      "contribution_pct": 11.2
+      "contribution_pct": 11.1
     },
     {
       "slug": "pablo-de-heras",
@@ -601,7 +610,7 @@
         }
       ],
       "rank": 7,
-      "contribution_pct": 9.8
+      "contribution_pct": 9.7
     },
     {
       "slug": "alonso-alamo",
@@ -669,7 +678,7 @@
         }
       ],
       "rank": 8,
-      "contribution_pct": 7.8
+      "contribution_pct": 7.7
     },
     {
       "slug": "alvaro-lopez-chacarra",
@@ -1025,15 +1034,15 @@
           112.25,
           112.25,
           112.25,
-          112.25,
-          112.25,
-          112.25,
-          112.25,
-          112.25,
-          112.25,
-          112.25,
-          112.25,
-          112.25
+          124.56,
+          124.56,
+          124.56,
+          124.56,
+          124.56,
+          124.56,
+          124.56,
+          124.56,
+          124.56
         ]
       },
       {
@@ -1502,8 +1511,8 @@
   },
   "highlights": {
     "leader": {
-      "name": "Borja Glez- Palenzuela Gracia",
-      "km": 121.32
+      "name": "Pablo Meijide",
+      "km": 124.56
     },
     "completed_objective": 0,
     "on_track": 5,
@@ -1511,25 +1520,25 @@
       {
         "kind": "leader",
         "label": "Líder actual",
-        "name": "Borja Glez- Palenzuela Gracia",
-        "runner_slug": "borja-glez-palenzuela-gracia",
-        "value": "121.3 km",
+        "name": "Pablo Meijide",
+        "runner_slug": "pablo-meijide",
+        "value": "124.6 km",
         "scope": "total"
       },
       {
         "kind": "closest",
         "label": "Más cerca de 125 km",
-        "name": "Borja Glez- Palenzuela Gracia",
-        "runner_slug": "borja-glez-palenzuela-gracia",
-        "value": "le faltan 3.7 km",
+        "name": "Pablo Meijide",
+        "runner_slug": "pablo-meijide",
+        "value": "le faltan 0.4 km",
         "scope": "total"
       },
       {
         "kind": "longest_tracked",
         "label": "Salida más larga registrada",
-        "name": "Antonio Meijide",
-        "runner_slug": "antonio-meijide",
-        "value": "11.0 km",
+        "name": "Pablo Meijide",
+        "runner_slug": "pablo-meijide",
+        "value": "12.3 km",
         "scope": "post_tracking_checkpoint"
       },
       {
@@ -1551,9 +1560,9 @@
     ]
   },
   "quality": {
-    "last_feed_check": "2026-08-22T09:47:54+02:00",
-    "last_complete_observation": "2026-08-22T09:47:54+02:00",
-    "latest_activity_detected_at": "2026-08-21T15:13:31+02:00",
+    "last_feed_check": "2026-08-22T10:50:22+02:00",
+    "last_complete_observation": "2026-08-22T10:50:22+02:00",
+    "latest_activity_detected_at": "2026-08-22T10:50:22+02:00",
     "baseline_checkpoint": "2026-08-10",
     "tracking_checkpoint": "2026-08-16",
     "totals_basis": "checkpoint_plus_incremental",

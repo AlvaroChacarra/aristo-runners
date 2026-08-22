@@ -239,6 +239,30 @@
       "sport_type": "Run"
     },
     {
+      "fingerprint": "3920ac0d822815cb26c2b26a5488d1e94ca1c5243ae0e44addd9a9f096f6c95e",
+      "participant": "Antonio Meijide",
+      "activity_date": "2026-08-22",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-22T15:46:12+02:00",
+      "distance_km": 12.174,
+      "moving_time_s": 3549,
+      "elapsed_time_s": 3554,
+      "elevation_m": 218.4,
+      "sport_type": "Run"
+    },
+    {
+      "fingerprint": "bb84afdfd86bdc1a41c03d0ec9b17825fbe8f29174c6d60f5696f533c383d2f3",
+      "participant": "Pablo De Heras",
+      "activity_date": "2026-08-22",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-22T15:46:12+02:00",
+      "distance_km": 6.537,
+      "moving_time_s": 1903,
+      "elapsed_time_s": 2483,
+      "elevation_m": 0.0,
+      "sport_type": "Run"
+    },
+    {
       "fingerprint": "de2c04cb755b91c54444858a4d4688cff19fda85adc5263fcf1dd4d4a95a0217",
       "participant": "Pablo Meijide",
       "activity_date": "2026-08-22",
@@ -252,7 +276,7 @@
     }
   ],
   "field_probe": {
-    "sample_size": 82,
+    "sample_size": 83,
     "observed_top_level_fields": [
       "athlete",
       "device_name",
@@ -276,11 +300,11 @@
     "start_date_local_present": 0,
     "athlete_id_present": 0,
     "historical_capable": false,
-    "eligible_sample_size": 82,
+    "eligible_sample_size": 83,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-22T15:02:50+02:00",
-  "last_feed_size": 82,
+  "last_successful_update": "2026-08-22T15:46:12+02:00",
+  "last_feed_size": 83,
   "unmatched_activities": 0,
   "unmatched_athletes": [],
   "incremental_checkpoint_date": "2026-08-16"

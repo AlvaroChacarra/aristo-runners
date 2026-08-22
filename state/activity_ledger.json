@@ -215,6 +215,18 @@
       "sport_type": "Run"
     },
     {
+      "fingerprint": "078f2c3dc5f721bfa621e3615433bf61fc92501d2399c0e1a01dfd4f81662f65",
+      "participant": "Alvaro López-Chacarra",
+      "activity_date": "2026-08-22",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-22T15:02:50+02:00",
+      "distance_km": 6.35,
+      "moving_time_s": 2230,
+      "elapsed_time_s": 2323,
+      "elevation_m": 21.0,
+      "sport_type": "Run"
+    },
+    {
       "fingerprint": "32786fd99b09f75a40ce5ebbdb736e2ff52104a0ab3872e8a2e7d6be6ac25654",
       "participant": "Alvaro López-Chacarra",
       "activity_date": "2026-08-22",
@@ -267,7 +279,7 @@
     "eligible_sample_size": 82,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-22T13:38:18+02:00",
+  "last_successful_update": "2026-08-22T15:02:50+02:00",
   "last_feed_size": 82,
   "unmatched_activities": 0,
   "unmatched_athletes": [],

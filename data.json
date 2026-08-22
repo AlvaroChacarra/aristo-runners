@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-22T12:42:56+02:00",
+  "generated_at": "2026-08-22T13:38:18+02:00",
   "data_through": "2026-08-22",
   "challenge": {
     "club_name": "ARISTO runners",
@@ -14,18 +14,18 @@
     "timezone": "Europe/Madrid"
   },
   "summary": {
-    "total_km": 828.42,
-    "progress_pct": 55.2,
-    "projection_km": 1065.1,
-    "projection_gap_km": -434.9,
+    "total_km": 834.77,
+    "progress_pct": 55.7,
+    "projection_km": 1073.3,
+    "projection_gap_km": -426.7,
     "active_runners": 11,
     "participants": 12,
     "completed_runners": 0,
     "on_track_runners": 5,
-    "outings_tracked": 11,
-    "elevation_tracked_m": 862,
-    "outings_total": 97,
-    "elevation_total_m": 6700,
+    "outings_tracked": 12,
+    "elevation_tracked_m": 882,
+    "outings_total": 98,
+    "elevation_total_m": 6721,
     "elevation_total_complete": false
   },
   "runners": [
@@ -123,7 +123,7 @@
         }
       ],
       "rank": 1,
-      "contribution_pct": 15.0
+      "contribution_pct": 14.9
     },
     {
       "slug": "borja-glez-palenzuela-gracia",
@@ -197,7 +197,7 @@
         }
       ],
       "rank": 2,
-      "contribution_pct": 14.6
+      "contribution_pct": 14.5
     },
     {
       "slug": "kept-es",
@@ -271,7 +271,7 @@
         }
       ],
       "rank": 3,
-      "contribution_pct": 13.4
+      "contribution_pct": 13.3
     },
     {
       "slug": "antonio-meijide",
@@ -349,7 +349,7 @@
         }
       ],
       "rank": 4,
-      "contribution_pct": 12.3
+      "contribution_pct": 12.2
     },
     {
       "slug": "francisco-javier-moreno-munoz",
@@ -436,7 +436,7 @@
         }
       ],
       "rank": 5,
-      "contribution_pct": 11.9
+      "contribution_pct": 11.8
     },
     {
       "slug": "kike-rasilla",
@@ -532,7 +532,7 @@
         }
       ],
       "rank": 6,
-      "contribution_pct": 11.1
+      "contribution_pct": 11.0
     },
     {
       "slug": "pablo-de-heras",
@@ -610,7 +610,7 @@
         }
       ],
       "rank": 7,
-      "contribution_pct": 9.7
+      "contribution_pct": 9.6
     },
     {
       "slug": "alonso-alamo",
@@ -678,41 +678,51 @@
         }
       ],
       "rank": 8,
-      "contribution_pct": 7.7
+      "contribution_pct": 7.6
     },
     {
       "slug": "alvaro-lopez-chacarra",
       "name": "Alvaro López-Chacarra",
-      "km": 14.0,
-      "progress_pct": 11.2,
-      "remaining_km": 111.0,
-      "outings_tracked": 0,
-      "elevation_tracked_m": 0,
-      "outings_total": 2,
-      "elevation_total_m": 60,
+      "km": 20.35,
+      "progress_pct": 16.3,
+      "remaining_km": 104.65,
+      "outings_tracked": 1,
+      "elevation_tracked_m": 21,
+      "outings_total": 3,
+      "elevation_total_m": 81,
       "elevation_total_complete": true,
-      "moving_time_tracked_s": 0,
-      "pace_required_km_per_day": 13.88,
-      "projection_km": 18.0,
-      "projection_gap_km": -107.0,
+      "moving_time_tracked_s": 2230,
+      "pace_required_km_per_day": 13.08,
+      "projection_km": 26.2,
+      "projection_gap_km": -98.8,
       "on_track": false,
       "completed": false,
       "tracking": {
-        "available": false,
-        "outings": 0,
-        "distance_km": 0,
-        "km_per_outing": null,
-        "longest_outing_km": null,
-        "weighted_pace_min_per_km": null,
-        "elevation_m": 0,
-        "elevation_m_per_km": null,
-        "moving_time_s": 0,
+        "available": true,
+        "outings": 1,
+        "distance_km": 6.35,
+        "km_per_outing": 6.35,
+        "longest_outing_km": 6.35,
+        "weighted_pace_min_per_km": 5.85,
+        "elevation_m": 21.0,
+        "elevation_m_per_km": 3.3,
+        "moving_time_s": 2230,
         "distribution": {
           "short_under_5k": 0,
-          "medium_5_to_10k": 0,
+          "medium_5_to_10k": 1,
           "long_10k_plus": 0
         },
-        "activities": []
+        "activities": [
+          {
+            "date": "2026-08-22",
+            "date_basis": "detected",
+            "detected_at": "2026-08-22T13:38:18+02:00",
+            "distance_km": 6.35,
+            "moving_time_s": 2230,
+            "elevation_m": 21.0,
+            "sport_type": "Run"
+          }
+        ]
       },
       "leaderboard_adjustment": null,
       "milestones": [
@@ -746,7 +756,7 @@
         }
       ],
       "rank": 9,
-      "contribution_pct": 1.7
+      "contribution_pct": 2.4
     },
     {
       "slug": "pablo-gonzalez-betere",
@@ -1454,15 +1464,15 @@
           14.0,
           14.0,
           14.0,
-          14.0,
-          14.0,
-          14.0,
-          14.0,
-          14.0,
-          14.0,
-          14.0,
-          14.0,
-          14.0
+          20.35,
+          20.35,
+          20.35,
+          20.35,
+          20.35,
+          20.35,
+          20.35,
+          20.35,
+          20.35
         ]
       },
       {
@@ -1560,9 +1570,9 @@
     ]
   },
   "quality": {
-    "last_feed_check": "2026-08-22T12:42:56+02:00",
-    "last_complete_observation": "2026-08-22T12:42:56+02:00",
-    "latest_activity_detected_at": "2026-08-22T10:50:22+02:00",
+    "last_feed_check": "2026-08-22T13:38:18+02:00",
+    "last_complete_observation": "2026-08-22T13:38:18+02:00",
+    "latest_activity_detected_at": "2026-08-22T13:38:18+02:00",
     "baseline_checkpoint": "2026-08-10",
     "tracking_checkpoint": "2026-08-16",
     "totals_basis": "checkpoint_plus_incremental",

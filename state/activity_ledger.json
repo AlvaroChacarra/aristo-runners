@@ -299,6 +299,18 @@
       "sport_type": "Run"
     },
     {
+      "fingerprint": "ed2c8291d9e543b7a677171c10e4636c1ac695abdc59ca074ec17dcd8b5aeaad",
+      "participant": "Alvaro López-Chacarra",
+      "activity_date": "2026-08-24",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-24T21:02:39+02:00",
+      "distance_km": 5.626,
+      "moving_time_s": 1728,
+      "elapsed_time_s": 1728,
+      "elevation_m": 16.4,
+      "sport_type": "Run"
+    },
+    {
       "fingerprint": "57c1178b143346e9143887df8e60adfdd667631e3c9f148b2bc1f2494f1b7287",
       "participant": "Francisco Javier Moreno Muñoz",
       "activity_date": "2026-08-24",
@@ -312,7 +324,7 @@
     }
   ],
   "field_probe": {
-    "sample_size": 79,
+    "sample_size": 80,
     "observed_top_level_fields": [
       "athlete",
       "device_name",
@@ -336,11 +348,11 @@
     "start_date_local_present": 0,
     "athlete_id_present": 0,
     "historical_capable": false,
-    "eligible_sample_size": 79,
+    "eligible_sample_size": 80,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-24T19:49:00+02:00",
-  "last_feed_size": 79,
+  "last_successful_update": "2026-08-24T21:02:39+02:00",
+  "last_feed_size": 80,
   "unmatched_activities": 0,
   "unmatched_athletes": [],
   "incremental_checkpoint_date": "2026-08-16"

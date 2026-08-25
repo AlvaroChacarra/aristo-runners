@@ -144,11 +144,13 @@ class BuildDataTests(unittest.TestCase):
             current["weekly_snapshot"]["net_challenge_increment_km"],
         )
 
-    def test_leaderboard_reconciles_hidden_kept_and_borja_activities_through_august_21(self):
+    def test_visibility_reconciliation_uses_borja_api_records_and_keeps_kept_adjustments(self):
         current = load_json(ROOT / "bootstrap/current_baseline.json")
         adjustments = load_json(ROOT / "state/leaderboard_adjustments.json")
+        ledger = load_json(ROOT / "state/activity_ledger.json")
         data = self.build(
             current=current,
+            ledger=ledger,
             leaderboard_adjustments=adjustments,
             now=datetime(2026, 8, 21, 14, 6, tzinfo=MADRID),
         )
@@ -157,11 +159,13 @@ class BuildDataTests(unittest.TestCase):
         self.assertEqual((kept["km"], kept["outings_total"]), (110.72, 11))
         self.assertEqual((borja["km"], borja["outings_total"]), (121.32, 11))
         self.assertEqual(kept["tracking"]["outings"], 0)
-        self.assertEqual(borja["tracking"]["outings"], 0)
+        self.assertEqual(borja["tracking"]["outings"], 2)
+        self.assertAlmostEqual(borja["tracking"]["distance_km"], 19.352)
         self.assertFalse(kept["elevation_total_complete"])
-        self.assertFalse(borja["elevation_total_complete"])
-        self.assertEqual(data["quality"]["leaderboard_reconciliation_km"], 61.91)
-        self.assertEqual(data["coverage"]["leaderboard_adjustments"], 4)
+        self.assertTrue(borja["elevation_total_complete"])
+        self.assertIsNone(borja["leaderboard_adjustment"])
+        self.assertEqual(data["quality"]["leaderboard_reconciliation_km"], 42.56)
+        self.assertEqual(data["coverage"]["leaderboard_adjustments"], 2)
 
 
 if __name__ == "__main__":

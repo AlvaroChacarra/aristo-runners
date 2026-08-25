@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "reconciliations": [
+    {
+      "id": "2026-08-25-borja-follow-visibility",
+      "participant": "Borja Glez- Palenzuela Gracia",
+      "reconciled_at": "2026-08-25T23:27:20+02:00",
+      "source": "Strava ClubActivity feed after follow relationship; matched against the 16/08 golden checkpoint and 19/08 + 21/08 club leaderboards",
+      "keep": [
+        {
+          "fingerprint": "b0aad552dc27ead065ba244b470062d20d9910cb0f1e1f3035d05963731eaa7d",
+          "activity_date": "2026-08-19"
+        },
+        {
+          "fingerprint": "0865943f29314800471473548d61bdb14c9a38a4fcee7bd2246fe717807c97b8",
+          "activity_date": "2026-08-21"
+        }
+      ],
+      "ignore_fingerprints": [
+        "03db3d31a8704eb93fad42ce3295218f9db6ebf3d2ea0e8d81f2f54833866ab2",
+        "0c44fc889e50768c8f3ab5d806fb2161e1b920e4d171a96255973da784a1fa17",
+        "3c956c79546d615f1a1a4d6d129851bcb699083a73757010e1115663542e7d62",
+        "a7d976e75b9a93d2481425432dc85be3b75fb249d17849d6b2ca14be2c586955",
+        "a9daac02b69cf31a3de55e414968968bd27c7d83e36b2a4a3ab4d5c3f8222927",
+        "ad931ab22583beb703dd706d0f4954d9a3b596b8c34e4bad45cdd05e6dc7aa61",
+        "b36fc889eb8c855157963f440f4137e8b446fc09551b7cf4ae32ee0fdbeac25d",
+        "c77a261eafb4d8a697a9b819bab5e38d4b960dcd6a4b1a6d096e3b5ab7736155",
+        "cd22ce7c6638dc26357e07495397390c07e107b1383301edcb581e53aed220e2",
+        "d59b27d1559e9c96d9b99b3806f9209717dcc46167722759a5c95d5132b5d82d",
+        "f880a842297f16216c7bfb91c580bdfe327d355c73d7060432219047e7fdf82b",
+        "fd074e295fa7f9cbf8eb1a893ab7558db3cc7ce3165af0f151760dedf753c7bd",
+        "fdfbaa10245b377139529fc657f640a0043e41faaf451d7db493df46e2b4ddec"
+      ],
+      "remove_adjustment_ids": [
+        "2026-08-19-borja-current-week",
+        "2026-08-21-borja-current-week-delta"
+      ]
+    },
+    {
+      "id": "2026-08-25-kept-preserve-existing-total",
+      "participant": "Kept ES",
+      "reconciled_at": "2026-08-25T23:27:20+02:00",
+      "source": "Strava ClubActivity feed became visible without dates; preserve the existing checkpoint and leaderboard reconciliation until separately approved",
+      "keep": [],
+      "ignore_fingerprints": [
+        "085db52fdb3ded947db53580711fcd882f9c61139ee4fbaa9ac81aed5e87f9ae",
+        "0ceea2861289034289690ce0bfa1fc94ab54e3e37848edd35946b6c3f8b6d4d1",
+        "15c910bb7f5858fe638f6c99cd7507d22ee9b8b5a2ce1161e66e7d2d4ec530d0",
+        "5e40cbe2bb66d5fb894400ef643cba4f047fc7f11b718a2359ab601309a63f9c",
+        "85a1d1cd12d1959f92e1488caa147c06bcfba0bc2df1ccb7c20ad29bfa3b28ad",
+        "8d1f7acc10eb2fcb8011d1d5654ce764ceba8a3728e5982c11632cda92b2b915",
+        "ab561495f4cc8e13c6146eef6926082752ffbec8bd58a756b6acc045d8a4f574",
+        "adb9c26351cef51a4e0b31b62c22f13ce7eab560a4e44278b6a3b25ee480033d",
+        "b1c60a1ba2fedffe92e069f8bd80a9db726b152f46fa72fe7382603b536b5547",
+        "c8ace4f8165efa627a309d608bd230803cf40df64b2a35269dc49a37794b6959",
+        "dda92591fe17c1e9c78b08ac77dbad0147aa3aff0f6affb387d47f19d12ec13a",
+        "ee3210841aac01df5c087b07d49b8019b922923cc54095c5b51935f1f65eba9a",
+        "f1b4218355722700a381810e9a78b440e4cf279e7cb12c08bb3a1bdeadb05390"
+      ],
+      "remove_adjustment_ids": []
+    }
+  ]
+}

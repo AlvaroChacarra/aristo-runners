@@ -61,13 +61,15 @@ El segundo checkpoint está fijado al **16/08/2026** mediante el HTML **ARISTO r
 
 Si aparecen `unmatched_activities`, consulta `unmatched_athletes` y ajusta los aliases en `config/participants.json`; nunca se asigna una actividad ambigua. Si el feed real solo expone IDs, rellena `athlete_id` tras identificar cada corredor una sola vez.
 
+El feed del club también puede depender de la relación de seguimiento/privacidad entre el atleta autenticado y cada corredor. Si una relación nueva hace visible de golpe el histórico de una persona, **no se suma el bloque completo**: ClubActivity no incluye fechas. Se reconcilian sus hashes en `state/visibility_reconciliations.json`, se ignora lo ya cubierto por checkpoints y solo se conservan como actividades los incrementos contrastados. Ejecuta `python -m scripts.reconcile_visibility` después de revisar el manifiesto; el proceso es idempotente.
+
 ### 4. Activar Pages
 
 En **Settings → Pages → Build and deployment → Source**, selecciona **GitHub Actions**. El repositorio privado requiere GitHub Pro/Team/Enterprise; alternativa: hacerlo público. No se cambia la visibilidad automáticamente. El sitio Pages será público aunque el repo sea privado. Véase [GitHub Pages: custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
 ## Operación
 
-El workflow corre cada hora (`:17`), admite ejecución manual y despliega en cada push relevante a `main`. A partir del **01/09/2026** el guard temporal sale antes de leer credenciales o llamar a Strava.
+El workflow corre cada hora (`:17`), admite ejecución manual y despliega en cada push relevante a `main`. Para una sincronización operativa inmediata también admite un commit deliberado cuyo mensaje contenga `[strava-sync]`; los demás pushes solo reconstruyen datos y no llaman a Strava. A partir del **01/09/2026** el guard temporal sale antes de leer credenciales o llamar a Strava.
 
 ```bash
 python -m pip install -r requirements.txt
@@ -82,6 +84,7 @@ Configuración:
 - checkpoint histórico inmutable: `config/baseline.json`;
 - segundo checkpoint condicional: `bootstrap/current_baseline.json`.
 - ajustes agregados contrastados con la clasificación de Strava: `state/leaderboard_adjustments.json` (no inventar ritmo, desnivel ni detalle de actividad).
+- reconciliaciones por cambios de visibilidad del feed: `state/visibility_reconciliations.json` (hashes únicamente; nunca contiene tokens ni JSON crudo de Strava).
 
 Auditoría: consulta el último run en **Actions**, `generated_at`/`data_through` en `data.json` y `last_successful_update`/`field_probe` en el ledger. Salidas y desnivel se etiquetan como parciales porque el fixture histórico solo contiene kilómetros.
 

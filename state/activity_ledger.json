@@ -369,10 +369,22 @@
       "elapsed_time_s": 1619,
       "elevation_m": 0.0,
       "sport_type": "Run"
+    },
+    {
+      "fingerprint": "b20689661433a738376b06a11160203f5339de890098bbbff2fefab4002dc0ab",
+      "participant": "Pablo Meijide",
+      "activity_date": "2026-08-25",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-25T12:51:58+02:00",
+      "distance_km": 10.168,
+      "moving_time_s": 3233,
+      "elapsed_time_s": 3233,
+      "elevation_m": 88.0,
+      "sport_type": "Run"
     }
   ],
   "field_probe": {
-    "sample_size": 83,
+    "sample_size": 84,
     "observed_top_level_fields": [
       "athlete",
       "device_name",
@@ -396,11 +408,11 @@
     "start_date_local_present": 0,
     "athlete_id_present": 0,
     "historical_capable": false,
-    "eligible_sample_size": 83,
+    "eligible_sample_size": 84,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-25T11:53:29+02:00",
-  "last_feed_size": 83,
+  "last_successful_update": "2026-08-25T12:51:58+02:00",
+  "last_feed_size": 84,
   "unmatched_activities": 0,
   "unmatched_athletes": [],
   "incremental_checkpoint_date": "2026-08-16"

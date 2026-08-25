@@ -42,7 +42,7 @@ jobs:
 
       - name: Update from Strava
         id: strava
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[strava-sync]')
         continue-on-error: true
         env:
           STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
@@ -51,7 +51,7 @@ jobs:
         run: python -m scripts.update_strava
 
       - name: Rebuild deterministic dashboard data on push
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && !contains(github.event.head_commit.message, '[strava-sync]')
         run: python -m scripts.build_data
 
       - name: Run tests
@@ -64,7 +64,7 @@ jobs:
         run: python -m scripts.security_check
 
       - name: Persist incremental state and rotated token
-        if: always() && github.event_name != 'push'
+        if: always() && (github.event_name != 'push' || contains(github.event.head_commit.message, '[strava-sync]'))
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -76,7 +76,7 @@ jobs:
           fi
 
       - name: Fail after safely persisting a rejected update
-        if: github.event_name != 'push' && steps.strava.outcome == 'failure'
+        if: (github.event_name != 'push' || contains(github.event.head_commit.message, '[strava-sync]')) && steps.strava.outcome == 'failure'
         run: exit 1
 
       - name: Build explicit public artifact

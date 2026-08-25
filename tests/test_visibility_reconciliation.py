@@ -1,6 +1,11 @@
 import unittest
+from pathlib import Path
 
 from scripts.reconcile_visibility import apply_visibility_reconciliations
+from scripts.state import load_json
+
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def record(fingerprint, participant, distance):
@@ -56,6 +61,23 @@ class VisibilityReconciliationTests(unittest.TestCase):
         self.assertEqual(kept["activity_date"], "2026-08-19")
         self.assertIn("old", first_ledger["ignored_fingerprints"])
         self.assertEqual([item["id"] for item in first_adjustments["adjustments"]], ["kept-manual"])
+
+    def test_live_kept_partition_counts_six_new_and_checkpoints_seven_historical_records(self):
+        ledger = load_json(ROOT / "state/activity_ledger.json")
+        adjustments = load_json(ROOT / "state/leaderboard_adjustments.json")
+        manifest = load_json(ROOT / "state/visibility_reconciliations.json")
+        reconciliation = next(item for item in manifest["reconciliations"] if item["participant"] == "Kept ES")
+        kept_fingerprints = {item["fingerprint"] for item in reconciliation["keep"]}
+        ignored_fingerprints = set(reconciliation["ignore_fingerprints"])
+        kept_records = [item for item in ledger["records"] if item["participant"] == "Kept ES"]
+
+        self.assertEqual((len(kept_fingerprints), len(ignored_fingerprints)), (6, 7))
+        self.assertFalse(kept_fingerprints & ignored_fingerprints)
+        self.assertEqual({item["fingerprint"] for item in kept_records}, kept_fingerprints)
+        self.assertTrue(ignored_fingerprints <= set(ledger["ignored_fingerprints"]))
+        self.assertAlmostEqual(sum(item["distance_km"] for item in kept_records), 62.579)
+        self.assertEqual(sum(item["elevation_m"] for item in kept_records), 353)
+        self.assertEqual(adjustments["adjustments"], [])
 
 
 if __name__ == "__main__":

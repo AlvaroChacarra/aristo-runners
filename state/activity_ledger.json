@@ -530,6 +530,18 @@
       "elapsed_time_s": 3233,
       "elevation_m": 88.0,
       "sport_type": "Run"
+    },
+    {
+      "fingerprint": "25ddb40c3f662fb9ba3a636c52304e42cfaa9c8c4de979fc2915a5fc625fa651",
+      "participant": "Pablo De Heras",
+      "activity_date": "2026-08-26",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-26T01:41:05+02:00",
+      "distance_km": 10.152,
+      "moving_time_s": 3233,
+      "elapsed_time_s": 3233,
+      "elevation_m": 94.3,
+      "sport_type": "Run"
     }
   ],
   "field_probe": {
@@ -560,7 +572,7 @@
     "eligible_sample_size": 108,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-26T00:47:45+02:00",
+  "last_successful_update": "2026-08-26T01:41:05+02:00",
   "last_feed_size": 108,
   "unmatched_activities": 0,
   "unmatched_athletes": [],

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-26T00:47:45+02:00",
+  "generated_at": "2026-08-26T01:41:05+02:00",
   "data_through": "2026-08-26",
   "challenge": {
     "club_name": "ARISTO runners",
@@ -14,18 +14,18 @@
     "timezone": "Europe/Madrid"
   },
   "summary": {
-    "total_km": 982.04,
-    "progress_pct": 65.5,
-    "projection_km": 1104.8,
-    "projection_gap_km": -395.2,
+    "total_km": 992.19,
+    "progress_pct": 66.1,
+    "projection_km": 1116.2,
+    "projection_gap_km": -383.8,
     "active_runners": 11,
     "participants": 12,
     "completed_runners": 3,
     "on_track_runners": 5,
-    "outings_tracked": 35,
-    "elevation_tracked_m": 2347,
-    "outings_total": 115,
-    "elevation_total_m": 8186,
+    "outings_tracked": 36,
+    "elevation_tracked_m": 2442,
+    "outings_total": 116,
+    "elevation_total_m": 8281,
     "elevation_total_complete": false
   },
   "runners": [
@@ -141,7 +141,7 @@
         }
       ],
       "rank": 1,
-      "contribution_pct": 16.7
+      "contribution_pct": 16.5
     },
     {
       "slug": "pablo-meijide",
@@ -246,7 +246,7 @@
         }
       ],
       "rank": 2,
-      "contribution_pct": 13.7
+      "contribution_pct": 13.6
     },
     {
       "slug": "kept-es",
@@ -369,7 +369,7 @@
         }
       ],
       "rank": 3,
-      "contribution_pct": 13.3
+      "contribution_pct": 13.2
     },
     {
       "slug": "antonio-meijide",
@@ -465,7 +465,7 @@
         }
       ],
       "rank": 4,
-      "contribution_pct": 12.4
+      "contribution_pct": 12.3
     },
     {
       "slug": "francisco-javier-moreno-munoz",
@@ -570,7 +570,7 @@
         }
       ],
       "rank": 5,
-      "contribution_pct": 11.6
+      "contribution_pct": 11.5
     },
     {
       "slug": "kike-rasilla",
@@ -675,41 +675,50 @@
         }
       ],
       "rank": 6,
-      "contribution_pct": 10.4
+      "contribution_pct": 10.3
     },
     {
       "slug": "pablo-de-heras",
       "name": "Pablo De Heras",
-      "km": 86.63,
-      "progress_pct": 69.3,
-      "remaining_km": 38.37,
-      "outings_tracked": 2,
-      "elevation_tracked_m": 85,
-      "outings_total": 9,
-      "elevation_total_m": 285,
+      "km": 96.78,
+      "progress_pct": 77.4,
+      "remaining_km": 28.22,
+      "outings_tracked": 3,
+      "elevation_tracked_m": 180,
+      "outings_total": 10,
+      "elevation_total_m": 380,
       "elevation_total_complete": true,
-      "moving_time_tracked_s": 4897,
-      "pace_required_km_per_day": 9.59,
-      "projection_km": 97.5,
-      "projection_gap_km": -27.5,
+      "moving_time_tracked_s": 8130,
+      "pace_required_km_per_day": 7.05,
+      "projection_km": 108.9,
+      "projection_gap_km": -16.1,
       "on_track": false,
       "completed": false,
       "tracking": {
         "available": true,
-        "outings": 2,
-        "distance_km": 15.592,
-        "km_per_outing": 7.8,
-        "longest_outing_km": 9.05,
-        "weighted_pace_min_per_km": 5.23,
-        "elevation_m": 85.3,
-        "elevation_m_per_km": 5.5,
-        "moving_time_s": 4897,
+        "outings": 3,
+        "distance_km": 25.744,
+        "km_per_outing": 8.58,
+        "longest_outing_km": 10.15,
+        "weighted_pace_min_per_km": 5.26,
+        "elevation_m": 179.6,
+        "elevation_m_per_km": 7.0,
+        "moving_time_s": 8130,
         "distribution": {
           "short_under_5k": 0,
           "medium_5_to_10k": 2,
-          "long_10k_plus": 0
+          "long_10k_plus": 1
         },
         "activities": [
+          {
+            "date": "2026-08-26",
+            "date_basis": "detected",
+            "detected_at": "2026-08-26T01:41:05+02:00",
+            "distance_km": 10.152,
+            "moving_time_s": 3233,
+            "elevation_m": 94.3,
+            "sport_type": "Run"
+          },
           {
             "date": "2026-08-22",
             "date_basis": "detected",
@@ -749,8 +758,8 @@
         {
           "pct": 75,
           "target_km": 93.75,
-          "status": "pending",
-          "reached_on": null,
+          "status": "detected",
+          "reached_on": "2026-08-26",
           "checkpoint_date": "2026-08-16"
         },
         {
@@ -762,7 +771,7 @@
         }
       ],
       "rank": 7,
-      "contribution_pct": 8.8
+      "contribution_pct": 9.8
     },
     {
       "slug": "alonso-alamo",
@@ -830,7 +839,7 @@
         }
       ],
       "rank": 8,
-      "contribution_pct": 6.5
+      "contribution_pct": 6.4
     },
     {
       "slug": "alvaro-lopez-chacarra",
@@ -1414,11 +1423,11 @@
           86.63,
           86.63,
           86.63,
-          86.63,
-          86.63,
-          86.63,
-          86.63,
-          86.63
+          96.78,
+          96.78,
+          96.78,
+          96.78,
+          96.78
         ]
       },
       {
@@ -1760,17 +1769,17 @@
       {
         "kind": "latest_milestone",
         "label": "Último hito alcanzado",
-        "name": "Borja Glez- Palenzuela Gracia",
-        "runner_slug": "borja-glez-palenzuela-gracia",
-        "value": "100% del objetivo",
+        "name": "Pablo De Heras",
+        "runner_slug": "pablo-de-heras",
+        "value": "75% del objetivo",
         "scope": "post_tracking_checkpoint"
       }
     ]
   },
   "quality": {
-    "last_feed_check": "2026-08-26T00:47:45+02:00",
-    "last_complete_observation": "2026-08-26T00:47:45+02:00",
-    "latest_activity_detected_at": "2026-08-25T23:27:20+02:00",
+    "last_feed_check": "2026-08-26T01:41:05+02:00",
+    "last_complete_observation": "2026-08-26T01:41:05+02:00",
+    "latest_activity_detected_at": "2026-08-26T01:41:05+02:00",
     "baseline_checkpoint": "2026-08-10",
     "tracking_checkpoint": "2026-08-16",
     "totals_basis": "checkpoint_plus_incremental",

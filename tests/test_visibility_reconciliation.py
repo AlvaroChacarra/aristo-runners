@@ -79,6 +79,25 @@ class VisibilityReconciliationTests(unittest.TestCase):
         self.assertEqual(sum(item["elevation_m"] for item in kept_records), 353)
         self.assertEqual(adjustments["adjustments"], [])
 
+    def test_live_borja_partition_counts_five_new_and_checkpoints_ten_other_records(self):
+        ledger = load_json(ROOT / "state/activity_ledger.json")
+        manifest = load_json(ROOT / "state/visibility_reconciliations.json")
+        reconciliation = next(
+            item for item in manifest["reconciliations"] if item["participant"] == "Borja Glez- Palenzuela Gracia"
+        )
+        kept_fingerprints = {item["fingerprint"] for item in reconciliation["keep"]}
+        ignored_fingerprints = set(reconciliation["ignore_fingerprints"])
+        kept_records = [
+            item for item in ledger["records"] if item["participant"] == "Borja Glez- Palenzuela Gracia"
+        ]
+
+        self.assertEqual((len(kept_fingerprints), len(ignored_fingerprints)), (5, 10))
+        self.assertFalse(kept_fingerprints & ignored_fingerprints)
+        self.assertEqual({item["fingerprint"] for item in kept_records}, kept_fingerprints)
+        self.assertTrue(ignored_fingerprints <= set(ledger["ignored_fingerprints"]))
+        self.assertAlmostEqual(sum(item["distance_km"] for item in kept_records), 62.047)
+        self.assertEqual(sum(item["elevation_m"] for item in kept_records), 346)
+
 
 if __name__ == "__main__":
     unittest.main()

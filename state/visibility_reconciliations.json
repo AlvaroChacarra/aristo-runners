@@ -5,7 +5,7 @@
       "id": "2026-08-25-borja-follow-visibility",
       "participant": "Borja Glez- Palenzuela Gracia",
       "reconciled_at": "2026-08-25T23:27:20+02:00",
-      "source": "Strava ClubActivity feed after follow relationship; matched against the 16/08 golden checkpoint and 19/08 + 21/08 club leaderboards",
+      "source": "Strava ClubActivity feed after follow relationship; matched against the 16/08 golden checkpoint, 19/08 + 21/08 club leaderboards and organizer-confirmed order of the first five post-checkpoint activities",
       "keep": [
         {
           "fingerprint": "b0aad552dc27ead065ba244b470062d20d9910cb0f1e1f3035d05963731eaa7d",
@@ -14,13 +14,22 @@
         {
           "fingerprint": "0865943f29314800471473548d61bdb14c9a38a4fcee7bd2246fe717807c97b8",
           "activity_date": "2026-08-21"
+        },
+        {
+          "fingerprint": "a7d976e75b9a93d2481425432dc85be3b75fb249d17849d6b2ca14be2c586955",
+          "activity_date": "2026-08-25"
+        },
+        {
+          "fingerprint": "3c956c79546d615f1a1a4d6d129851bcb699083a73757010e1115663542e7d62",
+          "activity_date": "2026-08-25"
+        },
+        {
+          "fingerprint": "0c44fc889e50768c8f3ab5d806fb2161e1b920e4d171a96255973da784a1fa17",
+          "activity_date": "2026-08-25"
         }
       ],
       "ignore_fingerprints": [
         "03db3d31a8704eb93fad42ce3295218f9db6ebf3d2ea0e8d81f2f54833866ab2",
-        "0c44fc889e50768c8f3ab5d806fb2161e1b920e4d171a96255973da784a1fa17",
-        "3c956c79546d615f1a1a4d6d129851bcb699083a73757010e1115663542e7d62",
-        "a7d976e75b9a93d2481425432dc85be3b75fb249d17849d6b2ca14be2c586955",
         "a9daac02b69cf31a3de55e414968968bd27c7d83e36b2a4a3ab4d5c3f8222927",
         "ad931ab22583beb703dd706d0f4954d9a3b596b8c34e4bad45cdd05e6dc7aa61",
         "b36fc889eb8c855157963f440f4137e8b446fc09551b7cf4ae32ee0fdbeac25d",

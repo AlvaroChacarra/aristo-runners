@@ -157,18 +157,18 @@ class BuildDataTests(unittest.TestCase):
         kept = next(runner for runner in data["runners"] if runner["name"] == "Kept ES")
         borja = next(runner for runner in data["runners"] if runner["name"].startswith("Borja"))
         self.assertEqual((kept["km"], kept["outings_total"]), (130.74, 13))
-        self.assertEqual((borja["km"], borja["outings_total"]), (121.32, 11))
+        self.assertEqual((borja["km"], borja["outings_total"]), (164.02, 14))
         self.assertEqual(kept["tracking"]["outings"], 6)
         self.assertAlmostEqual(kept["tracking"]["distance_km"], 62.579)
-        self.assertEqual(borja["tracking"]["outings"], 2)
-        self.assertAlmostEqual(borja["tracking"]["distance_km"], 19.352)
+        self.assertEqual(borja["tracking"]["outings"], 5)
+        self.assertAlmostEqual(borja["tracking"]["distance_km"], 62.047)
         self.assertTrue(kept["elevation_total_complete"])
         self.assertTrue(borja["elevation_total_complete"])
         self.assertIsNone(kept["leaderboard_adjustment"])
         self.assertIsNone(borja["leaderboard_adjustment"])
         self.assertEqual(data["quality"]["leaderboard_reconciliation_km"], 0)
         self.assertEqual(data["coverage"]["leaderboard_adjustments"], 0)
-        self.assertEqual(data["summary"]["total_km"], 939.34)
+        self.assertEqual(data["summary"]["total_km"], 982.04)
 
 
 if __name__ == "__main__":

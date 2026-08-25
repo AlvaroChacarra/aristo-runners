@@ -14,7 +14,6 @@
     "06936eec7acb06b5454d14b52d9ef6b20c46646cfb9a7bdf6113fdc33ce71e8c",
     "085db52fdb3ded947db53580711fcd882f9c61139ee4fbaa9ac81aed5e87f9ae",
     "09f2e62b3ad02370c5e7451b2c5fb7413de407b98a01174c0ebb5b0e9004f51e",
-    "0c44fc889e50768c8f3ab5d806fb2161e1b920e4d171a96255973da784a1fa17",
     "0ce5a9badd1fbb67b6d890d7b0c74c97763495567244721bd2f7d61f48ba6aea",
     "0ceea2861289034289690ce0bfa1fc94ab54e3e37848edd35946b6c3f8b6d4d1",
     "10181dacef2d8d83a36fe0849875757822b8b438e29216a4b36885505f8cc79d",
@@ -32,7 +31,6 @@
     "31689e7514514060a1124198cbd9d13bcab757c4272356b12925cac19058933c",
     "31cec602fd6a91511436d2aeac55f9bec150a0fadc905bb8936c6c73514daad8",
     "3c399ae8aa370b47912673cf84bc956024b004844211ef484afc5ef3c9abb6bb",
-    "3c956c79546d615f1a1a4d6d129851bcb699083a73757010e1115663542e7d62",
     "3d12f42ee51d52824a86c345e4a8a811519c26c20aa35de32600b58766d367e2",
     "40169185a78c05fcbe6e16739175bf97b76885ae9d90a5158d0a378968e4ad37",
     "46f4a352ae8ee5a51bd0122722508462805274b8d050b8fd1215defa3b051f0a",
@@ -69,7 +67,6 @@
     "a37599667e3ca0ec0053092ff84fcba28dc2e530bbc1af9e31fe5b9434cc6385",
     "a5503b03350a993516bbef9c72afec864d06876e485eaeb4be012694dbf21728",
     "a56f4ee6a6afc5d42e43721e3def0fcea640089b6643e59425a20b5f9323a1d8",
-    "a7d976e75b9a93d2481425432dc85be3b75fb249d17849d6b2ca14be2c586955",
     "a90c3a46b0e436e65caf2fb3490ba01a3d6dd9924f6db0fb672c9c8f6b8d5001",
     "a9daac02b69cf31a3de55e414968968bd27c7d83e36b2a4a3ab4d5c3f8222927",
     "ad931ab22583beb703dd706d0f4954d9a3b596b8c34e4bad45cdd05e6dc7aa61",
@@ -427,6 +424,42 @@
       "sport_type": "Run"
     },
     {
+      "fingerprint": "0c44fc889e50768c8f3ab5d806fb2161e1b920e4d171a96255973da784a1fa17",
+      "participant": "Borja Glez- Palenzuela Gracia",
+      "activity_date": "2026-08-25",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-25T23:27:20+02:00",
+      "distance_km": 10.534,
+      "moving_time_s": 3724,
+      "elapsed_time_s": 4334,
+      "elevation_m": 66.0,
+      "sport_type": "Run"
+    },
+    {
+      "fingerprint": "3c956c79546d615f1a1a4d6d129851bcb699083a73757010e1115663542e7d62",
+      "participant": "Borja Glez- Palenzuela Gracia",
+      "activity_date": "2026-08-25",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-25T23:27:20+02:00",
+      "distance_km": 17.006,
+      "moving_time_s": 5813,
+      "elapsed_time_s": 6180,
+      "elevation_m": 56.0,
+      "sport_type": "Run"
+    },
+    {
+      "fingerprint": "a7d976e75b9a93d2481425432dc85be3b75fb249d17849d6b2ca14be2c586955",
+      "participant": "Borja Glez- Palenzuela Gracia",
+      "activity_date": "2026-08-25",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-25T23:27:20+02:00",
+      "distance_km": 15.155,
+      "moving_time_s": 4825,
+      "elapsed_time_s": 4901,
+      "elevation_m": 50.0,
+      "sport_type": "Run"
+    },
+    {
       "fingerprint": "dda92591fe17c1e9c78b08ac77dbad0147aa3aff0f6affb387d47f19d12ec13a",
       "participant": "Kept ES",
       "activity_date": "2026-08-25",
@@ -537,12 +570,15 @@
       "id": "2026-08-25-borja-follow-visibility",
       "participant": "Borja Glez- Palenzuela Gracia",
       "reconciled_at": "2026-08-25T23:27:20+02:00",
-      "source": "Strava ClubActivity feed after follow relationship; matched against the 16/08 golden checkpoint and 19/08 + 21/08 club leaderboards",
+      "source": "Strava ClubActivity feed after follow relationship; matched against the 16/08 golden checkpoint, 19/08 + 21/08 club leaderboards and organizer-confirmed order of the first five post-checkpoint activities",
       "kept_fingerprints": [
         "0865943f29314800471473548d61bdb14c9a38a4fcee7bd2246fe717807c97b8",
+        "0c44fc889e50768c8f3ab5d806fb2161e1b920e4d171a96255973da784a1fa17",
+        "3c956c79546d615f1a1a4d6d129851bcb699083a73757010e1115663542e7d62",
+        "a7d976e75b9a93d2481425432dc85be3b75fb249d17849d6b2ca14be2c586955",
         "b0aad552dc27ead065ba244b470062d20d9910cb0f1e1f3035d05963731eaa7d"
       ],
-      "ignored_fingerprint_count": 13,
+      "ignored_fingerprint_count": 10,
       "removed_adjustment_ids": [
         "2026-08-19-borja-current-week",
         "2026-08-21-borja-current-week-delta"

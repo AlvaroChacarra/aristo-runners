@@ -58,7 +58,6 @@
     "81cef69d9fa3608fae9fd35cfb04663044cd15a15621981f673da9b5291472ed",
     "85a1d1cd12d1959f92e1488caa147c06bcfba0bc2df1ccb7c20ad29bfa3b28ad",
     "8ce071ccd7e5bf02673b41259236b608c6698c9ade470af908d001f0e8565d72",
-    "8d1f7acc10eb2fcb8011d1d5654ce764ceba8a3728e5982c11632cda92b2b915",
     "8fef3440e7684f0236eb3e655bb8cff2bdcb794b7b78c83e3618cecfcad8988c",
     "92bddb6bd538e8a2b10718bc6037b6df415cb85b027fc8f3bf1edd74d4daf937",
     "949c882d22e6d1dccd6f5826ca70c8bfea66595c3c42d48764b42fd3023bd6fe",
@@ -73,13 +72,11 @@
     "a7d976e75b9a93d2481425432dc85be3b75fb249d17849d6b2ca14be2c586955",
     "a90c3a46b0e436e65caf2fb3490ba01a3d6dd9924f6db0fb672c9c8f6b8d5001",
     "a9daac02b69cf31a3de55e414968968bd27c7d83e36b2a4a3ab4d5c3f8222927",
-    "ab561495f4cc8e13c6146eef6926082752ffbec8bd58a756b6acc045d8a4f574",
     "ad931ab22583beb703dd706d0f4954d9a3b596b8c34e4bad45cdd05e6dc7aa61",
     "adb9c26351cef51a4e0b31b62c22f13ce7eab560a4e44278b6a3b25ee480033d",
     "af83818da1e290579b76a54707a79ba637d32a43fd91996008fd200ab8a6328e",
     "b0cafadfe41b60044234a5209b38baa966462d0d29f5b9a49f34969b9356465b",
     "b18202786737274f3521a742446e7305f19183515141f1988a0b0b49a85db122",
-    "b1c60a1ba2fedffe92e069f8bd80a9db726b152f46fa72fe7382603b536b5547",
     "b36fc889eb8c855157963f440f4137e8b446fc09551b7cf4ae32ee0fdbeac25d",
     "b457458ec93be7d1e4da77aec83d4d77b8071de257a91a93f00e655724334e4f",
     "b48add4966d8055f8ee6fb4f3c318df3cfae8fc62cf8495e46f8d0dddc438f89",
@@ -90,7 +87,6 @@
     "c4d56e26f9a66ec554c7e6aa82d7256b8403fe4d80de9a75966eea814d2c5b50",
     "c5aa36918a8c94f62d725349dc6d93a79d050f80938ba52c7b2b6360df4681a9",
     "c77a261eafb4d8a697a9b819bab5e38d4b960dcd6a4b1a6d096e3b5ab7736155",
-    "c8ace4f8165efa627a309d608bd230803cf40df64b2a35269dc49a37794b6959",
     "c9b6b086b3763f666947cf728a7981fc14cec6f9babfa96526968253a9a131ef",
     "cd1f4a39c60d42eeba8c051b86698d8506842c53aeb9699431913ddb6e262b15",
     "cd22ce7c6638dc26357e07495397390c07e107b1383301edcb581e53aed220e2",
@@ -103,7 +99,6 @@
     "d98f50734ed8a56eef6d34f33c7566ab333fa32b5e3316ecc1a59be0c7704e9c",
     "da949a19eec2aa020c93ce8fb699bf71dfb57a1c75ba577fea6db8797df9eb58",
     "dd038b49f7c77ab0d3eedc490d7639a30a3e6a33306b14a8dd1570063b257a30",
-    "dda92591fe17c1e9c78b08ac77dbad0147aa3aff0f6affb387d47f19d12ec13a",
     "dffbbaf43987752c463dcc7eb58ee8aee674a9e2620f80ee66b5619c76a3e85a",
     "e912465ef7c992d3a176ab2b238fe4a833f4270426b174faa1fa8cd8a88592de",
     "e9b24ddf96e0bcb8004f40fa48f0a49571089b03c67dccf80030a27ae18f84a9",
@@ -111,7 +106,6 @@
     "ec2b7f5bda0e55eceffa7972cc3f4d724394439fb65488e4a0f4330773c2ddec",
     "ee3210841aac01df5c087b07d49b8019b922923cc54095c5b51935f1f65eba9a",
     "f11ab66d4f81870e312e7f3ad85f15021c587b4d92284638ad9e1fc73cbe9aa1",
-    "f1b4218355722700a381810e9a78b440e4cf279e7cb12c08bb3a1bdeadb05390",
     "f386060f33066b190b17bcd11c148a4250ebae39e9c56cf67f17d056b89dba7a",
     "f61d10538599f56e5243bd6af36d9356d8b8ec03a8c032dc445efca0b72af8ad",
     "f880a842297f16216c7bfb91c580bdfe327d355c73d7060432219047e7fdf82b",
@@ -130,6 +124,18 @@
       "moving_time_s": 3171,
       "elapsed_time_s": 3216,
       "elevation_m": 118.2,
+      "sport_type": "Run"
+    },
+    {
+      "fingerprint": "c8ace4f8165efa627a309d608bd230803cf40df64b2a35269dc49a37794b6959",
+      "participant": "Kept ES",
+      "activity_date": "2026-08-17",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-25T23:27:20+02:00",
+      "distance_km": 11.772,
+      "moving_time_s": 3542,
+      "elapsed_time_s": 3758,
+      "elevation_m": 91.0,
       "sport_type": "Run"
     },
     {
@@ -205,6 +211,18 @@
       "sport_type": "Run"
     },
     {
+      "fingerprint": "b1c60a1ba2fedffe92e069f8bd80a9db726b152f46fa72fe7382603b536b5547",
+      "participant": "Kept ES",
+      "activity_date": "2026-08-19",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-25T23:27:20+02:00",
+      "distance_km": 10.107,
+      "moving_time_s": 2917,
+      "elapsed_time_s": 2917,
+      "elevation_m": 94.0,
+      "sport_type": "Run"
+    },
+    {
       "fingerprint": "56e130329be47c7ca4fba1c99940d3237ef2c0c3171b270d222999de127c0dd6",
       "participant": "Pablo Meijide",
       "activity_date": "2026-08-19",
@@ -250,6 +268,30 @@
       "moving_time_s": 2652,
       "elapsed_time_s": 2847,
       "elevation_m": 75.0,
+      "sport_type": "Run"
+    },
+    {
+      "fingerprint": "8d1f7acc10eb2fcb8011d1d5654ce764ceba8a3728e5982c11632cda92b2b915",
+      "participant": "Kept ES",
+      "activity_date": "2026-08-21",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-25T23:27:20+02:00",
+      "distance_km": 9.217,
+      "moving_time_s": 2866,
+      "elapsed_time_s": 2871,
+      "elevation_m": 30.0,
+      "sport_type": "Run"
+    },
+    {
+      "fingerprint": "ab561495f4cc8e13c6146eef6926082752ffbec8bd58a756b6acc045d8a4f574",
+      "participant": "Kept ES",
+      "activity_date": "2026-08-21",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-25T23:27:20+02:00",
+      "distance_km": 11.466,
+      "moving_time_s": 3738,
+      "elapsed_time_s": 4427,
+      "elevation_m": 92.0,
       "sport_type": "Run"
     },
     {
@@ -385,6 +427,30 @@
       "sport_type": "Run"
     },
     {
+      "fingerprint": "dda92591fe17c1e9c78b08ac77dbad0147aa3aff0f6affb387d47f19d12ec13a",
+      "participant": "Kept ES",
+      "activity_date": "2026-08-25",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-25T23:27:20+02:00",
+      "distance_km": 10.01,
+      "moving_time_s": 3177,
+      "elapsed_time_s": 3207,
+      "elevation_m": 24.0,
+      "sport_type": "Run"
+    },
+    {
+      "fingerprint": "f1b4218355722700a381810e9a78b440e4cf279e7cb12c08bb3a1bdeadb05390",
+      "participant": "Kept ES",
+      "activity_date": "2026-08-25",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-25T23:27:20+02:00",
+      "distance_km": 10.007,
+      "moving_time_s": 2990,
+      "elapsed_time_s": 3127,
+      "elevation_m": 22.0,
+      "sport_type": "Run"
+    },
+    {
       "fingerprint": "531878e0ee4c98562b9a06334fe4dc29f18c81f91aa83c72ad96552db93864e6",
       "participant": "Pablo González Betere",
       "activity_date": "2026-08-25",
@@ -483,13 +549,23 @@
       ]
     },
     {
-      "id": "2026-08-25-kept-preserve-existing-total",
+      "id": "2026-08-25-kept-follow-visibility",
       "participant": "Kept ES",
       "reconciled_at": "2026-08-25T23:27:20+02:00",
-      "source": "Strava ClubActivity feed became visible without dates; preserve the existing checkpoint and leaderboard reconciliation until separately approved",
-      "kept_fingerprints": [],
-      "ignored_fingerprint_count": 13,
-      "removed_adjustment_ids": []
+      "source": "Strava ClubActivity feed after follow relationship; matched against the 16/08 golden checkpoint, its 894 m weekly elevation and the 19/08 + 21/08 club leaderboards",
+      "kept_fingerprints": [
+        "8d1f7acc10eb2fcb8011d1d5654ce764ceba8a3728e5982c11632cda92b2b915",
+        "ab561495f4cc8e13c6146eef6926082752ffbec8bd58a756b6acc045d8a4f574",
+        "b1c60a1ba2fedffe92e069f8bd80a9db726b152f46fa72fe7382603b536b5547",
+        "c8ace4f8165efa627a309d608bd230803cf40df64b2a35269dc49a37794b6959",
+        "dda92591fe17c1e9c78b08ac77dbad0147aa3aff0f6affb387d47f19d12ec13a",
+        "f1b4218355722700a381810e9a78b440e4cf279e7cb12c08bb3a1bdeadb05390"
+      ],
+      "ignored_fingerprint_count": 7,
+      "removed_adjustment_ids": [
+        "2026-08-19-kept-es-current-week",
+        "2026-08-21-kept-es-current-week-delta"
+      ]
     }
   ]
 }

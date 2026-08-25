@@ -63,6 +63,8 @@ Si aparecen `unmatched_activities`, consulta `unmatched_athletes` y ajusta los a
 
 El feed del club también puede depender de la relación de seguimiento/privacidad entre el atleta autenticado y cada corredor. Si una relación nueva hace visible de golpe el histórico de una persona, **no se suma el bloque completo**: ClubActivity no incluye fechas. Se reconcilian sus hashes en `state/visibility_reconciliations.json`, se ignora lo ya cubierto por checkpoints y solo se conservan como actividades los incrementos contrastados. Ejecuta `python -m scripts.reconcile_visibility` después de revisar el manifiesto; el proceso es idempotente.
 
+Borja y Kept ya están reconciliados contra el checkpoint del 16/08: sus incrementos posteriores proceden de actividades reales del feed y no de ajustes agregados del leaderboard.
+
 ### 4. Activar Pages
 
 En **Settings → Pages → Build and deployment → Source**, selecciona **GitHub Actions**. El repositorio privado requiere GitHub Pro/Team/Enterprise; alternativa: hacerlo público. No se cambia la visibilidad automáticamente. El sitio Pages será público aunque el repo sea privado. Véase [GitHub Pages: custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).

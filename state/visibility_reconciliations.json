@@ -37,27 +37,49 @@
       ]
     },
     {
-      "id": "2026-08-25-kept-preserve-existing-total",
+      "id": "2026-08-25-kept-follow-visibility",
       "participant": "Kept ES",
       "reconciled_at": "2026-08-25T23:27:20+02:00",
-      "source": "Strava ClubActivity feed became visible without dates; preserve the existing checkpoint and leaderboard reconciliation until separately approved",
-      "keep": [],
+      "source": "Strava ClubActivity feed after follow relationship; matched against the 16/08 golden checkpoint, its 894 m weekly elevation and the 19/08 + 21/08 club leaderboards",
+      "keep": [
+        {
+          "fingerprint": "c8ace4f8165efa627a309d608bd230803cf40df64b2a35269dc49a37794b6959",
+          "activity_date": "2026-08-17"
+        },
+        {
+          "fingerprint": "b1c60a1ba2fedffe92e069f8bd80a9db726b152f46fa72fe7382603b536b5547",
+          "activity_date": "2026-08-19"
+        },
+        {
+          "fingerprint": "8d1f7acc10eb2fcb8011d1d5654ce764ceba8a3728e5982c11632cda92b2b915",
+          "activity_date": "2026-08-21"
+        },
+        {
+          "fingerprint": "ab561495f4cc8e13c6146eef6926082752ffbec8bd58a756b6acc045d8a4f574",
+          "activity_date": "2026-08-21"
+        },
+        {
+          "fingerprint": "dda92591fe17c1e9c78b08ac77dbad0147aa3aff0f6affb387d47f19d12ec13a",
+          "activity_date": "2026-08-25"
+        },
+        {
+          "fingerprint": "f1b4218355722700a381810e9a78b440e4cf279e7cb12c08bb3a1bdeadb05390",
+          "activity_date": "2026-08-25"
+        }
+      ],
       "ignore_fingerprints": [
         "085db52fdb3ded947db53580711fcd882f9c61139ee4fbaa9ac81aed5e87f9ae",
         "0ceea2861289034289690ce0bfa1fc94ab54e3e37848edd35946b6c3f8b6d4d1",
         "15c910bb7f5858fe638f6c99cd7507d22ee9b8b5a2ce1161e66e7d2d4ec530d0",
         "5e40cbe2bb66d5fb894400ef643cba4f047fc7f11b718a2359ab601309a63f9c",
         "85a1d1cd12d1959f92e1488caa147c06bcfba0bc2df1ccb7c20ad29bfa3b28ad",
-        "8d1f7acc10eb2fcb8011d1d5654ce764ceba8a3728e5982c11632cda92b2b915",
-        "ab561495f4cc8e13c6146eef6926082752ffbec8bd58a756b6acc045d8a4f574",
         "adb9c26351cef51a4e0b31b62c22f13ce7eab560a4e44278b6a3b25ee480033d",
-        "b1c60a1ba2fedffe92e069f8bd80a9db726b152f46fa72fe7382603b536b5547",
-        "c8ace4f8165efa627a309d608bd230803cf40df64b2a35269dc49a37794b6959",
-        "dda92591fe17c1e9c78b08ac77dbad0147aa3aff0f6affb387d47f19d12ec13a",
-        "ee3210841aac01df5c087b07d49b8019b922923cc54095c5b51935f1f65eba9a",
-        "f1b4218355722700a381810e9a78b440e4cf279e7cb12c08bb3a1bdeadb05390"
+        "ee3210841aac01df5c087b07d49b8019b922923cc54095c5b51935f1f65eba9a"
       ],
-      "remove_adjustment_ids": []
+      "remove_adjustment_ids": [
+        "2026-08-19-kept-es-current-week",
+        "2026-08-21-kept-es-current-week-delta"
+      ]
     }
   ]
 }

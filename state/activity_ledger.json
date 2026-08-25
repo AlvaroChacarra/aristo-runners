@@ -321,10 +321,46 @@
       "elapsed_time_s": 1979,
       "elevation_m": 31.0,
       "sport_type": "Run"
+    },
+    {
+      "fingerprint": "531878e0ee4c98562b9a06334fe4dc29f18c81f91aa83c72ad96552db93864e6",
+      "participant": "Pablo González Betere",
+      "activity_date": "2026-08-25",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-25T11:02:09+02:00",
+      "distance_km": 2.558,
+      "moving_time_s": 873,
+      "elapsed_time_s": 882,
+      "elevation_m": 6.3,
+      "sport_type": "Run"
+    },
+    {
+      "fingerprint": "8d94f0b45ac34bba4baf4934a6e744444ba1ff52c39eb0f222819a04d7c3dff7",
+      "participant": "Pablo González Betere",
+      "activity_date": "2026-08-25",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-25T11:02:09+02:00",
+      "distance_km": 1.353,
+      "moving_time_s": 479,
+      "elapsed_time_s": 838,
+      "elevation_m": 33.2,
+      "sport_type": "Run"
+    },
+    {
+      "fingerprint": "b1f29c5d57267e2263b58474c8bc36c06153b8723f73017c82c692c5ca292a5f",
+      "participant": "Pablo González Betere",
+      "activity_date": "2026-08-25",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-25T11:02:09+02:00",
+      "distance_km": 5.375,
+      "moving_time_s": 1601,
+      "elapsed_time_s": 1619,
+      "elevation_m": 0.0,
+      "sport_type": "Run"
     }
   ],
   "field_probe": {
-    "sample_size": 80,
+    "sample_size": 82,
     "observed_top_level_fields": [
       "athlete",
       "device_name",
@@ -348,11 +384,11 @@
     "start_date_local_present": 0,
     "athlete_id_present": 0,
     "historical_capable": false,
-    "eligible_sample_size": 80,
+    "eligible_sample_size": 82,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-25T10:00:46+02:00",
-  "last_feed_size": 80,
+  "last_successful_update": "2026-08-25T11:02:09+02:00",
+  "last_feed_size": 82,
   "unmatched_activities": 0,
   "unmatched_athletes": [],
   "incremental_checkpoint_date": "2026-08-16"

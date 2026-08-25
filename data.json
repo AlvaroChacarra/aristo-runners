@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-26T00:00:13+02:00",
-  "data_through": "2026-08-25",
+  "generated_at": "2026-08-26T00:47:45+02:00",
+  "data_through": "2026-08-26",
   "challenge": {
     "club_name": "ARISTO runners",
     "start": "2026-07-26",
@@ -16,8 +16,8 @@
   "summary": {
     "total_km": 982.04,
     "progress_pct": 65.5,
-    "projection_km": 1140.4,
-    "projection_gap_km": -359.6,
+    "projection_km": 1104.8,
+    "projection_gap_km": -395.2,
     "active_runners": 11,
     "participants": 12,
     "completed_runners": 3,
@@ -42,8 +42,8 @@
       "elevation_total_complete": true,
       "moving_time_tracked_s": 20765,
       "pace_required_km_per_day": 0.0,
-      "projection_km": 190.5,
-      "projection_gap_km": 65.5,
+      "projection_km": 184.5,
+      "projection_gap_km": 59.5,
       "on_track": true,
       "completed": true,
       "tracking": {
@@ -156,8 +156,8 @@
       "elevation_total_complete": true,
       "moving_time_tracked_s": 13012,
       "pace_required_km_per_day": 0.0,
-      "projection_km": 156.5,
-      "projection_gap_km": 31.5,
+      "projection_km": 151.6,
+      "projection_gap_km": 26.6,
       "on_track": true,
       "completed": true,
       "tracking": {
@@ -261,8 +261,8 @@
       "elevation_total_complete": true,
       "moving_time_tracked_s": 19230,
       "pace_required_km_per_day": 0.0,
-      "projection_km": 151.8,
-      "projection_gap_km": 26.8,
+      "projection_km": 147.1,
+      "projection_gap_km": 22.1,
       "on_track": true,
       "completed": true,
       "tracking": {
@@ -384,8 +384,8 @@
       "elevation_total_complete": false,
       "moving_time_tracked_s": 9130,
       "pace_required_km_per_day": 0.71,
-      "projection_km": 141.9,
-      "projection_gap_km": 16.9,
+      "projection_km": 137.4,
+      "projection_gap_km": 12.4,
       "on_track": true,
       "completed": false,
       "tracking": {
@@ -480,8 +480,8 @@
       "elevation_total_complete": true,
       "moving_time_tracked_s": 10858,
       "pace_required_km_per_day": 2.73,
-      "projection_km": 132.5,
-      "projection_gap_km": 7.5,
+      "projection_km": 128.3,
+      "projection_gap_km": 3.3,
       "on_track": true,
       "completed": false,
       "tracking": {
@@ -585,8 +585,8 @@
       "elevation_total_complete": false,
       "moving_time_tracked_s": 10483,
       "pace_required_km_per_day": 5.75,
-      "projection_km": 118.4,
-      "projection_gap_km": -6.6,
+      "projection_km": 114.7,
+      "projection_gap_km": -10.3,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -690,8 +690,8 @@
       "elevation_total_complete": true,
       "moving_time_tracked_s": 4897,
       "pace_required_km_per_day": 9.59,
-      "projection_km": 100.6,
-      "projection_gap_km": -24.4,
+      "projection_km": 97.5,
+      "projection_gap_km": -27.5,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -777,8 +777,8 @@
       "elevation_total_complete": false,
       "moving_time_tracked_s": 0,
       "pace_required_km_per_day": 15.29,
-      "projection_km": 74.1,
-      "projection_gap_km": -50.9,
+      "projection_km": 71.8,
+      "projection_gap_km": -53.2,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -845,8 +845,8 @@
       "elevation_total_complete": true,
       "moving_time_tracked_s": 6188,
       "pace_required_km_per_day": 23.17,
-      "projection_km": 37.5,
-      "projection_gap_km": -87.5,
+      "projection_km": 36.4,
+      "projection_gap_km": -88.6,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -941,8 +941,8 @@
       "elevation_total_complete": true,
       "moving_time_tracked_s": 2953,
       "pace_required_km_per_day": 25.58,
-      "projection_km": 26.3,
-      "projection_gap_km": -98.7,
+      "projection_km": 25.5,
+      "projection_gap_km": -99.5,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -1037,8 +1037,8 @@
       "elevation_total_complete": true,
       "moving_time_tracked_s": 2076,
       "pace_required_km_per_day": 29.04,
-      "projection_km": 10.3,
-      "projection_gap_km": -114.7,
+      "projection_km": 10.0,
+      "projection_gap_km": -115.0,
       "on_track": false,
       "completed": false,
       "tracking": {
@@ -1768,8 +1768,8 @@
     ]
   },
   "quality": {
-    "last_feed_check": "2026-08-25T23:46:14+02:00",
-    "last_complete_observation": "2026-08-25T23:46:14+02:00",
+    "last_feed_check": "2026-08-26T00:47:45+02:00",
+    "last_complete_observation": "2026-08-26T00:47:45+02:00",
     "latest_activity_detected_at": "2026-08-25T23:27:20+02:00",
     "baseline_checkpoint": "2026-08-10",
     "tracking_checkpoint": "2026-08-16",

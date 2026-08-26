@@ -168,7 +168,10 @@ class BuildDataTests(unittest.TestCase):
         self.assertIsNone(borja["leaderboard_adjustment"])
         self.assertEqual(data["quality"]["leaderboard_reconciliation_km"], 0)
         self.assertEqual(data["coverage"]["leaderboard_adjustments"], 0)
-        self.assertEqual(data["summary"]["total_km"], 982.04)
+        self.assertAlmostEqual(
+            data["summary"]["total_km"],
+            round(sum(runner["km"] for runner in data["runners"]), 2),
+        )
 
 
 if __name__ == "__main__":

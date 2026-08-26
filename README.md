@@ -2,16 +2,19 @@
 
 Dashboard estático del reto (26/07/2026–30/08/2026): Strava → GitHub Actions → `data.json` → GitHub Pages. El navegador nunca llama a Strava y el artefacto Pages contiene únicamente `index.html`, `data.json` y `.nojekyll`.
 
-## Dashboard V2
+## Dashboard V3 — Performance League
 
-La V2 mantiene una única SPA estática:
+La V3 mantiene la SPA estática y transforma únicamente su capa de presentación:
 
-- `/`: KPIs del club, evolución conjunta, ranking e hitos dinámicos;
-- `/?runner=nombre-apellidos`: progreso, proyección, contribución, eficiencia observable e hitos individuales.
+- `/`: portada deportiva, podium dinámico, clasificación desde el cuarto puesto, bottom-3 dinámico, evolución del club, performance y estado del dato;
+- `/?runner=nombre-apellidos`: hero editorial, resumen de rendimiento, progreso, training log observable, hitos y calidad del dato;
+- Alvaro López-Chacarra se identifica como creator únicamente mediante `slug=alvaro-lopez-chacarra`; el distintivo no altera ranking, kilómetros ni estado deportivo.
 
-`data.json` usa `schema_version=2`. Los totales combinan checkpoints, incrementos y reconciliaciones auditables del leaderboard cuando una actividad no aparece en el feed de clubes; km/salida, ritmo, desnivel/km, distribución y salidas máximas se calculan exclusivamente con actividades posteriores al checkpoint de seguimiento. La interfaz distingue `last_feed_check`, `last_complete_observation` y `latest_activity_detected_at` para no presentar como actual un total todavía no alineado.
+El podium consume dinámicamente los ranks 1–3. La clasificación no los repite y calcula la zona roja como los tres últimos participantes, insertando el corte antes del primero de ellos. La interfaz es mobile-first, con validación explícita entre 320 y 1440 px.
 
-La rama `v1-stable` conserva la versión anterior completa como rollback.
+`data.json` conserva `schema_version=2` y el pipeline Strava → Python → GitHub Actions → GitHub Pages no cambia. Los totales combinan checkpoints, incrementos y reconciliaciones auditables del leaderboard cuando una actividad no aparece en el feed de clubes; km/salida, ritmo, desnivel/km, distribución y salidas máximas se calculan exclusivamente con actividades posteriores al checkpoint de seguimiento. La interfaz distingue `last_feed_check`, `last_complete_observation` y `latest_activity_detected_at` para no presentar como actual un total todavía no alineado.
+
+Rollback: revertir el commit de V3 restaura la V2 sin migraciones de datos ni cambios operativos. La rama `v1-stable` conserva además la versión anterior completa.
 
 ## Puesta en marcha
 

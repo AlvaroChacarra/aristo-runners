@@ -578,6 +578,18 @@
       "elapsed_time_s": 3337,
       "elevation_m": 45.0,
       "sport_type": "Run"
+    },
+    {
+      "fingerprint": "ca6322536573bef195a249a97a7328de77108fbb1e5fc900e69e84ed5c7e5b6c",
+      "participant": "Kept ES",
+      "activity_date": "2026-08-27",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-27T11:54:47+02:00",
+      "distance_km": 10.132,
+      "moving_time_s": 3035,
+      "elapsed_time_s": 3035,
+      "elevation_m": 13.0,
+      "sport_type": "Run"
     }
   ],
   "field_probe": {
@@ -608,7 +620,7 @@
     "eligible_sample_size": 105,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-27T01:40:06+02:00",
+  "last_successful_update": "2026-08-27T11:54:47+02:00",
   "last_feed_size": 105,
   "unmatched_activities": 0,
   "unmatched_athletes": [],

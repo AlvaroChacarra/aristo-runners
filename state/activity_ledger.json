@@ -590,6 +590,18 @@
       "elapsed_time_s": 3035,
       "elevation_m": 13.0,
       "sport_type": "Run"
+    },
+    {
+      "fingerprint": "1550fe28e8357b2b1b8e8d4bc957f10796cac208341af8308a195c99abed40cb",
+      "participant": "Borja Glez- Palenzuela Gracia",
+      "activity_date": "2026-08-28",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-28T07:26:44+02:00",
+      "distance_km": 9.89,
+      "moving_time_s": 3184,
+      "elapsed_time_s": 3192,
+      "elevation_m": 25.0,
+      "sport_type": "Run"
     }
   ],
   "field_probe": {
@@ -620,7 +632,7 @@
     "eligible_sample_size": 104,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-27T22:33:32+02:00",
+  "last_successful_update": "2026-08-28T07:26:44+02:00",
   "last_feed_size": 104,
   "unmatched_activities": 0,
   "unmatched_athletes": [],

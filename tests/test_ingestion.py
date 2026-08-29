@@ -2,7 +2,7 @@ import unittest
 from copy import deepcopy
 from datetime import date
 
-from scripts.update_strava import fingerprint, process_feed
+from scripts.update_strava import fingerprint, process_feed, resolve_participant
 from tests.helpers import configs
 
 
@@ -17,6 +17,18 @@ def activity(name="Pablo M.", sport="Run", distance=5000, activity_id=None, star
     if start_date is not None:
         result["start_date"] = start_date
     return result
+
+
+def displayed_activity(display, distance=5000):
+    return {
+        "athlete": {"name": display},
+        "name": "New Run",
+        "distance": distance,
+        "moving_time": 1500,
+        "elapsed_time": 1600,
+        "total_elevation_gain": 25.5,
+        "sport_type": "Run",
+    }
 
 
 class IngestionTests(unittest.TestCase):
@@ -72,6 +84,52 @@ class IngestionTests(unittest.TestCase):
         self.assertIn("id", probe["observed_top_level_fields"])
         self.assertIn("firstname", probe["observed_athlete_fields"])
         self.assertEqual(probe["id_present"], 1)
+
+    def test_every_configured_name_and_alias_resolves_to_exactly_one_runner(self):
+        self.assertEqual(len(self.values["participants"]), 12)
+        for participant in self.values["participants"]:
+            for alias in [participant["name"], *participant.get("aliases", [])]:
+                with self.subTest(participant=participant["name"], alias=alias):
+                    self.assertEqual(
+                        resolve_participant(displayed_activity(alias), self.values["participants"]),
+                        participant["name"],
+                    )
+
+    def test_all_twelve_runners_accept_one_new_activity_and_replay_is_idempotent(self):
+        current = deepcopy(self.values["current"])
+        current.update({"complete": True, "checkpoint_date": "2026-08-16"})
+        current["totals_km"] = {
+            name: item["total"] for name, item in self.values["baseline"]["runners"].items()
+        }
+        ledger = deepcopy(self.values["ledger"])
+        ledger.update({"strategy": "incremental_fingerprint", "bootstrap_complete": True})
+        feed = [
+            displayed_activity(participant["name"], 5000 + index)
+            for index, participant in enumerate(self.values["participants"])
+        ]
+
+        first = self.process(ledger, feed, current, date(2026, 8, 17))
+        second = self.process(first, feed, current, date(2026, 8, 17))
+
+        self.assertEqual(len(first["records"]), 12)
+        self.assertEqual(
+            {record["participant"] for record in first["records"]},
+            {participant["name"] for participant in self.values["participants"]},
+        )
+        self.assertEqual(first["records"], second["records"])
+        self.assertEqual(first["unmatched_activities"], 0)
+
+    def test_unknown_runner_is_reported_and_never_assigned(self):
+        current = deepcopy(self.values["current"])
+        current.update({"complete": True, "checkpoint_date": "2026-08-16"})
+        ledger = deepcopy(self.values["ledger"])
+        ledger.update({"strategy": "incremental_fingerprint", "bootstrap_complete": True})
+
+        result = self.process(ledger, [displayed_activity("Unknown Runner")], current, date(2026, 8, 17))
+
+        self.assertEqual(result["records"], [])
+        self.assertEqual(result["unmatched_activities"], 1)
+        self.assertEqual(result["unmatched_athletes"], ["unknown runner"])
 
 
 if __name__ == "__main__":

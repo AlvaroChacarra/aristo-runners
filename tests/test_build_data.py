@@ -148,6 +148,18 @@ class BuildDataTests(unittest.TestCase):
         current = load_json(ROOT / "bootstrap/current_baseline.json")
         adjustments = load_json(ROOT / "state/leaderboard_adjustments.json")
         ledger = load_json(ROOT / "state/activity_ledger.json")
+        manifest = load_json(ROOT / "state/visibility_reconciliations.json")
+        snapshot = load_json(ROOT / "tests/fixtures/visibility_reconciliation_2026-08-25.json")
+        historical_fingerprints = {
+            entry["fingerprint"]
+            for reconciliation in manifest["reconciliations"]
+            for entry in reconciliation["keep"]
+        }
+        ledger = deepcopy(ledger)
+        ledger["records"] = [
+            record for record in ledger["records"] if record["fingerprint"] in historical_fingerprints
+        ]
+        ledger["last_successful_update"] = "2026-08-25T23:27:20+02:00"
         data = self.build(
             current=current,
             ledger=ledger,
@@ -156,12 +168,25 @@ class BuildDataTests(unittest.TestCase):
         )
         kept = next(runner for runner in data["runners"] if runner["name"] == "Kept ES")
         borja = next(runner for runner in data["runners"] if runner["name"].startswith("Borja"))
-        self.assertEqual((kept["km"], kept["outings_total"]), (130.74, 13))
-        self.assertEqual((borja["km"], borja["outings_total"]), (164.02, 14))
-        self.assertEqual(kept["tracking"]["outings"], 6)
-        self.assertAlmostEqual(kept["tracking"]["distance_km"], 62.579)
-        self.assertEqual(borja["tracking"]["outings"], 5)
-        self.assertAlmostEqual(borja["tracking"]["distance_km"], 62.047)
+        self.assertEqual(
+            (kept["km"], kept["outings_total"]),
+            (snapshot["Kept ES"]["dashboard_km"], snapshot["Kept ES"]["dashboard_outings"]),
+        )
+        self.assertEqual(
+            (borja["km"], borja["outings_total"]),
+            (
+                snapshot["Borja Glez- Palenzuela Gracia"]["dashboard_km"],
+                snapshot["Borja Glez- Palenzuela Gracia"]["dashboard_outings"],
+            ),
+        )
+        self.assertEqual(kept["tracking"]["outings"], snapshot["Kept ES"]["kept_records"])
+        self.assertAlmostEqual(kept["tracking"]["distance_km"], snapshot["Kept ES"]["distance_km"])
+        self.assertEqual(
+            borja["tracking"]["outings"], snapshot["Borja Glez- Palenzuela Gracia"]["kept_records"]
+        )
+        self.assertAlmostEqual(
+            borja["tracking"]["distance_km"], snapshot["Borja Glez- Palenzuela Gracia"]["distance_km"]
+        )
         self.assertTrue(kept["elevation_total_complete"])
         self.assertTrue(borja["elevation_total_complete"])
         self.assertIsNone(kept["leaderboard_adjustment"])

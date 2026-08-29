@@ -1,0 +1,18 @@
+{
+  "Borja Glez- Palenzuela Gracia": {
+    "kept_records": 5,
+    "ignored_records": 10,
+    "distance_km": 62.047,
+    "elevation_m": 346,
+    "dashboard_km": 164.02,
+    "dashboard_outings": 14
+  },
+  "Kept ES": {
+    "kept_records": 6,
+    "ignored_records": 7,
+    "distance_km": 62.579,
+    "elevation_m": 353,
+    "dashboard_km": 130.74,
+    "dashboard_outings": 13
+  }
+}

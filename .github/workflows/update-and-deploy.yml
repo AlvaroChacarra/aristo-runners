@@ -40,6 +40,9 @@ jobs:
       - name: Install dependency
         run: python -m pip install --requirement requirements.txt
 
+      - name: Run deterministic tests
+        run: python -m unittest discover -s tests -v
+
       - name: Update from Strava
         id: strava
         if: github.event_name != 'push' || contains(github.event.head_commit.message, '[strava-sync]')
@@ -54,17 +57,23 @@ jobs:
         if: github.event_name == 'push' && !contains(github.event.head_commit.message, '[strava-sync]')
         run: python -m scripts.build_data
 
-      - name: Run tests
-        run: python -m unittest discover -s tests -v
+      - name: Validate all runners in live state
+        id: live_validation
+        if: steps.strava.outcome == 'success' || steps.strava.outcome == 'skipped'
+        continue-on-error: true
+        run: python -m scripts.validate_live_state
 
       - name: Check public artifact for secret leakage
+        id: security
+        if: steps.live_validation.outcome == 'success'
+        continue-on-error: true
         env:
           STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
           STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
         run: python -m scripts.security_check
 
-      - name: Persist incremental state and rotated token
-        if: always() && (github.event_name != 'push' || contains(github.event.head_commit.message, '[strava-sync]'))
+      - name: Persist validated dashboard state
+        if: steps.live_validation.outcome == 'success' && steps.security.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -75,8 +84,19 @@ jobs:
             git push
           fi
 
+      - name: Persist rotated token after rejected update
+        if: always() && (steps.strava.outcome == 'failure' || steps.live_validation.outcome == 'failure' || steps.security.outcome == 'failure')
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -f state/refresh_token.enc ]; then git add state/refresh_token.enc; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "Persist rotated Strava token after rejected update"
+            git push
+          fi
+
       - name: Fail after safely persisting a rejected update
-        if: (github.event_name != 'push' || contains(github.event.head_commit.message, '[strava-sync]')) && steps.strava.outcome == 'failure'
+        if: steps.strava.outcome == 'failure' || steps.live_validation.outcome == 'failure' || steps.security.outcome == 'failure'
         run: exit 1
 
       - name: Build explicit public artifact

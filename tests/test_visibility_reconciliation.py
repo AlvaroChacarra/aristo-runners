@@ -62,26 +62,34 @@ class VisibilityReconciliationTests(unittest.TestCase):
         self.assertIn("old", first_ledger["ignored_fingerprints"])
         self.assertEqual([item["id"] for item in first_adjustments["adjustments"]], ["kept-manual"])
 
-    def test_live_kept_partition_counts_six_new_and_checkpoints_seven_historical_records(self):
+    def test_kept_historical_partition_remains_present_with_later_records_allowed(self):
         ledger = load_json(ROOT / "state/activity_ledger.json")
         adjustments = load_json(ROOT / "state/leaderboard_adjustments.json")
         manifest = load_json(ROOT / "state/visibility_reconciliations.json")
+        snapshot = load_json(ROOT / "tests/fixtures/visibility_reconciliation_2026-08-25.json")
         reconciliation = next(item for item in manifest["reconciliations"] if item["participant"] == "Kept ES")
         kept_fingerprints = {item["fingerprint"] for item in reconciliation["keep"]}
         ignored_fingerprints = set(reconciliation["ignore_fingerprints"])
         kept_records = [item for item in ledger["records"] if item["participant"] == "Kept ES"]
+        historical_records = [item for item in kept_records if item["fingerprint"] in kept_fingerprints]
 
-        self.assertEqual((len(kept_fingerprints), len(ignored_fingerprints)), (6, 7))
+        self.assertEqual(
+            (len(kept_fingerprints), len(ignored_fingerprints)),
+            (snapshot["Kept ES"]["kept_records"], snapshot["Kept ES"]["ignored_records"]),
+        )
         self.assertFalse(kept_fingerprints & ignored_fingerprints)
-        self.assertEqual({item["fingerprint"] for item in kept_records}, kept_fingerprints)
+        self.assertTrue(kept_fingerprints <= {item["fingerprint"] for item in kept_records})
         self.assertTrue(ignored_fingerprints <= set(ledger["ignored_fingerprints"]))
-        self.assertAlmostEqual(sum(item["distance_km"] for item in kept_records), 62.579)
-        self.assertEqual(sum(item["elevation_m"] for item in kept_records), 353)
+        self.assertAlmostEqual(
+            sum(item["distance_km"] for item in historical_records), snapshot["Kept ES"]["distance_km"]
+        )
+        self.assertEqual(sum(item["elevation_m"] for item in historical_records), snapshot["Kept ES"]["elevation_m"])
         self.assertEqual(adjustments["adjustments"], [])
 
-    def test_live_borja_partition_counts_five_new_and_checkpoints_ten_other_records(self):
+    def test_borja_historical_partition_remains_present_with_later_records_allowed(self):
         ledger = load_json(ROOT / "state/activity_ledger.json")
         manifest = load_json(ROOT / "state/visibility_reconciliations.json")
+        snapshot = load_json(ROOT / "tests/fixtures/visibility_reconciliation_2026-08-25.json")
         reconciliation = next(
             item for item in manifest["reconciliations"] if item["participant"] == "Borja Glez- Palenzuela Gracia"
         )
@@ -90,13 +98,26 @@ class VisibilityReconciliationTests(unittest.TestCase):
         kept_records = [
             item for item in ledger["records"] if item["participant"] == "Borja Glez- Palenzuela Gracia"
         ]
+        historical_records = [item for item in kept_records if item["fingerprint"] in kept_fingerprints]
 
-        self.assertEqual((len(kept_fingerprints), len(ignored_fingerprints)), (5, 10))
+        self.assertEqual(
+            (len(kept_fingerprints), len(ignored_fingerprints)),
+            (
+                snapshot["Borja Glez- Palenzuela Gracia"]["kept_records"],
+                snapshot["Borja Glez- Palenzuela Gracia"]["ignored_records"],
+            ),
+        )
         self.assertFalse(kept_fingerprints & ignored_fingerprints)
-        self.assertEqual({item["fingerprint"] for item in kept_records}, kept_fingerprints)
+        self.assertTrue(kept_fingerprints <= {item["fingerprint"] for item in kept_records})
         self.assertTrue(ignored_fingerprints <= set(ledger["ignored_fingerprints"]))
-        self.assertAlmostEqual(sum(item["distance_km"] for item in kept_records), 62.047)
-        self.assertEqual(sum(item["elevation_m"] for item in kept_records), 346)
+        self.assertAlmostEqual(
+            sum(item["distance_km"] for item in historical_records),
+            snapshot["Borja Glez- Palenzuela Gracia"]["distance_km"],
+        )
+        self.assertEqual(
+            sum(item["elevation_m"] for item in historical_records),
+            snapshot["Borja Glez- Palenzuela Gracia"]["elevation_m"],
+        )
 
 
 if __name__ == "__main__":

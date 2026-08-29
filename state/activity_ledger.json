@@ -628,6 +628,30 @@
       "sport_type": "Run"
     },
     {
+      "fingerprint": "58ebc6261721cea871d69201a5f134ce49c0fffe0537affb723de6a852059690",
+      "participant": "Antonio Meijide",
+      "activity_date": "2026-08-29",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-29T13:55:56+02:00",
+      "distance_km": 8.177,
+      "moving_time_s": 2455,
+      "elapsed_time_s": 2463,
+      "elevation_m": 66.2,
+      "sport_type": "Run"
+    },
+    {
+      "fingerprint": "63063a8fee7ea5a124d210570e9988807821915d6d54315602386cf4c20219f1",
+      "participant": "Borja Glez- Palenzuela Gracia",
+      "activity_date": "2026-08-29",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-29T13:55:56+02:00",
+      "distance_km": 14.818,
+      "moving_time_s": 4817,
+      "elapsed_time_s": 5392,
+      "elevation_m": 88.0,
+      "sport_type": "Run"
+    },
+    {
       "fingerprint": "fd5aefc373331ae8246990881c53d1b65a0454f8429f9ebd3709f883a5bd3cce",
       "participant": "Francisco Javier Moreno Muñoz",
       "activity_date": "2026-08-29",
@@ -680,7 +704,7 @@
     "eligible_sample_size": 105,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-29T11:08:48+02:00",
+  "last_successful_update": "2026-08-29T13:55:56+02:00",
   "last_feed_size": 105,
   "unmatched_activities": 0,
   "unmatched_athletes": [],

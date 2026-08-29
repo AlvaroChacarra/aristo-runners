@@ -24,7 +24,7 @@ def validate_live_state(
     ledger: dict[str, Any],
     dashboard: dict[str, Any],
 ) -> list[dict[str, Any]]:
-    """Validate dynamic production invariants without freezing live totals."""
+    """Validate dynamic production invariants without freezing live totals."""\n    # Production totals and activity counts must remain data-driven.
     errors: list[str] = []
     names = [participant["name"] for participant in participants]
     name_set = set(names)

@@ -626,10 +626,34 @@
       "elapsed_time_s": 2744,
       "elevation_m": 148.0,
       "sport_type": "Run"
+    },
+    {
+      "fingerprint": "fd5aefc373331ae8246990881c53d1b65a0454f8429f9ebd3709f883a5bd3cce",
+      "participant": "Francisco Javier Moreno Muñoz",
+      "activity_date": "2026-08-29",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-29T11:08:48+02:00",
+      "distance_km": 7.996,
+      "moving_time_s": 2815,
+      "elapsed_time_s": 2981,
+      "elevation_m": 83.0,
+      "sport_type": "Run"
+    },
+    {
+      "fingerprint": "70473691c473e80a7c3ef658401d4394c2bbbab9d4456acd4fe0f21e30558390",
+      "participant": "Kept ES",
+      "activity_date": "2026-08-29",
+      "date_accuracy": "observed",
+      "detected_at": "2026-08-29T11:08:48+02:00",
+      "distance_km": 9.939,
+      "moving_time_s": 2948,
+      "elapsed_time_s": 2948,
+      "elevation_m": 20.0,
+      "sport_type": "Run"
     }
   ],
   "field_probe": {
-    "sample_size": 104,
+    "sample_size": 105,
     "observed_top_level_fields": [
       "athlete",
       "device_name",
@@ -653,11 +677,11 @@
     "start_date_local_present": 0,
     "athlete_id_present": 0,
     "historical_capable": false,
-    "eligible_sample_size": 104,
+    "eligible_sample_size": 105,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-29T04:14:40+02:00",
-  "last_feed_size": 104,
+  "last_successful_update": "2026-08-29T11:08:48+02:00",
+  "last_feed_size": 105,
   "unmatched_activities": 0,
   "unmatched_athletes": [],
   "incremental_checkpoint_date": "2026-08-16",

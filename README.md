@@ -74,7 +74,7 @@ En **Settings → Pages → Build and deployment → Source**, selecciona **GitH
 
 ## Operación
 
-El workflow corre cada hora (`:17`), admite ejecución manual y despliega en cada push relevante a `main`. Para una sincronización operativa inmediata también admite un commit deliberado cuyo mensaje contenga `[strava-sync]`; los demás pushes solo reconstruyen datos y no llaman a Strava. A partir del **01/09/2026** el guard temporal sale antes de leer credenciales o llamar a Strava.
+El workflow corre cada hora (`:17`), admite ejecución manual y despliega en cada push relevante a `main`. Como GitHub puede retrasar los cron, el **30/08** añade intentos redundantes a `:07`, `:27` y `:47` UTC para proteger el cierre del reto. Para una sincronización operativa inmediata también admite un commit deliberado cuyo mensaje contenga `[strava-sync]`; los demás pushes solo reconstruyen datos y no llaman a Strava. A partir del **01/09/2026** el guard temporal sale antes de leer credenciales o llamar a Strava.
 
 Los tests de reconciliación usan el snapshot inmutable del 25/08 y permiten actividades posteriores. Cada ejecución valida además el estado vivo de los 12 corredores: identidades y aliases inequívocos, cero actividades visibles sin asignar, fingerprints únicos, coherencia entre ledger y dashboard y presencia de todos los participantes. Un corredor sin registros posteriores al checkpoint se informa como `NO_POST_CHECKPOINT_RECORD`; no se interpreta automáticamente como una actividad ausente porque el endpoint puede depender de visibilidad y privacidad.
 
@@ -94,7 +94,7 @@ Configuración:
 - ajustes agregados contrastados con la clasificación de Strava: `state/leaderboard_adjustments.json` (no inventar ritmo, desnivel ni detalle de actividad).
 - reconciliaciones por cambios de visibilidad del feed: `state/visibility_reconciliations.json` (hashes únicamente; nunca contiene tokens ni JSON crudo de Strava).
 
-Auditoría: consulta el último run en **Actions**, `generated_at`/`data_through` en `data.json` y `last_successful_update`/`field_probe` en el ledger. Salidas y desnivel se etiquetan como parciales porque el fixture histórico solo contiene kilómetros.
+Auditoría: consulta el último run en **Actions**, `generated_at`/`data_through` en `data.json`, `last_successful_update`/`field_probe` en el ledger y `records_added`/`records_total` en el log. Salidas y desnivel se etiquetan como parciales porque el fixture histórico solo contiene kilómetros.
 
 La publicación es transaccional respecto al dato: solo se versionan y despliegan `data.json` y el ledger cuando la validación de los 12 corredores pasa. Si Strava o esa validación fallan, se conserva el último dashboard público válido y únicamente puede persistirse el refresh token rotado.
 

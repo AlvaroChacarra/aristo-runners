@@ -131,6 +131,32 @@ class IngestionTests(unittest.TestCase):
         self.assertEqual(result["unmatched_activities"], 1)
         self.assertEqual(result["unmatched_athletes"], ["unknown runner"])
 
+    def test_incremental_feed_accepts_final_day_and_rejects_later_observations(self):
+        current = deepcopy(self.values["current"])
+        current.update({"complete": True, "checkpoint_date": "2026-08-16"})
+        ledger = deepcopy(self.values["ledger"])
+        ledger.update({"strategy": "incremental_fingerprint", "bootstrap_complete": True})
+
+        final_day = self.process(
+            ledger,
+            [displayed_activity("Alvaro López-Chacarra", 7000)],
+            current,
+            date(2026, 8, 30),
+        )
+        after_end = self.process(
+            final_day,
+            [
+                displayed_activity("Alvaro López-Chacarra", 7000),
+                displayed_activity("Alvaro López-Chacarra", 8000),
+            ],
+            current,
+            date(2026, 8, 31),
+        )
+
+        self.assertEqual(len(final_day["records"]), 1)
+        self.assertEqual(final_day["records"][0]["activity_date"], "2026-08-30")
+        self.assertEqual(after_end["records"], final_day["records"])
+
 
 if __name__ == "__main__":
     unittest.main()

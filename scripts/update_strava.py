@@ -238,6 +238,7 @@ def run_update(
     baseline = load_json(root / "config/baseline.json")
     current = load_json(root / "bootstrap/current_baseline.json")
     ledger = load_json(root / "state/activity_ledger.json")
+    record_count_before = len(ledger.get("records", []))
     leaderboard_adjustments = load_json(root / "state/leaderboard_adjustments.json")
     override = challenge.get("club_id")
     club_id = int(override or ledger.get("club_id") or client.discover_club(challenge["club_name"]))
@@ -249,12 +250,14 @@ def run_update(
     atomic_write_json(root / "state/activity_ledger.json", updated)
     atomic_write_json(root / "data.json", dashboard)
     probe = updated.get("field_probe") or {}
+    record_count_after = len(updated.get("records", []))
     print(
         "Strava update valid:",
         f"feed={len(activities)} strategy={updated.get('strategy')} ",
         f"id={probe.get('id_present', 0)}/{probe.get('sample_size', 0)} ",
         f"date={max(probe.get('start_date_present', 0), probe.get('start_date_local_present', 0))}/{probe.get('sample_size', 0)} ",
-        f"new_records={len(updated.get('records', []))} unmatched={updated.get('unmatched_activities', 0)}",
+        f"records_added={record_count_after - record_count_before} records_total={record_count_after} ",
+        f"unmatched={updated.get('unmatched_activities', 0)}",
     )
     return dashboard
 

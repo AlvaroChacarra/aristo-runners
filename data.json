@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-31T17:22:45+02:00",
+  "generated_at": "2026-08-31T22:53:32+02:00",
   "data_through": "2026-08-30",
   "challenge": {
     "club_name": "ARISTO runners",
@@ -1903,8 +1903,8 @@
     ]
   },
   "quality": {
-    "last_feed_check": "2026-08-31T17:22:45+02:00",
-    "last_complete_observation": "2026-08-31T17:22:45+02:00",
+    "last_feed_check": "2026-08-31T22:53:32+02:00",
+    "last_complete_observation": "2026-08-31T22:53:32+02:00",
     "latest_activity_detected_at": "2026-08-31T17:22:45+02:00",
     "late_observation_count": 1,
     "baseline_checkpoint": "2026-08-10",

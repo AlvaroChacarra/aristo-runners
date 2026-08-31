@@ -80,6 +80,8 @@ class FrontendTests(unittest.TestCase):
         self.assertIn('role="img"', self.html)
         self.assertIn("chartUnavailable", self.html)
         self.assertIn('legend:{display:true', self.html)
+        self.assertIn("Cierre tardío", self.html)
+        self.assertIn("late_observation_count", self.html)
 
     def test_no_emojis_frameworks_or_secret_references(self):
         for forbidden in ("🏆", "🎯", "🦕", "📏", "🚀"):

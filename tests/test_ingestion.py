@@ -131,7 +131,7 @@ class IngestionTests(unittest.TestCase):
         self.assertEqual(result["unmatched_activities"], 1)
         self.assertEqual(result["unmatched_athletes"], ["unknown runner"])
 
-    def test_incremental_feed_accepts_final_day_and_rejects_later_observations(self):
+    def test_incremental_feed_uses_bounded_late_observation_grace(self):
         current = deepcopy(self.values["current"])
         current.update({"complete": True, "checkpoint_date": "2026-08-16"})
         ledger = deepcopy(self.values["ledger"])
@@ -143,7 +143,7 @@ class IngestionTests(unittest.TestCase):
             current,
             date(2026, 8, 30),
         )
-        after_end = self.process(
+        grace_day = self.process(
             final_day,
             [
                 displayed_activity("Alvaro López-Chacarra", 7000),
@@ -152,10 +152,24 @@ class IngestionTests(unittest.TestCase):
             current,
             date(2026, 8, 31),
         )
+        after_grace = self.process(
+            grace_day,
+            [
+                displayed_activity("Alvaro López-Chacarra", 7000),
+                displayed_activity("Alvaro López-Chacarra", 8000),
+                displayed_activity("Alvaro López-Chacarra", 9000),
+            ],
+            current,
+            date(2026, 9, 1),
+        )
 
         self.assertEqual(len(final_day["records"]), 1)
         self.assertEqual(final_day["records"][0]["activity_date"], "2026-08-30")
-        self.assertEqual(after_end["records"], final_day["records"])
+        self.assertEqual(len(grace_day["records"]), 2)
+        self.assertEqual(grace_day["records"][1]["activity_date"], "2026-08-30")
+        self.assertEqual(grace_day["records"][1]["date_accuracy"], "late_observed")
+        self.assertEqual(grace_day["records"][1]["detected_at"], "2026-08-31")
+        self.assertEqual(after_grace["records"], grace_day["records"])
 
 
 if __name__ == "__main__":

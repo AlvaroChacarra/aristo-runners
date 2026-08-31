@@ -688,6 +688,18 @@
       "sport_type": "Run"
     },
     {
+      "fingerprint": "1cb73ef936a94c5622e2615090b19dab42e92b167a9b8ad4e0b48fe86f952cd1",
+      "participant": "Francisco Javier Moreno Muñoz",
+      "activity_date": "2026-08-30",
+      "date_accuracy": "late_observed",
+      "detected_at": "2026-08-31T17:22:45+02:00",
+      "distance_km": 6.751,
+      "moving_time_s": 2299,
+      "elapsed_time_s": 2299,
+      "elevation_m": 37.0,
+      "sport_type": "Run"
+    },
+    {
       "fingerprint": "fa2b37a4826cd4a276d7e7fe00f1fe1f1d3e0d2372e21185977c5fe9576ee39b",
       "participant": "Pablo Meijide",
       "activity_date": "2026-08-30",
@@ -728,7 +740,7 @@
     "eligible_sample_size": 103,
     "eligible_historical_capable": false
   },
-  "last_successful_update": "2026-08-31T15:58:26+02:00",
+  "last_successful_update": "2026-08-31T17:22:45+02:00",
   "last_feed_size": 103,
   "unmatched_activities": 0,
   "unmatched_athletes": [],

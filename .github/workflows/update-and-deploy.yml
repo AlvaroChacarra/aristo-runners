@@ -3,10 +3,8 @@ name: Update Strava and deploy Pages
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 * * * *"
-    # GitHub can defer scheduled runs for hours. Add final-day redundancy only
-    # while the one-off 2026 challenge is still accepting observable results.
-    - cron: "7,27,47 * 30 8 *"
+    # Finalization window only. Multiple slots mitigate delayed/dropped GitHub cron runs.
+    - cron: "7,17,27,37,47,57 * 31 8 *"
   push:
     branches: [main]
     paths:

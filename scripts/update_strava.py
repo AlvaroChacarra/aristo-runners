@@ -141,6 +141,10 @@ def process_feed(
     ignored = set(updated.get("ignored_fingerprints", []))
     start = date.fromisoformat(challenge["challenge_start"])
     end = date.fromisoformat(challenge["challenge_end"])
+    late_observation_end = date.fromisoformat(challenge.get("late_observation_end", challenge["challenge_end"]))
+    retirement = date.fromisoformat(challenge["club_endpoint_retirement"])
+    if not end <= late_observation_end < retirement:
+        raise ValueError("late_observation_end must be on/after challenge_end and before retirement")
     baseline_cutoff = date.fromisoformat(baseline_checkpoint)
 
     if strategy == "incremental_fingerprint" and not updated.get("bootstrap_complete"):
@@ -169,10 +173,14 @@ def process_feed(
             record_date = exact_date
             accuracy = "exact"
         else:
-            if observed_on < start or observed_on > end:
+            if observed_on < start or observed_on > late_observation_end:
                 continue
-            record_date = observed_on
-            accuracy = "observed"
+            if observed_on > end:
+                record_date = end
+                accuracy = "late_observed"
+            else:
+                record_date = observed_on
+                accuracy = "observed"
         participant = resolve_participant(item, participants)
         if participant is None:
             unmatched += 1

@@ -63,6 +63,29 @@ class BuildDataTests(unittest.TestCase):
         self.assertTrue(data["challenge"]["finished"])
         self.assertTrue(all(runner["projection_km"] is None for runner in data["runners"]))
 
+    def test_late_observation_is_counted_on_final_day_and_disclosed(self):
+        ledger = deepcopy(self.values["ledger"])
+        ledger.update({"strategy": "incremental_fingerprint", "bootstrap_complete": True})
+        ledger["records"] = [{
+            "fingerprint": "d" * 64,
+            "participant": "Pablo Meijide",
+            "activity_date": "2026-08-30",
+            "date_accuracy": "late_observed",
+            "detected_at": "2026-08-31T09:00:00+02:00",
+            "distance_km": 7.5,
+            "moving_time_s": 2400,
+            "elevation_m": 30,
+            "sport_type": "Run",
+        }]
+
+        data = self.build(ledger=ledger, now=datetime(2026, 8, 31, 9, tzinfo=MADRID))
+        pablo = next(runner for runner in data["runners"] if runner["name"] == "Pablo Meijide")
+
+        self.assertEqual(pablo["km"], 70.59)
+        self.assertEqual(pablo["tracking"]["activities"][0]["date"], "2026-08-31")
+        self.assertEqual(pablo["tracking"]["activities"][0]["date_basis"], "detected")
+        self.assertEqual(data["quality"]["late_observation_count"], 1)
+
     def test_current_baseline_requires_all_numeric_totals(self):
         current = deepcopy(self.values["current"])
         current.update({"complete": True, "checkpoint_date": "2026-08-16"})

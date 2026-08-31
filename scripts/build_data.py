@@ -154,7 +154,11 @@ def _tracking_stats(records: list[dict[str, Any]]) -> dict[str, Any]:
     }
     activities = [
         {
-            "date": record["activity_date"],
+            "date": (
+                str(record.get("detected_at", ""))[:10]
+                if record.get("date_accuracy") == "late_observed" and record.get("detected_at")
+                else record["activity_date"]
+            ),
             "date_basis": "exact" if record.get("date_accuracy") == "exact" else "detected",
             "detected_at": record.get("detected_at"),
             "distance_km": round(float(record.get("distance_km", 0)), 3),
@@ -427,6 +431,10 @@ def build_dashboard(
         for records in records_by_runner.values() for record in records
     ]
     latest_activity_detected_at = max(detected_values) if detected_values else None
+    late_observation_count = sum(
+        record.get("date_accuracy") == "late_observed"
+        for records in records_by_runner.values() for record in records
+    )
     if tracking_active and last_feed_check_dt:
         last_complete_observation = last_feed_check_dt.isoformat(timespec="seconds")
     elif current_validated:
@@ -485,6 +493,7 @@ def build_dashboard(
             "last_feed_check": ledger.get("last_successful_update"),
             "last_complete_observation": last_complete_observation,
             "latest_activity_detected_at": latest_activity_detected_at,
+            "late_observation_count": late_observation_count,
             "baseline_checkpoint": baseline["checkpoint_date"],
             "tracking_checkpoint": ledger.get("incremental_checkpoint_date") if tracking_active else None,
             "totals_basis": "checkpoint_plus_incremental" if tracking_active else "historical_checkpoint",

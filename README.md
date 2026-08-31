@@ -74,7 +74,9 @@ En **Settings → Pages → Build and deployment → Source**, selecciona **GitH
 
 ## Operación
 
-El workflow corre cada hora (`:17`), admite ejecución manual y despliega en cada push relevante a `main`. Como GitHub puede retrasar los cron, el **30/08** añade intentos redundantes a `:07`, `:27` y `:47` UTC para proteger el cierre del reto. Para una sincronización operativa inmediata también admite un commit deliberado cuyo mensaje contenga `[strava-sync]`; los demás pushes solo reconstruyen datos y no llaman a Strava. A partir del **01/09/2026** el guard temporal sale antes de leer credenciales o llamar a Strava.
+El workflow admite ejecución manual y despliega en cada push relevante a `main`. El **31/08** ejecuta una finalización automática cada diez minutos para compensar retrasos del cron y recoger actividades del último día que Strava haga visibles con demora. Para una sincronización operativa inmediata también admite un commit deliberado cuyo mensaje contenga `[strava-sync]`; los demás pushes solo reconstruyen datos y no llaman a Strava. A partir del **01/09/2026** el guard temporal sale antes de leer credenciales o llamar a Strava.
+
+El feed del club no entrega fecha ni ID de actividad. Por ello, `late_observation_end=2026-08-31` define una gracia de cierre estrictamente acotada: un fingerprint nuevo detectado ese día se imputa al **30/08**, conserva `detected_at` real y se marca `date_accuracy=late_observed`. La web declara estas observaciones tardías. Después de la gracia no se incorporan nuevos fingerprints.
 
 Los tests de reconciliación usan el snapshot inmutable del 25/08 y permiten actividades posteriores. Cada ejecución valida además el estado vivo de los 12 corredores: identidades y aliases inequívocos, cero actividades visibles sin asignar, fingerprints únicos, coherencia entre ledger y dashboard y presencia de todos los participantes. Un corredor sin registros posteriores al checkpoint se informa como `NO_POST_CHECKPOINT_RECORD`; no se interpreta automáticamente como una actividad ausente porque el endpoint puede depender de visibilidad y privacidad.
 

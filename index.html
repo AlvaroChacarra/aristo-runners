@@ -477,7 +477,8 @@ function renderDataStatus(){
   const detail="Datos consolidados hasta "+fmtDate(dashboard.data_through)+" · "+(live?"Seguimiento incremental activo":"Último estado válido disponible");
   const feed=dashboard.quality.last_feed_check?" · Feed consultado "+fmtDateTime(dashboard.quality.last_feed_check):"";
   const elevation=dashboard.summary.elevation_total_complete?"":" El desnivel acumulado es parcial porque el histórico solo aporta kilómetros.";
-  return '<section class="section data-status" aria-labelledby="data-status-title"><div class="data-status-title" id="data-status-title">DATA STATUS <span class="data-dot'+(live?"":" consolidated")+'"></span> '+status+'</div><p>'+detail+feed+'. Los tramos sin detalle diario se interpolan; las métricas de actividad solo cubren el periodo observable.'+elevation+'</p></section>';
+  const late=Number(dashboard.quality.late_observation_count||0)>0?" "+dashboard.quality.late_observation_count+" actividad(es) detectada(s) el 31/08 se imputan al cierre del 30/08.":"";
+  return '<section class="section data-status" aria-labelledby="data-status-title"><div class="data-status-title" id="data-status-title">DATA STATUS <span class="data-dot'+(live?"":" consolidated")+'"></span> '+status+'</div><p>'+detail+feed+'. Los tramos sin detalle diario se interpolan; las métricas de actividad solo cubren el periodo observable.'+late+elevation+'</p></section>';
 }
 function renderHome(){
   document.title=SITE.name+" · "+SITE.challengeName;
@@ -590,8 +591,9 @@ function renderQuality(runner){
   const tracking=dashboard.quality.tracking_checkpoint?fmtDate(dashboard.quality.tracking_checkpoint):"PENDIENTE";
   const reconciliation=runner.leaderboard_adjustment?'<div class="quality-item"><strong>Reconciliación leaderboard</strong><span>+'+fmt(runner.leaderboard_adjustment.distance_km)+' km · '+runner.leaderboard_adjustment.outings+' salidas. No se inventan ritmo ni desnivel.</span></div>':"";
   const elevation=runner.elevation_total_complete?"":'<div class="quality-item"><strong>Desnivel parcial</strong><span>* El histórico no incluye el desnivel completo; no se estima lo no observado.</span></div>';
+  const late=Number(dashboard.quality.late_observation_count||0)>0?'<div class="quality-item"><strong>Cierre tardío</strong><span>Las actividades detectadas el 31/08 se imputan al cierre del 30/08; la API del club no entrega su fecha exacta.</span></div>':"";
   return '<section class="section">'+sectionHeading("DATA QUALITY","TRAZABILIDAD")+'<div class="quality-card"><div class="quality-item"><strong>Totales acumulados</strong><span>Checkpoint histórico más incrementos observados. Consolidados hasta '+qualityDate()+'.</span></div>'+reconciliation+
-    elevation+'<div class="quality-item"><strong>Eficiencia y actividades</strong><span>Solo desde el seguimiento detallado ('+tracking+'); nunca se extrapolan hacia atrás.</span></div>'+
+    elevation+late+'<div class="quality-item"><strong>Eficiencia y actividades</strong><span>Solo desde el seguimiento detallado ('+tracking+'); nunca se extrapolan hacia atrás.</span></div>'+
     '<div class="quality-item"><strong>Fechas</strong><span>'+(dashboard.coverage.estimated_activity_dates?"La API no entrega la fecha exacta en este feed: se muestra cuándo se detectó la actividad.":"No hay actividades con fecha estimada.")+'</span></div></div></section>';
 }
 function renderRunner(runner){
